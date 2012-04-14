@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2012/04/14 15:30:30.108.pas,E:\xxx\教学工作量管理系统\Srv\uZsbBmIntf.pas=E:\xxx\教学工作量管理系统\Srv\uJxgzlIntf.pas</Transaction>
+    <Transaction>2012/04/14 16:28:47.014.bdsproj,E:\xxx\教学工作量管理系统\About\About.bdsproj=E:\xxx\教学工作量管理系统\About\aAbout.bdsproj</Transaction>
+    <Transaction>2012/04/14 16:28:54.142.bdsproj,E:\xxx\教学工作量管理系统\About\aAbout.bdsproj=E:\xxx\教学工作量管理系统\About\about.bdsproj</Transaction>
+  </Transactions>
+</BorlandProject>

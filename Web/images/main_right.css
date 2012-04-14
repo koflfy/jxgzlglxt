@@ -1,0 +1,72 @@
+BODY {
+	FONT: 12px ËÎÌו
+}
+TH {
+	FONT: 12px ËÎÌו
+}
+TD {
+	FONT: 12px ËÎÌו
+}
+TABLE {
+	BORDER-TOP: #99ccff 1px solid; BORDER-BOTTOM-WIDTH: 1px; BORDER-LEFT: #99ccff 1px solid; BORDER-RIGHT-WIDTH: 1px
+}
+BODY {
+	PADDING-RIGHT: 10px; BACKGROUND-POSITION: 0% 0%; PADDING-LEFT: 10px; SCROLLBAR-FACE-COLOR: #72a3d0; BACKGROUND-ATTACHMENT: scroll; BACKGROUND-IMAGE: none; PADDING-BOTTOM: 10px; MARGIN: 0px; SCROLLBAR-HIGHLIGHT-COLOR: #337abb; SCROLLBAR-SHADOW-COLOR: #337abb; SCROLLBAR-3DLIGHT-COLOR: #337abb; SCROLLBAR-ARROW-COLOR: #ffffff; PADDING-TOP: 10px; SCROLLBAR-TRACK-COLOR: #337ec0; BACKGROUND-REPEAT: repeat; SCROLLBAR-DARKSHADOW-COLOR: #337abb
+}
+FORM {
+	MARGIN: 0px
+}
+A {
+	COLOR: #135294; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #ff6600; TEXT-DECORATION: underline
+}
+TD {
+	BORDER-RIGHT: #99ccff 1px solid; PADDING-RIGHT: 2px; BACKGROUND-POSITION: 0% 0%; PADDING-LEFT: 2px; FONT-SIZE: 12px; BACKGROUND-ATTACHMENT: scroll; BACKGROUND-IMAGE: none; PADDING-BOTTOM: 2px; COLOR: #274e96; LINE-HEIGHT: 20px; PADDING-TOP: 2px; BORDER-BOTTOM: #99ccff 1px solid; BACKGROUND-REPEAT: repeat
+}
+.td_title {
+	BORDER-RIGHT: #fff 1px solid; BORDER-TOP: #fff 1px solid; PADDING-LEFT: 20px; FONT-WEIGHT: bold; BACKGROUND: #fff; BORDER-LEFT: #fff 1px solid; COLOR: #135294; LINE-HEIGHT: 24px; BORDER-BOTTOM: #fff 1px solid; HEIGHT: 24px; TEXT-ALIGN: left
+}
+TH {
+	BORDER-RIGHT: #fff 1px solid; BORDER-TOP: #fff 1px solid; PADDING-LEFT: 20px; FONT-WEIGHT: bold; BACKGROUND: #fff; BORDER-LEFT: #fff 1px solid; COLOR: #135294; LINE-HEIGHT: 24px; BORDER-BOTTOM: #fff 1px solid; HEIGHT: 24px; TEXT-ALIGN: left
+}
+TD.td1 {
+	PADDING-RIGHT: 3px; PADDING-LEFT: 3px; BACKGROUND: #f1f3f5; PADDING-BOTTOM: 3px; PADDING-TOP: 3px
+}
+TD.td2 {
+	PADDING-RIGHT: 3px; PADDING-LEFT: 3px; BACKGROUND: #e4edf9; PADDING-BOTTOM: 3px; PADDING-TOP: 3px
+}
+INPUT {
+	
+}
+.button {
+	BACKGROUND-POSITION: 0% 0%; BACKGROUND-ATTACHMENT: scroll; BACKGROUND-IMAGE: url(button_bg.gif); COLOR: #135294; LINE-HEIGHT: 21px; BACKGROUND-REPEAT: repeat; HEIGHT: 21px
+}
+.title {
+	FONT-WEIGHT: bold; BACKGROUND-IMAGE: url(admin_bg_1.gif); COLOR: #2d566c
+}
+.radio {
+	BORDER-RIGHT: medium none; BORDER-TOP: medium none; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none
+}
+.checkbox {
+	BORDER-RIGHT: medium none; BORDER-TOP: medium none; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none
+}
+.helplink {
+	CURSOR: help
+}
+.menuskin {
+	BORDER-RIGHT: #666666 1px solid; BORDER-TOP: #666666 1px solid; BACKGROUND-IMAGE: url(dvmenubg3.gif); VISIBILITY: hidden; FONT: 12px Verdana; BORDER-LEFT: #666666 1px solid; BORDER-BOTTOM: #666666 1px solid; BACKGROUND-REPEAT: repeat-y; POSITION: absolute; BACKGROUND-COLOR: #efefef
+}
+.menuskin A {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 25px; BEHAVIOR: url(../reg_files/inc/noline.htc); COLOR: black; TEXT-DECORATION: none
+}
+#mouseoverstyle {
+	BORDER-RIGHT: red 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: red 1px solid; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 2px; BORDER-LEFT: red 1px solid; PADDING-TOP: 0px; BORDER-BOTTOM: red 1px solid; BACKGROUND-COLOR: #c9d5e7
+}
+#mouseoverstyle A {
+	COLOR: black
+}
+.menuitems {
+	PADDING-RIGHT: 1px; PADDING-LEFT: 1px; PADDING-BOTTOM: 1px; MARGIN: 2px; WORD-BREAK: keep-all; PADDING-TOP: 1px
+}

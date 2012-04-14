@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<PersonalityInfo>
+		<Option>
+			<Option Name="Personality">Default.Personality</Option>
+			<Option Name="ProjectType"></Option>
+			<Option Name="Version">1.0</Option>
+			<Option Name="GUID">{62652B43-D6B4-4F41-9908-AD68676E00C8}</Option>
+		</Option>
+	</PersonalityInfo>
+	<Default.Personality>  <Projects>
+      <Projects Name="jxgzlWebSrv.dll">Srv\jxgzlWebSrv.bdsproj</Projects>
+      <Projects Name="jxgzlWadSrv.exe">Srv\jxgzlWadSrv.bdsproj</Projects>
+      <Projects Name="SrvSetTools.exe">Srv\SrvSetTools.bdsproj</Projects>
+      <Projects Name="jxgzlglxt.exe">Client\jxgzlglxt.bdsproj</Projects>
+      <Projects Name="SysReg.exe">About\SysReg.bdsproj</Projects>
+      <Projects Name="about.exe">About\about.bdsproj</Projects>
+      <Projects Name="ClientTest.exe">Test\ClientTest.bdsproj</Projects>
+      <Projects Name="Targets">jxgzlWebSrv.dll jxgzlWadSrv.exe SrvSetTools.exe jxgzlglxt.exe SysReg.exe about.exe ClientTest.exe</Projects>
+    </Projects>
+    <Dependencies/>
+  </Default.Personality>
+</BorlandProject>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2012/04/14 15:30:30.092.pas,E:\xxx\教学工作量管理系统\Srv\uZsbBmIntf.pas=E:\xxx\教学工作量管理系统\Srv\uJxgzlIntf.pas</Transaction>
+    <Transaction>2012/04/14 15:30:47.201.pas,E:\xxx\教学工作量管理系统\Srv\uZsbBmImpl.pas=E:\xxx\教学工作量管理系统\Srv\uJxgzlImpl.pas</Transaction>
+    <Transaction>2012/04/14 15:31:04.835.pas,E:\xxx\教学工作量管理系统\Srv\uZsbBmSoapDM.pas=E:\xxx\教学工作量管理系统\Srv\uJxgzlSoapDM.pas</Transaction>
+    <Transaction>2012/04/14 15:31:04.835.dfm,E:\xxx\教学工作量管理系统\Srv\uZsbBmSoapDM.dfm=E:\xxx\教学工作量管理系统\Srv\uJxgzlSoapDM.dfm</Transaction>
+    <Transaction>2012/04/14 15:31:17.419.pas,E:\xxx\教学工作量管理系统\Srv\uZsbBmWebModule.pas=E:\xxx\教学工作量管理系统\Srv\uJxgzlWebModule.pas</Transaction>
+    <Transaction>2012/04/14 15:31:17.419.dfm,E:\xxx\教学工作量管理系统\Srv\uZsbBmWebModule.dfm=E:\xxx\教学工作量管理系统\Srv\uJxgzlWebModule.dfm</Transaction>
+    <Transaction>2012/04/14 15:34:31.492.bdsproj,E:\xxx\教学工作量管理系统\Srv\ZsbBmWadSrv.bdsproj=E:\xxx\教学工作量管理系统\Srv\JxgzlWadSrv.bdsproj</Transaction>
+    <Transaction>2012/04/14 16:28:19.248.bdsproj,E:\xxx\教学工作量管理系统\Srv\JxgzlWadSrv.bdsproj=E:\xxx\教学工作量管理系统\Srv\jjxgzlWadSrv.bdsproj</Transaction>
+    <Transaction>2012/04/14 16:28:23.990.bdsproj,E:\xxx\教学工作量管理系统\Srv\jjxgzlWadSrv.bdsproj=E:\xxx\教学工作量管理系统\Srv\jxgzlWadSrv.bdsproj</Transaction>
+  </Transactions>
+</BorlandProject>
