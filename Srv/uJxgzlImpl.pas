@@ -1,11 +1,11 @@
 //==================================================================//
 //    网上支付接口实现单元：
 //    功能描述：为了实现考生从网上自助缴费而设置的接口。
-//    接口名称：IZsbBm
-//    接口引用：http://url/ZsbBm/ZsbBmWebSrv.dll/soap/IZsbBm
-//            或者：http://url/ZsbBm/ZsbBmWebSrv.dll/wsdl/IZsbBm
+//    接口名称：Ijxgzl
+//    接口引用：http://url/jxgzl/jxgzlWebSrv.dll/soap/Ijxgzl
+//            或者：http://url/jxgzl/jxgzlWebSrv.dll/wsdl/Ijxgzl
 //==================================================================//
-{ Invokable implementation File for TZsbBmSrv which implements IZsbBmSrv }
+{ Invokable implementation File for TjxgzlSrv which implements IjxgzlSrv }
 
 unit uJxgzlImpl;
 
@@ -15,8 +15,8 @@ uses InvokeRegistry, SysUtils, Types, uJxgzlIntf, DB, ADODB, DBClient, WebBroker
 
 type
 
-  { TZsbBmSrv }
-  TZsbBm = class(TInvokableClass, IZsbBm)
+  { TjxgzlSrv }
+  Tjxgzl = class(TInvokableClass, Ijxgzl)
   private
     function RecordIsExists(const sqlstr:string):Boolean;
     function ExecSql(const sqlstr:string):Boolean;
@@ -110,7 +110,7 @@ uses uJxgzlSoapDM;
 const
   gbSplitChar :string = '<|>';
 
-function TZsbBm.ExecSql(const sqlstr: string): Boolean;
+function Tjxgzl.ExecSql(const sqlstr: string): Boolean;
 var
   dm:TJxgzlSoapDM;
 begin
@@ -122,7 +122,7 @@ begin
   end;
 end;
 
-function TZsbBm.GetBankSrvUrl: string;
+function Tjxgzl.GetBankSrvUrl: string;
 var
   UserDM,UserAccount,BankSrvUrl,BankWapSrvUrl:string;
 begin
@@ -130,7 +130,7 @@ begin
   Result := BankSrvUrl;
 end;
 
-function TZsbBm.GetBankWapSrvUrl: string;
+function Tjxgzl.GetBankWapSrvUrl: string;
 var
   UserDM,UserAccount,BankSrvUrl,BankWapSrvUrl:string;
 begin
@@ -138,7 +138,7 @@ begin
   Result := BankWapSrvUrl;
 end;
 
-function TZsbBm.GetZyLbList: string;
+function Tjxgzl.GetZyLbList: string;
 var
   dm:TJxgzlSoapDM;
   sqlStr:string;
@@ -157,7 +157,7 @@ begin
   end;
 end;
 
-function TZsbBm.GetBullitInfo(const RecCount: Integer=5): string;
+function Tjxgzl.GetBullitInfo(const RecCount: Integer=5): string;
 var
   dm:TJxgzlSoapDM;
   sqlStr:string;
@@ -176,7 +176,7 @@ begin
   end;
 end;
 
-function TZsbBm.GetComputerList: string;
+function Tjxgzl.GetComputerList: string;
 var
   dm:TJxgzlSoapDM;
   sqlStr:string;
@@ -195,7 +195,7 @@ begin
   end;
 end;
 
-function TZsbBm.GetEnglistList: string;
+function Tjxgzl.GetEnglistList: string;
 var
   dm:TJxgzlSoapDM;
   sqlStr:string;
@@ -214,7 +214,7 @@ begin
   end;
 end;
 
-function TZsbBm.GetHelpInfo: string;
+function Tjxgzl.GetHelpInfo: string;
 var
   dm:TJxgzlSoapDM;
   sqlStr:string;
@@ -234,7 +234,7 @@ begin
 end;
 
 
-function TZsbBm.GetBmNo: string;
+function Tjxgzl.GetBmNo: string;
 var
   dm:TJxgzlSoapDM;
 begin
@@ -247,7 +247,7 @@ begin
   end;
 end;
 
-function TZsbBm.GetKsInfo(const UserName: string): string;
+function Tjxgzl.GetKsInfo(const UserName: string): string;
 var
   dm:TJxgzlSoapDM;
   sData,sqlstr:string;
@@ -267,7 +267,7 @@ begin
   end;
 end;
 
-function TZsbBm.GetKsInfoByUserName(const UserName: string): string;
+function Tjxgzl.GetKsInfoByUserName(const UserName: string): string;
 var
   dm:TJxgzlSoapDM;
   sqlstr,sData:string;
@@ -286,7 +286,7 @@ begin
   end;
 end;
 
-function TZsbBm.GetKsSfzhByUserName(const UserName: string): string;
+function Tjxgzl.GetKsSfzhByUserName(const UserName: string): string;
 var
   sData:string;
 begin
@@ -302,12 +302,12 @@ begin
   end;
 end;
 
-function TZsbBm.GetKsUserNameByBmNo(const BmNo: string): string;
+function Tjxgzl.GetKsUserNameByBmNo(const BmNo: string): string;
 begin
   Result := GetKsBmbFieldValue('报名序号',BmNo,'登录名');
 end;
 
-function TZsbBm.GetKsKcTime(const bkLb: string): string;
+function Tjxgzl.GetKsKcTime(const bkLb: string): string;
 var
   dm:TJxgzlSoapDM;
   sqlstr,sData:string;
@@ -326,7 +326,7 @@ begin
   end;
 end;
 
-function TZsbBm.GetKsXz: string;
+function Tjxgzl.GetKsXz: string;
 var
   dm:TJxgzlSoapDM;
 begin
@@ -339,7 +339,7 @@ begin
   end;
 end;
 
-function TZsbBm.GetKsZkzInfo(const UserName: string): string;
+function Tjxgzl.GetKsZkzInfo(const UserName: string): string;
 var
   dm:TJxgzlSoapDM;
   sqlstr,sData:string;
@@ -358,7 +358,7 @@ begin
   end;
 end;
 
-function TZsbBm.GetMzList: string;
+function Tjxgzl.GetMzList: string;
 var
   dm:TJxgzlSoapDM;
   sqlStr:string;
@@ -377,7 +377,7 @@ begin
   end;
 end;
 
-function TZsbBm.GetPhotoUrlByUserName(const UserName: string): string;
+function Tjxgzl.GetPhotoUrlByUserName(const UserName: string): string;
 var
   dm:TJxgzlSoapDM;
   sqlStr:string;
@@ -397,7 +397,7 @@ begin
   end;
 end;
 
-function TZsbBm.GetSchoolList: string;
+function Tjxgzl.GetSchoolList: string;
 var
   dm:TJxgzlSoapDM;
   sqlStr:string;
@@ -416,7 +416,7 @@ begin
   end;
 end;
 
-function TZsbBm.GetKsBKInfo(const UserName: string; out ZyLb, Zy1, Zy2, Zy3,
+function Tjxgzl.GetKsBKInfo(const UserName: string; out ZyLb, Zy1, Zy2, Zy3,
   SfyxTj: string): Boolean;
 begin
   if not KsIsExistsByUserName(UserName) then
@@ -443,7 +443,7 @@ begin
   end;
 end;
 
-function TZsbBm.GetKsBmbFieldValue(const sFld,sValue,dFld:string): string;
+function Tjxgzl.GetKsBmbFieldValue(const sFld,sValue,dFld:string): string;
 var
   sqlstr :string;
   dm :TJxgzlSoapDM;
@@ -463,7 +463,7 @@ begin
   end;
 end;
 
-function TZsbBm.GetKsBMInfo(const UserName: string;out BmNo, Ksh, Sfzh, Xm, Xb,
+function Tjxgzl.GetKsBMInfo(const UserName: string;out BmNo, Ksh, Sfzh, Xm, Xb,
   Mz, ZzMm, OldSchool, OldZy, Jlqk, Addr, Yzbm, Tel, ZyZhcp, English, Computer,
   Tc: string): Boolean;
 begin
@@ -500,7 +500,7 @@ begin
   end;
 end;
 
-function TZsbBm.GetKsBmNoByUserName(const UserName: string): string;
+function Tjxgzl.GetKsBmNoByUserName(const UserName: string): string;
 var
   sData:string;
   //cds_Temp:TClientDataSet;
@@ -517,7 +517,7 @@ begin
   end;
 end;
 
-function TZsbBm.GetKsCjInfo(const UserName: string): string;
+function Tjxgzl.GetKsCjInfo(const UserName: string): string;
 var
   dm:TJxgzlSoapDM;
   sqlstr,sData:string;
@@ -536,7 +536,7 @@ begin
   end;
 end;
 
-function TZsbBm.GetKshBySfzh(const Sfzh: string; out Ksh: string): string;
+function Tjxgzl.GetKshBySfzh(const Sfzh: string; out Ksh: string): string;
 var
   dm:TJxgzlSoapDM;
   sqlStr:string;
@@ -568,7 +568,7 @@ begin
   end;
 end;
 
-function TZsbBm.GetUserAccount: string;
+function Tjxgzl.GetUserAccount: string;
 var
   UserDM,UserAccount,BankSrvUrl,BankWapSrvUrl:string;
 begin
@@ -576,7 +576,7 @@ begin
   Result := UserAccount;
 end;
 
-function TZsbBm.GetUserDM: string;
+function Tjxgzl.GetUserDM: string;
 var
   UserDM,UserAccount,BankSrvUrl,BankWapSrvUrl:string;
 begin
@@ -584,7 +584,7 @@ begin
   Result := UserDM;
 end;
 
-function TZsbBm.GetUserNetBankInfo(out UserDM, UserAccount, BankSrvUrl,
+function Tjxgzl.GetUserNetBankInfo(out UserDM, UserAccount, BankSrvUrl,
   BankWapSrvUrl:string): Boolean;
 var
   dm:TJxgzlSoapDM;
@@ -607,7 +607,7 @@ begin
   end;
 end;
 
-function TZsbBm.GetZyList(const ZyLb:string): string;
+function Tjxgzl.GetZyList(const ZyLb:string): string;
 var
   dm:TJxgzlSoapDM;
   sqlStr:string;
@@ -630,7 +630,7 @@ begin
   end;
 end;
 
-function TZsbBm.GetZzmmList: string;
+function Tjxgzl.GetZzmmList: string;
 var
   dm:TJxgzlSoapDM;
   sqlStr:string;
@@ -649,7 +649,7 @@ begin
   end;
 end;
 
-function TZsbBm.IsCanNetBm: string;
+function Tjxgzl.IsCanNetBm: string;
 var
   dm:TJxgzlSoapDM;
 begin
@@ -680,7 +680,7 @@ begin
   end;
 end;
 
-function TZsbBm.IsCanNetLocateCj: Boolean;
+function Tjxgzl.IsCanNetLocateCj: Boolean;
 var
   sqlStr:string;
 begin
@@ -688,7 +688,7 @@ begin
   Result := RecordIsExists(sqlstr);
 end;
 
-function TZsbBm.IsCanNetPrintZKZ: Boolean;
+function Tjxgzl.IsCanNetPrintZKZ: Boolean;
 var
   sqlStr:string;
 begin
@@ -696,7 +696,7 @@ begin
   Result := RecordIsExists(sqlstr);
 end;
 
-function TZsbBm.IsValidIP: Boolean;
+function Tjxgzl.IsValidIP: Boolean;
 var
   dm:TJxgzlSoapDM;
 begin
@@ -709,7 +709,7 @@ begin
   end;
 end;
 
-function TZsbBm.RecordIsExists(const sqlstr: string): Boolean;
+function Tjxgzl.RecordIsExists(const sqlstr: string): Boolean;
 var
   dm:TJxgzlSoapDM;
 begin
@@ -721,7 +721,7 @@ begin
   end;
 end;
 
-function TZsbBm.RegIsOK: Boolean;
+function Tjxgzl.RegIsOK: Boolean;
 var
   dm:TJxgzlSoapDM;
 begin
@@ -733,7 +733,7 @@ begin
   end;
 end;
 
-function TZsbBm.SetPhotoUrlByBmNo(const BmNo, sUrl: string): Boolean;
+function Tjxgzl.SetPhotoUrlByBmNo(const BmNo, sUrl: string): Boolean;
 var
   sqlStr:string;
 begin
@@ -748,7 +748,7 @@ begin
   Result := ExecSql(sqlStr);
 end;
 
-function TZsbBm.SetPhotoUrlByUserName(const UserName, sUrl: string): Boolean;
+function Tjxgzl.SetPhotoUrlByUserName(const UserName, sUrl: string): Boolean;
 var
   BmNo,sqlStr:string;
 begin
@@ -765,12 +765,12 @@ begin
 end;
 
 
-function TZsbBm.SrvIsOK: Boolean;
+function Tjxgzl.SrvIsOK: Boolean;
 begin
   Result := RegIsOK;
 end;
 
-function TZsbBm.WriteLoginLog(const UserId, sVer: string): Boolean;
+function Tjxgzl.WriteLoginLog(const UserId, sVer: string): Boolean;
 var
   sIP,sSrvHost,sqlstr:String;
 begin
@@ -783,7 +783,7 @@ begin
   Result := ExecSql(sqlstr);
 end;
 
-function TZsbBm.WriteLogoutLog(const UserId: string): Boolean;
+function Tjxgzl.WriteLogoutLog(const UserId: string): Boolean;
 var
   sIP,sqlstr:String;
 begin
@@ -793,7 +793,7 @@ begin
   Result := ExecSql(sqlstr);
 end;
 
-function TZsbBm.WriteSysLog(const UserId, sWhat: string): Boolean;
+function Tjxgzl.WriteSysLog(const UserId, sWhat: string): Boolean;
 var
   sIP,sqlstr:String;  //sSrvHost,
 begin
@@ -803,7 +803,7 @@ begin
   Result := ExecSql(sqlstr);          
 end;
 
-function TZsbBm.KsBK(const UserName, ZyLb, Zy1, Zy2, Zy3,
+function Tjxgzl.KsBK(const UserName, ZyLb, Zy1, Zy2, Zy3,
   SfyxTj: string): Boolean;
 var
   sqlstr:string;
@@ -829,7 +829,7 @@ begin
   Result := ExecSql(sqlstr);
 end;
 
-function TZsbBm.KsBM(const UserName, BmNo, Ksh, Sfzh, Xm, Xb, Mz, ZzMm,
+function Tjxgzl.KsBM(const UserName, BmNo, Ksh, Sfzh, Xm, Xb, Mz, ZzMm,
   OldSchool, OldZy, Jlqk, Addr, Yzbm, Tel, ZyZhcp, English, Computer,
   Tc: string): Boolean;
 var
@@ -877,7 +877,7 @@ begin
   Result := ExecSql(sqlstr);
 end;
 
-function TZsbBm.KsIsExistsBySfzh(const sfzh: string): Boolean;
+function Tjxgzl.KsIsExistsBySfzh(const sfzh: string): Boolean;
 var
   sqlstr:string;
 begin
@@ -885,7 +885,7 @@ begin
   Result := RecordIsExists(sqlstr);
 end;
 
-function TZsbBm.KsIsExistsByUserName(const UserName: string): Boolean;
+function Tjxgzl.KsIsExistsByUserName(const UserName: string): Boolean;
 var
   sqlstr:string;
 begin
@@ -893,7 +893,7 @@ begin
   Result := RecordIsExists(sqlstr);
 end;
 
-function TZsbBm.KsLoginByUserName(const UserName, pwd: string): Boolean;
+function Tjxgzl.KsLoginByUserName(const UserName, pwd: string): Boolean;
 var
   sqlstr:string;
 begin
@@ -909,7 +909,7 @@ begin
   end;
 end;
 
-function TZsbBm.KsRegister(const UserName, UserPwd, Sfzh: string): Boolean;
+function Tjxgzl.KsRegister(const UserName, UserPwd, Sfzh: string): Boolean;
 var
   Ip,sqlstr:string;
 begin
@@ -934,6 +934,6 @@ end;
 
 initialization
 { Invokable classes must be registered }
-   InvRegistry.RegisterInvokableClass(TZsbBm);
+   InvRegistry.RegisterInvokableClass(Tjxgzl);
 end.
 

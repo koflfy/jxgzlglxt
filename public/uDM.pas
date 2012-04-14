@@ -130,14 +130,14 @@ type
 
 //{$DEFINE WAD_DEBUG}
 const
-  GbConnSrvFileName = 'ConnZsbBmSrvSet.ini';
+  GbConnSrvFileName = 'ConnjxgzlSrvSet.ini';
 {$IFNDEF WAD_DEBUG}
-  Admin_SOAP_NAME   = 'ZsbBmWebSrv.DLL/soap/IAdmin';
-  ZsbBm_SOAP_NAME  = 'ZsbBmWedSrv.DLL/soap/IZsbBm';
+  Admin_SOAP_NAME   = 'jxgzlWebSrv.DLL/soap/IAdmin';
+  jxgzl_SOAP_NAME  = 'jxgzlWedSrv.DLL/soap/Ijxgzl';
 {$ELSE}
 //调试时用下面这个，切换时必须Build以便重建资源
-  Admin_SOAP_NAME   = 'ZsbBmWadSrv.ZsbBm/soap/IAdmin';
-  ZsbBm_SOAP_NAME  = 'ZsbBmWabSrv.ZsbBm/soap/IZsbBm';
+  Admin_SOAP_NAME   = 'jxgzlWadSrv.jxgzl/soap/IAdmin';
+  jxgzl_SOAP_NAME  = 'jxgzlWabSrv.jxgzl/soap/Ijxgzl';
 {$ENDIF}
 
 var
@@ -147,7 +147,7 @@ var
 
   gb_Last_PrintBH:string; //上次用过的打印编号
   DM: TDM;
-  function vobj_ZsbBm: IZsbBm;//再次封装GetIZsbBm接口函数
+  function vobj_jxgzl: Ijxgzl;//再次封装GetIjxgzl接口函数
   function vobj_Admin:  IAdmin;//再次封装GetIAccount接口函数
 
   function AppSrvIsOK: Boolean;
@@ -184,15 +184,15 @@ begin
     end;
 end;
 
-function vobj_ZsbBm:IZsbBm;//再次封装GetIZsbBm接口函数
+function vobj_jxgzl:Ijxgzl;//再次封装GetIjxgzl接口函数
 var
   UseWsdl:Boolean;
   SoapURL:string;
 begin
   SoapURL := DM.GetConnInfo;
-  SoapURL := SoapURL+ZsbBm_SOAP_NAME;
+  SoapURL := SoapURL+jxgzl_SOAP_NAME;
   UseWsdl := Pos('/wsdl',LowerCase(SoapURL))>0;
-  Result := GetIZsbBm(UseWsdl,SoapURL);
+  Result := GetIjxgzl(UseWsdl,SoapURL);
 end;
 
 function vobj_Admin:IAdmin;//再次封装GetIAdmin接口函数
@@ -1750,7 +1750,7 @@ var
   sfn:string;
   sList:TStrings;
 begin
-  sfn := ExtractFilePath(ParamStr(0))+'ZsbBmLog.Txt';
+  sfn := ExtractFilePath(ParamStr(0))+'jxgzlLog.Txt';
   sList := TStringList.Create;
   try
     if FileExists(sfn) then

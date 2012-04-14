@@ -1,11 +1,11 @@
 //==================================================================//
-//    网上报名接口申明单元：
-//    功能描述：为了实现考生从网上自助缴费而设置的接口。
-//    接口名称：IZsbBm
-//    接口引用：http://url/ZsbBm/ZsbBmWebSrv.dll/soap/IZsbBm
-//            或者：http://url/ZsbBm/ZsbBmWebSrv.dll/wsdl/IZsbBm
+//    工作量网上查询接口申明单元：
+//    功能描述：为了实现教师从网上自助查询自己的工作量而设置的接口。
+//    接口名称：Ijxgzl
+//    接口引用：http://url/jxgzl/jxgzlWebSrv.dll/soap/Ijxgzl
+//            或者：http://url/jxgzl/jxgzlWebSrv.dll/wsdl/Ijxgzl
 //==================================================================//
-{ Invokable interface IZsbBmSrv }
+{ Invokable interface IjxgzlSrv }
 
 unit uJxgzlIntf;
 
@@ -16,7 +16,7 @@ uses InvokeRegistry, Types, SOAPHTTPClient;
 type
 
   { Invokable interfaces must derive from IInvokable }
-  IZsbBm = interface(IInvokable)
+  Ijxgzl = interface(IInvokable)
   ['{FDC1B1DE-71B9-4064-9A4E-D2AA07E02A72}']
 
     { Methods of Invokable interface must not use the default }
@@ -98,16 +98,16 @@ type
     function GetBankWapSrvUrl:string;stdcall;
   end;
 
-function GetIZsbBm(UseWSDL: Boolean=System.False; Addr: string=''; HTTPRIO: THTTPRIO = nil): IZsbBm;
+function GetIjxgzl(UseWSDL: Boolean=System.False; Addr: string=''; HTTPRIO: THTTPRIO = nil): Ijxgzl;
 
 implementation
 
-function GetIZsbBm(UseWSDL: Boolean; Addr: string; HTTPRIO: THTTPRIO): IZsbBm;
+function GetIjxgzl(UseWSDL: Boolean; Addr: string; HTTPRIO: THTTPRIO): Ijxgzl;
 const
-  defWSDL = 'http://localhost/ZsbBm/ZsbBmWebSrv.dll/wsdl/IZsbBm';
-  defURL  = 'http://localhost/ZsbBm/ZsbBmWebSrv.dll/soap/IZsbBm';
-  defSvc  = 'IZsbBmservice';
-  defPrt  = 'IZsbBmPort';
+  defWSDL = 'http://localhost/jxgzl/jxgzlWebSrv.dll/wsdl/Ijxgzl';
+  defURL  = 'http://localhost/jxgzl/jxgzlWebSrv.dll/soap/Ijxgzl';
+  defSvc  = 'Ijxgzlservice';
+  defPrt  = 'IjxgzlPort';
 var
   RIO: THTTPRIO;
 begin
@@ -127,7 +127,7 @@ begin
   RIO.HTTPWebNode.UseUTF8InHeader := True;
 
   try
-    Result := (RIO as IZsbBm);
+    Result := (RIO as Ijxgzl);
     if UseWSDL then
     begin
       RIO.WSDLLocation := Addr;
@@ -144,6 +144,6 @@ end;
 
 initialization
   { Invokable interfaces must be registered }
-  InvRegistry.RegisterInterface(TypeInfo(IZsbBm));
+  InvRegistry.RegisterInterface(TypeInfo(Ijxgzl));
 
 end.

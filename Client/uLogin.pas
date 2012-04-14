@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, StdCtrls, Buttons, DBClient, ExtCtrls, auAutoUpgrader,
-  CnAAFont, CnAACtrls, auHTTP, jpeg, pngimage;
+  CnAAFont, CnAACtrls, auHTTP, jpeg, pngimage, frxpngimage;
 
 type
   TLogin = class(TForm)

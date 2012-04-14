@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   ExtCtrls, ActnMan, ActnList, RzStatus, RzPanel, uStatusDisplay,
-  StdActns, uWizard, auAutoUpgrader, DB, DBClient,ShellAPI, 
+  StdActns, auAutoUpgrader, DB, DBClient,ShellAPI, 
   dxBar, ImgList, cxClasses, auHTTP, XPStyleActnCtrls, Dialogs;
 
 type
@@ -219,7 +219,6 @@ type
     procedure act_Stu_BmData_ClearExecute(Sender: TObject);
   private
     { Private declarations }
-    Wizard: TWizard;
     StatusDisplay: TStatusDisplay;
     procedure FillBackGround;
     procedure MdiChildFormShow(Sender:TObject);
@@ -797,7 +796,7 @@ end;
 procedure TMain.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
   if not gbCanClose then
-    if MessageBox(Handle, pchar('确定要退出'+Application.Title+'吗？　　'), '系统提示',
+    if MessageBox(Handle, pchar('确定要退出【'+Application.Title+'】吗？　　'), '系统提示',
       MB_YESNO + MB_ICONQUESTION + MB_DEFBUTTON2 + MB_TOPMOST) = IDYES then
     begin
       gbCanClose := True;

@@ -8,7 +8,6 @@ uses
   uLogin in 'uLogin.pas' {Login},
   uCzyEdit in 'uCzyEdit.pas' {CzyEdit},
   uKsInfoBrowse in 'uKsInfoBrowse.pas' {KsInfoBrowse},
-  uWizard in 'uWizard.pas' {Wizard},
   Net in '..\public\Net.pas',
   uUserLoginLog in 'uUserLoginLog.pas' {UserLoginLog},
   uOnlineUpdateSet in 'uOnlineUpdateSet.pas' {OnlineUpdateSet},
