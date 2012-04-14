@@ -1,0 +1,2 @@
+del *.ws~
+del *.ex~

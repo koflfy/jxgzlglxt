@@ -1,0 +1,114 @@
+{
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+BODY {
+	COLOR: #444444; FONT-FAMILY: "Times New Roman", Times, serif; TEXT-ALIGN: center
+}
+A {
+	COLOR: #0066ff; TEXT-DECORATION: none
+}
+A:hover {
+	TEXT-DECORATION: underline
+}
+TABLE {
+	BORDER-RIGHT: medium none; BORDER-TOP: medium none; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none
+}
+TD {
+	BORDER-RIGHT: medium none; BORDER-TOP: medium none; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none
+}
+.inputbox {
+	BORDER-RIGHT: #dddddd 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #888888 1px solid; PADDING-LEFT: 2px; PADDING-BOTTOM: 2px; BORDER-LEFT: #888888 1px solid; PADDING-TOP: 2px; BORDER-BOTTOM: #dddddd 1px solid; HEIGHT: 20px
+}
+H3 {
+	BORDER-RIGHT: #ffff00 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #ffff00 1px solid; PADDING-LEFT: 0px; MARGIN-BOTTOM: 4px; PADDING-BOTTOM: 8px; BORDER-LEFT: #ffff00 1px solid; PADDING-TOP: 8px; BORDER-BOTTOM: #ffff00 1px solid; BACKGROUND-COLOR: #ffffcc
+}
+.line {
+	MARGIN: 8px 0px 4px; BORDER-BOTTOM: #dddddd 1px dashed
+}
+.title1 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 8px; FONT-WEIGHT: bold; FONT-SIZE: 14px; PADDING-BOTTOM: 4px; COLOR: #6699ff; PADDING-TOP: 4px; HEIGHT: 45px
+}
+.fontcolor {
+	COLOR: #aaaaaa; MARGIN-RIGHT: 15px
+}
+#index_title {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 20px; FONT-WEIGHT: bold; BACKGROUND: url(pinglun_title.png) no-repeat; PADDING-BOTTOM: 0px; COLOR: #ff9900; PADDING-TOP: 2px; HEIGHT: 23px
+}
+#header {
+	FONT-SIZE: 100%; MARGIN-BOTTOM: 10px; WIDTH: 1000px; LINE-HEIGHT: normal; HEIGHT: 35px; TEXT-ALIGN: center
+}
+#header UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 300px; PADDING-BOTTOM: 0px; MARGIN: -23px 0px 0px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none
+}
+#header LI {
+	PADDING-RIGHT: 0px; DISPLAY: inline; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+#header A.top {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 4px; BACKGROUND: url(../reg_files/tableft8.gif) no-repeat left top; FLOAT: left; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; TEXT-DECORATION: none
+}
+#header A SPAN {
+	PADDING-RIGHT: 15px; DISPLAY: block; PADDING-LEFT: 6px; FONT-WEIGHT: bold; BACKGROUND: url(../reg_files/tabright8.gif) no-repeat right top; FLOAT: left; PADDING-BOTTOM: 4px; COLOR: #ffffff; PADDING-TOP: 5px
+}
+#header A SPAN {
+	FLOAT: none
+}
+#header A:hover SPAN {
+	COLOR: #666666
+}
+#header A:hover {
+	BACKGROUND-POSITION: 0% -42px
+}
+#header A:hover SPAN {
+	BACKGROUND-POSITION: 100% -42px
+}
+#index #header #current A {
+	BACKGROUND-POSITION: 0% -42px
+}
+#filelist_one #header #file_one A {
+	BACKGROUND-POSITION: 0% -42px
+}
+#filelist_two #header #file_two A {
+	BACKGROUND-POSITION: 0% -42px
+}
+#zkzdy #header #zkz A {
+	BACKGROUND-POSITION: 0% -42px
+}
+#cjcx #header #grade A {
+	BACKGROUND-POSITION: 0% -42px
+}
+#dybmb #header #print A {
+	BACKGROUND-POSITION: 0% -42px
+}
+#index #header #current A SPAN {
+	BACKGROUND-POSITION: 100% -42px; COLOR: #000000
+}
+#filelist_one #header #file_one A SPAN {
+	BACKGROUND-POSITION: 100% -42px; COLOR: #000000
+}
+#filelist_two #header #file_two A SPAN {
+	BACKGROUND-POSITION: 100% -42px; COLOR: #000000
+}
+#zkzdy #header #zkz A SPAN {
+	BACKGROUND-POSITION: 100% -42px; COLOR: #000000
+}
+#cjcx #header #grade A SPAN {
+	BACKGROUND-POSITION: 100% -42px; COLOR: #000000
+}
+#dybmb #header #print A SPAN {
+	BACKGROUND-POSITION: 100% -42px; COLOR: #000000
+}
+#login {
+	BORDER-RIGHT: #dddddd 1px solid; BORDER-TOP: #dddddd 1px solid; BORDER-LEFT: #dddddd 1px solid; BORDER-BOTTOM: #dddddd 1px solid; BORDER-COLLAPSE: collapse
+}
+#login IMG {
+	BORDER-RIGHT: #aaaaaa 1px solid; BORDER-TOP: #aaaaaa 1px solid; MARGIN: 2px 5px 8px 2px; BORDER-LEFT: #aaaaaa 1px solid; BORDER-BOTTOM: #aaaaaa 1px solid
+}
+#news UL {
+	LIST-STYLE-TYPE: decimal
+}
+#news LI {
+	MARGIN: 4px 0px 4px 40px
+}
+#flooter {
+	PADDING-RIGHT: 0px; BORDER-TOP: #cccccc 1px dashed; MARGIN-TOP: 10px; PADDING-LEFT: 0px; PADDING-BOTTOM: 20px; WIDTH: 1000px; COLOR: #444444; PADDING-TOP: 20px
+}

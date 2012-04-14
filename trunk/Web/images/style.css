@@ -1,0 +1,175 @@
+/* CSS Document */
+BODY {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-TOP: 0px;PADDING-BOTTOM: 0px; MARGIN: 0px;
+	FONT-SIZE: 14px;  COLOR: #000000;  FONT-FAMILY: "宋体"; TEXT-ALIGN: center;
+}
+
+A:link   {	FONT-SIZE: 14px; COLOR: #425784; TEXT-DECORATION: none }
+A:visited{  FONT-SIZE: 14px; COLOR: #425784; TEXT-DECORATION: none }
+A:hover  {  FONT-SIZE: 14px; COLOR: #ff0000; TEXT-DECORATION: underline }
+A:active {	FONT-SIZE: 14px; COLOR: #ff0000; TEXT-DECORATION: none }
+
+A.blue:link    {	FONT-SIZE: 12px; COLOR: #425784; FONT-FAMILY: "宋体"; TEXT-DECORATION: none }
+A.blue:visited {  FONT-SIZE: 12px; COLOR: #425784; FONT-FAMILY: "宋体"; TEXT-DECORATION: none }
+A.blue:hover   {	COLOR: #c70000; TEXT-DECORATION: underline  }
+
+A.blue2:link   {	FONT-SIZE: 14px; COLOR: #425784; LINE-HEIGHT: 33px; FONT-FAMILY: "宋体" }
+A.blue2:visited{	FONT-SIZE: 14px; COLOR: #425784; LINE-HEIGHT: 33px; FONT-FAMILY: "宋体" }
+A.blue2:hover  {	COLOR: #c70000; TEXT-DECORATION: underline }
+
+A.red:link {	FONT-SIZE: 14px; COLOR: #c70000; LINE-HEIGHT: 29px; FONT-FAMILY: "宋体"; TEXT-DECORATION: none }
+A.red:visited {	FONT-SIZE: 14px; COLOR: #c70000; LINE-HEIGHT: 29px; FONT-FAMILY: "宋体"; TEXT-DECORATION: none }
+A.red:hover { TEXT-DECORATION: underline }
+
+A.grey:link    {	FONT-SIZE: 12px; COLOR: #4d4d4d; FONT-FAMILY: "宋体"; TEXT-DECORATION: none }
+A.grey:visited {	FONT-SIZE: 12px; COLOR: #4d4d4d; FONT-FAMILY: "宋体"; TEXT-DECORATION: none }
+A.grey:hover   {	COLOR: #c70000; TEXT-DECORATION: underline }
+
+#top {
+	CLEAR: both; MARGIN-LEFT: auto;  BACKGROUND-IMAGE:url(top.gif); OVERFLOW: hidden; WIDTH: 1003px; MARGIN-RIGHT: auto; BACKGROUND-REPEAT: no-repeat; HEIGHT: 73px
+}
+#sidebar {
+	CLEAR: both; FONT-SIZE: 12px; BACKGROUND-IMAGE:url(sidebar.gif); MARGIN-LEFT: auto; WIDTH: 1003px; COLOR: #4d4d4d; LINE-HEIGHT: 25px; MARGIN-RIGHT: auto; BACKGROUND-REPEAT: repeat-x; FONT-FAMILY: "宋体"; HEIGHT: 25px
+}
+#sidebar UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none
+}
+#sidebar LI {
+	DISPLAY: block; FLOAT: right; WIDTH: 280px; HEIGHT: 25px; TEXT-ALIGN: left
+}
+#sidebar LI.exit {
+	BACKGROUND-POSITION: left -1px; BACKGROUND-IMAGE: url(sidebar_exit.gif); WIDTH: 100px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 25px; TEXT-ALIGN: center
+}
+#sidebar LI.home {
+	BACKGROUND-POSITION: left -1px; BACKGROUND-IMAGE: url(home1.gif); WIDTH: 85px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 25px; TEXT-ALIGN: center
+}
+#sidebar LI.title {
+	BACKGROUND-POSITION: 18px -1px; PADDING-LEFT: 10px; FONT-SIZE: 14px; COLOR: #0d8b9b; BACKGROUND-REPEAT: no-repeat; FONT-FAMILY: "宋体"; HEIGHT: 25px; TEXT-ALIGN:center
+}
+
+#main {
+	CLEAR: both; BACKGROUND-IMAGE: url(main_bg.gif); MARGIN-LEFT: auto; OVERFLOW: hidden; WIDTH: 1003px; MARGIN-RIGHT: auto; BACKGROUND-REPEAT: repeat-y
+}
+.leftbox {
+	FLOAT: left; OVERFLOW: hidden; WIDTH: 210px; PADDING-TOP: 18px; HEIGHT: 480px; TEXT-ALIGN: center
+}
+#leftbg {
+	BACKGROUND-IMAGE: url(leftbg.gif); BACKGROUND-REPEAT: no-repeat
+}
+.left_btn {
+	CLEAR: both; FLOAT: none; MARGIN-BOTTOM: 10px; MARGIN-LEFT: auto; WIDTH: 173px; MARGIN-RIGHT: auto; HEIGHT: 52px
+}
+
+#rightbox {
+	FLOAT: left; OVERFLOW: visible; WIDTH: 793px; PADDING-TOP: 13px;
+}
+#r_top {
+	BACKGROUND-POSITION: 50% bottom; BACKGROUND-IMAGE: url(r_top.gif); OVERFLOW: hidden; WIDTH: 793px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 24px
+}
+#r_top2 {
+	BACKGROUND-POSITION: 50% bottom; BACKGROUND-IMAGE: url(top2.jpg); OVERFLOW: hidden; WIDTH: 698px; BACKGROUND-REPEAT: no-repeat; height:73px}
+#r_data {
+	CLEAR: both; BACKGROUND-POSITION: 50% top; BACKGROUND-IMAGE: url(r_cen.gif); OVERFLOW: visible; WIDTH: 793px; BACKGROUND-REPEAT: repeat-y; TEXT-ALIGN: center; height:430px;
+}
+#r_data2 {
+	CLEAR: both; BACKGROUND-POSITION: 50% top; OVERFLOW: visible; WIDTH: 698px; BACKGROUND-REPEAT: repeat-y; TEXT-ALIGN: center; height:350px;
+}
+#r_bottom {
+	CLEAR: both; BACKGROUND-IMAGE: url(r_bottom.gif); WIDTH: 793px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 24px
+}
+#table_tip {
+	FONT-SIZE: 14px; COLOR: #4b5f70; LINE-HEIGHT: 20px; FONT-FAMILY: "宋体"; BACKGROUND-COLOR: #ffffff; TEXT-ALIGN: left
+}
+
+#table_bullit {
+	BORDER-RIGHT: #b2b2b2 1px solid; BACKGROUND-POSITION: 0px 50%; BORDER-TOP: #b2b2b2 1px solid; FONT-SIZE: 14px; BACKGROUND-IMAGE: url(bg_tip.gif); BORDER-LEFT: #b2b2b2 1px solid; COLOR: #26738a; LINE-HEIGHT: 20px; BORDER-BOTTOM: #b2b2b2 1px solid; BACKGROUND-REPEAT: repeat-x; FONT-FAMILY: "宋体";TEXT-ALIGN: left
+}
+
+#table_return {
+	BORDER-RIGHT: #3192de 1px solid; BACKGROUND-POSITION: 0px 100%; BORDER-TOP: #3192de 1px solid; FONT-SIZE: 14px; BACKGROUND-IMAGE: url(bg_tip.gif); BORDER-LEFT: #3192de 1px solid; COLOR: #26738a; LINE-HEIGHT: 20px; BORDER-BOTTOM: #3192de 1px solid; BACKGROUND-REPEAT: repeat-x; FONT-FAMILY: "宋体";TEXT-ALIGN: left;height:300px
+}
+
+.f_12_white {	FONT-SIZE: 12px; COLOR: #ffffff; LINE-HEIGHT: 20px; FONT-FAMILY: "宋体" }
+.f_12_grey  {	FONT-SIZE: 12px; COLOR: #4d4d4d; LINE-HEIGHT: 20px; FONT-FAMILY: "宋体" }
+.f_14_grey  {	FONT-SIZE: 14px; COLOR: #4d4d4d; LINE-HEIGHT: 20px; FONT-FAMILY: "宋体" }
+.f_12_black {	FONT-SIZE: 12px; COLOR: #000; FONT-FAMILY: "宋体" }
+.f_14_blue  {	FONT-SIZE: 14px; COLOR: #26738a; FONT-FAMILY: "宋体" }
+.f_14_orange   {	FONT-SIZE: 14px; COLOR: #ffa00c; FONT-FAMILY: "宋体" }
+.f_14_red   {	FONT-SIZE: 14px; COLOR: #c70000; FONT-FAMILY: "宋体" }
+
+#bottom {
+	CLEAR: both; FONT-SIZE: 12px; BACKGROUND-IMAGE: url(bottom.gif); MARGIN-LEFT: auto; OVERFLOW: hidden; WIDTH: 1003px; COLOR: #fff; LINE-HEIGHT: 20px; MARGIN-RIGHT: auto; PADDING-TOP: 5px; BACKGROUND-REPEAT: repeat; FONT-FAMILY: "宋体"; HEIGHT: 38px; TEXT-ALIGN: left
+}
+#bottom2 {
+	CLEAR: both; FONT-SIZE: 12px; BACKGROUND-IMAGE: url(bottom.gif); MARGIN-LEFT: auto; OVERFLOW: hidden; WIDTH:698px; COLOR: #fff; LINE-HEIGHT: 20px; MARGIN-RIGHT: auto; PADDING-TOP: 5px; BACKGROUND-REPEAT: repeat; FONT-FAMILY: "宋体"; HEIGHT: 38px; TEXT-ALIGN: left
+}
+#bottom #left {
+	PADDING-RIGHT: 10px; FLOAT: left; WIDTH: 345px; PADDING-TOP: 2px; TEXT-ALIGN: right
+}
+#bottom A:link {
+	FONT-SIZE: 12px; COLOR: #ffffff; LINE-HEIGHT: 20px; FONT-FAMILY: "宋体"; TEXT-DECORATION: none
+}
+#bottom A:visited {
+	FONT-SIZE: 12px; COLOR: #ffffff; LINE-HEIGHT: 20px; FONT-FAMILY: "宋体"; TEXT-DECORATION: none
+}
+#bottom A:hover {
+	COLOR: #ffffff; TEXT-DECORATION: underline
+}
+
+.login_top_bg {
+	background-image: url(login-top-bg.gif);
+	background-repeat: repeat-x;
+}
+.login_bg {
+	background-image: url(login_bg.jpg);
+	background-repeat: repeat-x;
+}
+.login_bg2 {
+	background-image: url(login-content-bg.gif);
+	background-repeat: no-repeat;
+	background-position: right;
+}
+.login_txt {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	line-height: 25px;
+	color: #333333;
+}
+.login_left_txt {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	line-height: 25px;
+	color: #666666;
+}
+.login_txt_bt {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	line-height: 25px;
+	color: #666666;
+	font-weight: bold;
+}
+.login_bottom_bg {
+	background-image: url(login-bottom-bg.gif);
+	background-repeat: repeat-x;
+}
+.login_bottom_txt {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #ABCAD3;
+	text-decoration: none;
+	line-height: 20px;
+}
+#payfrm {
+	CLEAR: both; FONT-SIZE: 14px; BACKGROUND-IMAGE: url(bg_payfrm.gif); MARGIN-LEFT: auto; WIDTH: 698px; COLOR: #505050; MARGIN-RIGHT: auto; PADDING-TOP: 40px; BACKGROUND-REPEAT: no-repeat; FONT-FAMILY: "宋体"; HEIGHT: 350px
+}
+#input {
+	BORDER-RIGHT: #c9c9c9 1px solid; BORDER-TOP: #c9c9c9 1px solid; FONT-SIZE: 14px; BORDER-LEFT: #c9c9c9 1px solid; LINE-HEIGHT: 20px; BORDER-BOTTOM: #c9c9c9 1px solid; FONT-FAMILY: "宋体"; HEIGHT: 20px; BACKGROUND-COLOR: #e5e5e5
+}
+
+#l_input {
+	BORDER-RIGHT: #c9c9c9 1px solid; BORDER-TOP: #c9c9c9 1px solid; FONT-SIZE: 14px; BORDER-LEFT: #c9c9c9 1px solid; LINE-HEIGHT: 20px; BORDER-BOTTOM: #c9c9c9 1px solid; FONT-FAMILY: "宋体"; HEIGHT: 20px; BACKGROUND-COLOR: #e5e5e5
+}
+
+#showerr {
+	CLEAR: both; MARGIN-LEFT: auto; margin-top:auto;BACKGROUND-IMAGE: url(bg_showerr.jpg); OVERFLOW: hidden; WIDTH: 698px; MARGIN-RIGHT: auto; HEIGHT: 200px
+}
