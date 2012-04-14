@@ -62,8 +62,8 @@ type
     function GetPrintBHById(const sId:string):string;stdcall;
     function GetNetPayQueryUrl:string;stdcall;  //得到B2C商户登陆页面URL(可查询网银交易记录)
 
-    function GetWebSrvUrl:string;stdcall; //Web服务器网址，如：http://zsbbm.jxstnu.edu.cn/
-    function GetUploadProcessFile:string;stdcall; //上传脚本处理文件（含http路径），如：http://zsbbm.jxstnu.edu.cn/Upfile_Photo.asp
+    function GetWebSrvUrl:string;stdcall; //Web服务器网址，如：http://jxgzl.jxstnu.edu.cn/
+    function GetUploadProcessFile:string;stdcall; //上传脚本处理文件（含http路径），如：http://jxgzl.jxstnu.edu.cn/Upfile_Photo.asp
     function GetUploadVirtualDir:string;stdcall;  //上传文件存放目录（相对路径），如：UploadFiles/
     function GetKsXz:string;stdcall;    //得到考生须知内容
     function GetKsCj(const bkLb:string):string;stdcall; //得到考生成绩，多行变单行之后的结果
@@ -98,7 +98,7 @@ var
 begin
   sIP := GetSOAPWebModule.Request.RemoteAddr;
   sSrvHost := GetSOAPWebModule.Request.RemoteHost;
-  //GetSOAPWebModule.Request.URL ==> /ZsbBm/ZsbBmWebSrv.dll
+  //GetSOAPWebModule.Request.URL ==> /jxgzl/jxgzlWebSrv.dll
   //GetSOAPWebModule.Request.PathInfo ==> /soap/IAdmin
   //GetLocalHostName(); // //GetSOAPWebModule.Request.RemoteHost;
   if Length(sSrvHost)>30 then
@@ -237,7 +237,7 @@ begin
     DM.DataSet_Temp.Active := True;
     Result := dm.DataSet_Temp.Fields[0].AsString;
     if Result = '' then
-      Result := 'http://vir.jxstnu.edu.cn/ZsbBm/download/ClientAutoUpdate.inf';
+      Result := 'http://vir.jxstnu.edu.cn/jxgzl/download/ClientAutoUpdate.inf';
   finally
     DM.DataSet_Temp.Active := False;
     dm.Free;
@@ -279,12 +279,12 @@ end;
 function TAdmin.GetHintMessage: string;
 var
 {
-  ZsbBmCount,
+  jxgzlCount,
   PosPayCount,
   MoneyPayCount,
   RefundPayCount,
   ExceptPayCount:Integer;
-  ZsbBmJe,
+  jxgzlJe,
   PosPayJe,
   MoneyPayJe,
   RefundPayJe,
@@ -414,7 +414,7 @@ begin
     DM.DataSet_Temp.Active := True;
     Result := dm.DataSet_Temp.Fields[0].AsString;
     if Result = '' then
-      Result := 'http://vir.jxstnu.edu.cn/ZsbBm/download/SrvAutoUpdate.inf';
+      Result := 'http://vir.jxstnu.edu.cn/jxgzl/download/SrvAutoUpdate.inf';
   finally
     DM.DataSet_Temp.Active := False;
     dm.Free;
@@ -512,7 +512,7 @@ begin
     DM.DataSet_Temp.Active := True;
     Result := dm.DataSet_Temp.Fields[0].AsString;
     if Result = '' then
-      Result := 'http://zsbbm.jxstnu.edu.cn/';
+      Result := 'http://jxgzl.jxstnu.edu.cn/';
   finally
     DM.DataSet_Temp.Active := False;
     dm.Free;

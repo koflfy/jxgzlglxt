@@ -1335,7 +1335,7 @@ object Login: TLogin
       'http://vir.jxstnu.edu.cn/jcgl/')
     InfoFileURL = 'http://vir.jxstnu.edu.cn/Jcgl/download/AutoUpdte.inf'
     VersionControl = byNumber
-    VersionDate = '2012-04-11 00:00:00'
+    VersionDate = '2012-04-14 00:00:00'
     VersionDateAutoSet = True
     OnDoOwnCloseAppMethod = auAutoUpgrader1DoOwnCloseAppMethod
     Left = 224

@@ -66,8 +66,8 @@ type
     function GetPrintBHById(const sId:string):string;stdcall;
     function GetNetPayQueryUrl:string;stdcall;  //得到B2C商户登陆页面URL(可查询网银交易记录)
 
-    function GetWebSrvUrl:string;stdcall; //Web服务器网址，如：http://zsbbm.jxstnu.edu.cn/
-    function GetUploadProcessFile:string;stdcall; //上传脚本处理文件（含http路径），如：http://zsbbm.jxstnu.edu.cn/Upfile_Photo.asp
+    function GetWebSrvUrl:string;stdcall; //Web服务器网址，如：http://jxgzl.jxstnu.edu.cn/
+    function GetUploadProcessFile:string;stdcall; //上传脚本处理文件（含http路径），如：http://jxgzl.jxstnu.edu.cn/Upfile_Photo.asp
     function GetUploadVirtualDir:string;stdcall;  //上传文件存放目录（相对路径），如：UploadFiles/
     function GetKsXz:string;stdcall;    //得到考生须知内容
     function GetKsCj(const bkLb:string):string;stdcall; //得到考生成绩，多行变单行之后的结果
@@ -80,8 +80,8 @@ implementation
 
 function GetIAdmin(UseWSDL: Boolean; Addr: string; HTTPRIO: THTTPRIO): IAdmin;
 const
-  defWSDL = 'http://localhost:1024/ZsbBmWadSrv.ZsbBm/wsdl/IAdmin';
-  defURL  = 'http://localhost:1024/ZsbBmWadSrv.ZsbBm/soap/IAdmin';
+  defWSDL = 'http://localhost:1024/jxgzlWadSrv.jxgzl/wsdl/IAdmin';
+  defURL  = 'http://localhost:1024/jxgzlWadSrv.jxgzl/soap/IAdmin';
   defSvc  = 'IAdminservice';
   defPrt  = 'IAdminPort';
 var

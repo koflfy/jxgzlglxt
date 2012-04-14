@@ -151,7 +151,7 @@ begin
   end;
   lbledt_IP.Text := 'http://'+sIp+'/';
   lbledt_Path.Text := ExtractFilePath(ParamStr(0));
-  lbledt_VirtualDir.Text := 'ZsbBm/Srv';
+  lbledt_VirtualDir.Text := 'jxgzl/Srv';
   lbledt_VirtualDir.OnChange(Sender);
   //Label1.Caption := '即客户端连接URL：'+lbledt_IP.Text+lbledt_VirtualDir.Text+'/';
 end;
@@ -209,9 +209,9 @@ end;
 
 procedure TServiceSet.btn_TestClick(Sender: TObject);
 begin
-  HTTPRIO1.URL := sSrvUrl+'ZsbBmWebSrv.dll/soap/';
+  HTTPRIO1.URL := sSrvUrl+'jxgzlWebSrv.dll/soap/';
   try
-    (HTTPRIO1 as IZsbBm).SrvIsOK;
+    (HTTPRIO1 as Ijxgzl).SrvIsOK;
     MessageBox(Handle, '系统服务器连接成功！　　', '系统提示', MB_OK +
       MB_ICONINFORMATION + MB_TOPMOST);
     //btn_Ini.Click; //生成一个客户端配置文件
@@ -240,10 +240,10 @@ procedure TServiceSet.lbledt_VirtualDirChange(Sender: TObject);
 var
   sUrl:string;
 begin
-  sSrvUrl := lbledt_IP.Text+lbledt_VirtualDir.Text;//+'/ZsbBmWebSrv.dll/soap/';
+  sSrvUrl := lbledt_IP.Text+lbledt_VirtualDir.Text;//+'/jxgzlWebSrv.dll/soap/';
   if sSrvUrl[Length(sSrvUrl)]<>'/' then
     sSrvUrl := sSrvUrl+'/';
-  sUrl := sSrvUrl+'ZsbBmWebSrv.dll/soap/';
+  sUrl := sSrvUrl+'jxgzlWebSrv.dll/soap/';
   URLLabel.Caption := sUrl;
   sUrl := StringReplace(sUrl,'/soap','',[rfReplaceAll,rfIgnoreCase]);
   URLLabel.URL := sUrl;
