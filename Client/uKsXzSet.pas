@@ -5,7 +5,8 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ExtCtrls, DB, DBClient, GridsEh, DBGridEh, Buttons,
-  DBCtrls, Mask, DBCtrlsEh, frxpngimage, ComCtrls, pngimage, DBGridEhGrouping;
+  DBCtrls, Mask, DBCtrlsEh, frxpngimage, ComCtrls, pngimage, DBGridEhGrouping,
+  dxGDIPlusClasses, OleCtnrs;
 
 type
   TKsXzSet = class(TForm)
@@ -13,18 +14,13 @@ type
     img_Title: TImage;
     img_Hint: TImage;
     lbl_Title: TLabel;
-    PageControl1: TPageControl;
-    TabSheet2: TTabSheet;
     pnl1: TPanel;
     btn_Update: TBitBtn;
     btn_Exit: TBitBtn;
     btn_Refresh: TBitBtn;
     ds2: TDataSource;
     cds_2: TClientDataSet;
-    dbmmo2: TDBMemo;
-    pnl2: TPanel;
-    lbl1: TLabel;
-    lbl2: TLabel;
+    OleContainer1: TOleContainer;
     procedure btn_UpdateClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -60,7 +56,7 @@ end;
 procedure TKsXzSet.btn_UpdateClick(Sender: TObject);
 begin
   if DataSetNoSave(cds_2) then
-    if dm.UpdateData('ID','select * from 考生须知表',cds_2.Delta,True) then
+    if dm.UpdateData('ID','select * from 制度文件表',cds_2.Delta,True) then
       cds_2.MergeChangeLog;
 end;
 
@@ -91,12 +87,11 @@ end;
 procedure TKsXzSet.FormCreate(Sender: TObject);
 begin
   OpenTable;
-  PageControl1.ActivePageIndex := 0;
 end;
 
 procedure TKsXzSet.OpenTable;
 begin
-  cds_2.XMLData := dm.OpenData('select * from 考生须知表');
+  cds_2.XMLData := dm.OpenData('select * from 制度文件表');
 end;
 
 end.

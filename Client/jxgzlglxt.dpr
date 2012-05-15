@@ -45,7 +45,7 @@ uses
   uAutoPkInput in 'uAutoPkInput.pas' {AutoPkInput},
   uZkzInfoBrowse in 'uZkzInfoBrowse.pas' {ZkzInfoBrowse},
   EncdDecdEx in '..\public\EncdDecdEx.pas',
-  uKsXzSet in 'uKsXzSet.pas' {KsXzSet},
+  uGzljsbfFileSet in 'uGzljsbfFileSet.pas' {GzljsbfFileSet},
   uCjInput in 'uCjInput.pas' {CjInput},
   uInitKsCjb in 'uInitKsCjb.pas' {InitKsCjb},
   uCjBrowse in 'uCjBrowse.pas' {CjBrowse},

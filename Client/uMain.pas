@@ -54,7 +54,6 @@ type
     dxBarSeparator1: TdxBarSeparator;
     dxBarSubItem3: TdxBarSubItem;
     dxBarSubItem4: TdxBarSubItem;
-    dxBarSubItem5: TdxBarSubItem;
     dxBarSubItem6: TdxBarSubItem;
     dxBarSubItem7: TdxBarSubItem;
     dxBarSubItem8: TdxBarSubItem;
@@ -93,18 +92,14 @@ type
     dxBarButton9: TdxBarButton;
     act_Data_BkZySet: TAction;
     act_Data_BkLbSet: TAction;
-    act_Data_JsjLbSet: TAction;
-    act_Data_EnglishLbSet: TAction;
-    act_Data_Mz: TAction;
-    act_Data_Zzmm: TAction;
-    act_Data_SchoolSet: TAction;
+    act_Data_JxmsSet: TAction;
+    act_Data_LrkSet: TAction;
+    act_Data_KcxzSet: TAction;
     dxBarSubItem2: TdxBarSubItem;
     act_Pk_RoomSet: TAction;
     act_Pk_KsPcSet: TAction;
     act_Pk_Input: TAction;
     act_Pk_Browse: TAction;
-    dxBarButton10: TdxBarButton;
-    dxBarButton13: TdxBarButton;
     dxBarButton14: TdxBarButton;
     dxBarButton15: TdxBarButton;
     dxBarButton16: TdxBarButton;
@@ -114,7 +109,7 @@ type
     dxBarButton22: TdxBarButton;
     dxBarButton23: TdxBarButton;
     dxBarButton27: TdxBarButton;
-    act_Data_SfDmSet: TAction;
+    act_Data_FileInput: TAction;
     dxBarButton28: TdxBarButton;
     act_cwgl_WebSite: TAction;
     dxBarButton29: TdxBarButton;
@@ -129,7 +124,6 @@ type
     act_Cj_InitKsCjb: TAction;
     act_Cj_CjInput: TAction;
     act_Cj_CjBrowse: TAction;
-    dxBarSubItem9: TdxBarSubItem;
     dxBarButton49: TdxBarButton;
     dxBarButton50: TdxBarButton;
     dxBarButton52: TdxBarButton;
@@ -143,6 +137,8 @@ type
     dxbrbtn1: TdxBarButton;
     act_Stu_BmData_Clear: TAction;
     dxBarButton55: TdxBarButton;
+    act_Data_SykSet: TAction;
+    dxBarButton10: TdxBarButton;
     procedure act_Cj_CjBrowseExecute(Sender: TObject);
     procedure act_Cj_CjInputExecute(Sender: TObject);
     procedure act_Cj_InitKsCjbExecute(Sender: TObject);
@@ -196,11 +192,11 @@ type
     procedure act_Data_ZzmmExecute(Sender: TObject);
     procedure act_Data_BkLbSetExecute(Sender: TObject);
     procedure act_Data_BkZySetExecute(Sender: TObject);
-    procedure act_Data_SchoolSetExecute(Sender: TObject);
-    procedure act_Data_JsjLbSetExecute(Sender: TObject);
-    procedure act_Data_EnglishLbSetExecute(Sender: TObject);
+    procedure act_Data_KcxzSetExecute(Sender: TObject);
+    procedure act_Data_JxmsSetExecute(Sender: TObject);
+    procedure act_Data_LrkSetExecute(Sender: TObject);
     procedure act_Pk_RoomSetExecute(Sender: TObject);
-    procedure act_Data_SfDmSetExecute(Sender: TObject);
+    procedure act_Data_FileInputExecute(Sender: TObject);
     procedure act_Stu_BmInputExecute(Sender: TObject);
     procedure act_Stu_BmConfirmExecute(Sender: TObject);
     procedure act_cwgl_WebSiteExecute(Sender: TObject);
@@ -407,12 +403,12 @@ begin
   ShowMdiChildForm(TBkZySet);
 end;
 
-procedure TMain.act_Data_EnglishLbSetExecute(Sender: TObject);
+procedure TMain.act_Data_LrkSetExecute(Sender: TObject);
 begin
   ShowMdiChildForm(TEnglishDjKsSet);
 end;
 
-procedure TMain.act_Data_JsjLbSetExecute(Sender: TObject);
+procedure TMain.act_Data_JxmsSetExecute(Sender: TObject);
 begin
   ShowMdiChildForm(TJsjDjKsSet);
 end;
@@ -422,12 +418,12 @@ begin
   ShowMdiChildForm(TMzDmSet);
 end;
 
-procedure TMain.act_Data_SchoolSetExecute(Sender: TObject);
+procedure TMain.act_Data_KcxzSetExecute(Sender: TObject);
 begin
   ShowMdiChildForm(TSchoolSet);
 end;
 
-procedure TMain.act_Data_SfDmSetExecute(Sender: TObject);
+procedure TMain.act_Data_FileInputExecute(Sender: TObject);
 begin
   ShowMdiChildForm(TSfDmSet);
 end;
@@ -843,8 +839,8 @@ begin
   Status_SrvInfo.Caption := DM.GetConnInfo;
   InitMenuItem;
   //if gb_Czy_Level='-1' then
- //   act_Win_Wizard.OnExecute(Self);
-  act_Win_HintMessage.OnExecute(Self);
+  //  act_Win_Wizard.OnExecute(Self);
+  //act_Win_HintMessage.OnExecute(Self);
   {
   with TPrintBHSet.Create(nil) do
   begin
