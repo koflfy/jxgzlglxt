@@ -3,5 +3,7 @@
 	<Transactions>
     <Transaction>2012/04/14 15:30:30.102.pas,E:\xxx\教学工作量管理系统\Srv\uZsbBmIntf.pas=E:\xxx\教学工作量管理系统\Srv\uJxgzlIntf.pas</Transaction>
     <Transaction>2012/04/14 15:38:03.715.bdsproj,E:\xxx\教学工作量管理系统\Client\ZsbBmClient.bdsproj=E:\xxx\教学工作量管理系统\Client\jxgzlglxt.bdsproj</Transaction>
+    <Transaction>2012/05/15 14:27:34.229.pas,E:\xxx\教学工作量管理系统\Client\uKsXzSet.pas=E:\xxx\教学工作量管理系统\Client\uGzljsbfFileSet.pas</Transaction>
+    <Transaction>2012/05/15 14:27:34.229.dfm,E:\xxx\教学工作量管理系统\Client\uKsXzSet.dfm=E:\xxx\教学工作量管理系统\Client\uGzljsbfFileSet.dfm</Transaction>
   </Transactions>
 </BorlandProject>

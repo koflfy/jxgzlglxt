@@ -93,7 +93,7 @@ object Main: TMain
       'http://vir.jxstnu.edu.cn/jcgl/')
     InfoFileURL = 'http://vir.jxstnu.edu.cn/Jcgl/download/AutoUpdte.inf'
     VersionControl = byNumber
-    VersionDate = '2012-04-14 00:00:00'
+    VersionDate = '2012-05-15 00:00:00'
     VersionDateAutoSet = True
     OnDoOwnCloseAppMethod = auAutoUpgrader1DoOwnCloseAppMethod
     Left = 680
@@ -360,25 +360,25 @@ object Main: TMain
       OnExecute = act_ReportDesignExecute
     end
     object act_Data_BkLbSet: TAction
-      Category = '03.'#25253#32771#31649#29702
+      Category = '03.'#24037#20316#37327#26680#31639
       Caption = #25253#32771#31867#21035#35774#32622
       ImageIndex = 18
       OnExecute = act_Data_BkLbSetExecute
     end
     object act_Data_BkZySet: TAction
-      Category = '03.'#25253#32771#31649#29702
+      Category = '03.'#24037#20316#37327#26680#31639
       Caption = #25253#32771#19987#19994#35774#32622
       ImageIndex = 30
       OnExecute = act_Data_BkZySetExecute
     end
     object act_Stu_BmData_Clear: TAction
-      Category = '03.'#25253#32771#31649#29702
+      Category = '03.'#24037#20316#37327#26680#31639
       Caption = #28165#31354#25152#26377#25253#32771#20449#24687
       ImageIndex = 25
       OnExecute = act_Stu_BmData_ClearExecute
     end
     object act_Stu_BmInput: TAction
-      Category = '03.'#25253#32771#31649#29702
+      Category = '03.'#24037#20316#37327#26680#31639
       Caption = #32771#29983#25253#32771#20449#24687#36755#20837
       ImageIndex = 5
       OnExecute = act_Stu_BmInputExecute
@@ -407,66 +407,54 @@ object Main: TMain
       ImageIndex = 19
     end
     object act_Stu_BmConfirm: TAction
-      Category = '03.'#25253#32771#31649#29702
+      Category = '03.'#24037#20316#37327#26680#31639
       Caption = #32771#29983#25253#32771#20449#24687#23457#26680
       ImageIndex = 28
       OnExecute = act_Stu_BmConfirmExecute
     end
     object act_Stu_BmBrowse: TAction
-      Category = '03.'#25253#32771#31649#29702
+      Category = '03.'#24037#20316#37327#26680#31639
       Caption = #32771#29983#25253#32771#20449#24687#26597#35810
       ImageIndex = 7
       OnExecute = act_Stu_BmBrowseExecute
     end
     object act_cwgl_SfCsSet: TAction
-      Category = '03.'#25253#32771#31649#29702
+      Category = '03.'#24037#20316#37327#26680#31639
       Caption = #32593#19978#25253#21517#21442#25968#35774#32622
       ImageIndex = 8
       OnExecute = act_cwgl_SfCsSetExecute
     end
     object act_cwgl_SfInfoPublish: TAction
-      Category = '03.'#25253#32771#31649#29702
+      Category = '03.'#24037#20316#37327#26680#31639
       Caption = #32593#31449#20844#24067#20449#24687#31649#29702
       ImageIndex = 4
       OnExecute = act_cwgl_SfInfoPublishExecute
     end
-    object act_Data_SfDmSet: TAction
-      Category = '02.'#25968#25454#23383#20856
-      Caption = #30465#20221#20195#30721#35774#32622
+    object act_Data_FileInput: TAction
+      Category = '02.'#21442#25968#35774#32622
+      Caption = #24037#20316#37327#26680#31639#21150#27861'('#21046#24230#25991#20214')'
+      ImageIndex = 4
+      OnExecute = act_Data_FileInputExecute
+    end
+    object act_Data_KcxzSet: TAction
+      Category = '02.'#21442#25968#35774#32622
+      Caption = #35838#31243#24615#36136#35838#22411#31995#25968#35774#32622
       ImageIndex = 12
-      OnExecute = act_Data_SfDmSetExecute
+      OnExecute = act_Data_KcxzSetExecute
     end
-    object act_Data_Mz: TAction
-      Category = '02.'#25968#25454#23383#20856
-      Caption = #27665#26063#20195#30721#20195#30721#35774#32622
-      ImageIndex = 0
-      OnExecute = act_Data_MzExecute
-    end
-    object act_Data_Zzmm: TAction
-      Category = '02.'#25968#25454#23383#20856
-      Caption = #25919#27835#38754#35980#20195#30721#35774#32622
-      ImageIndex = 15
-      OnExecute = act_Data_ZzmmExecute
-    end
-    object act_Data_SchoolSet: TAction
-      Category = '02.'#25968#25454#23383#20856
-      Caption = #20840#22269#39640#26657#20449#24687#35774#32622
-      ImageIndex = 26
-      OnExecute = act_Data_SchoolSetExecute
-    end
-    object act_Data_JsjLbSet: TAction
-      Category = '02.'#25968#25454#23383#20856
-      Caption = #35745#31639#26426#31561#32423#32771#35797#32423#21035#35774#32622
+    object act_Data_JxmsSet: TAction
+      Category = '02.'#21442#25968#35774#32622
+      Caption = #25945#23398#27169#24335#35838#22411#31995#25968#35774#32622
       Hint = #20840#30465#39640#26657#35745#31639#26426#31561#32423#32771#35797#32423#21035#35774#32622
       ImageIndex = 9
-      OnExecute = act_Data_JsjLbSetExecute
+      OnExecute = act_Data_JxmsSetExecute
     end
-    object act_Data_EnglishLbSet: TAction
-      Category = '02.'#25968#25454#23383#20856
-      Caption = #33521#35821#31561#32423#32771#35797#32423#21035#35774#32622
+    object act_Data_LrkSet: TAction
+      Category = '02.'#21442#25968#35774#32622
+      Caption = #29702#35770#35838#24037#20316#37327#31995#25968#35774#32622
       Hint = #20840#30465#39640#26657#33521#35821#31561#32423#32771#35797#32423#21035#35774#32622
       ImageIndex = 10
-      OnExecute = act_Data_EnglishLbSetExecute
+      OnExecute = act_Data_LrkSetExecute
     end
     object act_PK_KsxzSet: TAction
       Category = '04.'#32771#35797#23433#25490
@@ -517,7 +505,7 @@ object Main: TMain
       OnExecute = act_Pk_BrowseExecute
     end
     object act_cwgl_WebSite: TAction
-      Category = '03.'#25253#32771#31649#29702
+      Category = '03.'#24037#20316#37327#26680#31639
       Caption = #25171#24320#25253#21517#32593#31449#20027#39029
       ImageIndex = 26
       OnExecute = act_cwgl_WebSiteExecute
@@ -564,6 +552,11 @@ object Main: TMain
       ImageIndex = 6
       OnExecute = act_Cj_UploadExecute
     end
+    object act_Data_SykSet: TAction
+      Category = '02.'#21442#25968#35774#32622
+      Caption = #23454#39564#35838#24037#20316#37327#31995#25968#35774#32622
+      ImageIndex = 11
+    end
   end
   object dxBarManager1: TdxBarManager
     Font.Charset = DEFAULT_CHARSET
@@ -575,8 +568,8 @@ object Main: TMain
       #20998#38548#32447
       #20027#33756#21333
       #31995#32479#35774#32622
-      #25968#25454#23383#20856
-      #25253#32771#31649#29702
+      #21442#25968#35774#32622
+      #24037#20316#37327#26680#31639
       #32771#35797#23433#25490
       #25104#32489#31649#29702
       #32479#35745#25253#34920
@@ -651,14 +644,6 @@ object Main: TMain
         item
           Visible = True
           ItemName = 'dxBarSubItem3'
-        end
-        item
-          Visible = True
-          ItemName = 'dxBarSubItem5'
-        end
-        item
-          Visible = True
-          ItemName = 'dxBarSubItem9'
         end
         item
           Visible = True
@@ -737,7 +722,7 @@ object Main: TMain
         end>
     end
     object dxBarSubItem2: TdxBarSubItem
-      Caption = #25968#25454#23383#20856'[&D]'
+      Caption = #21442#25968#35774#32622'[&D]'
       Category = 1
       Visible = ivAlways
       ItemLinks = <
@@ -747,11 +732,19 @@ object Main: TMain
         end
         item
           Visible = True
+          ItemName = 'dxBarSeparator1'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarButton14'
+        end
+        item
+          Visible = True
           ItemName = 'dxBarButton10'
         end
         item
           Visible = True
-          ItemName = 'dxBarButton13'
+          ItemName = 'dxBarSeparator1'
         end
         item
           Visible = True
@@ -760,14 +753,10 @@ object Main: TMain
         item
           Visible = True
           ItemName = 'dxBarButton16'
-        end
-        item
-          Visible = True
-          ItemName = 'dxBarButton14'
         end>
     end
     object dxBarSubItem3: TdxBarSubItem
-      Caption = #25253#32771#31649#29702'[&M]'
+      Caption = #24037#20316#37327#26680#31639'[&M]'
       Category = 1
       Visible = ivAlways
       ItemLinks = <
@@ -818,99 +807,6 @@ object Main: TMain
         item
           Visible = True
           ItemName = 'dxBarButton29'
-        end>
-    end
-    object dxBarSubItem5: TdxBarSubItem
-      Caption = #32771#35797#23433#25490'[&K]'
-      Category = 1
-      Visible = ivAlways
-      ItemLinks = <
-        item
-          Visible = True
-          ItemName = 'dxBarButton39'
-        end
-        item
-          Visible = True
-          ItemName = 'dxBarButton20'
-        end
-        item
-          Visible = True
-          ItemName = 'dxBarButton30'
-        end
-        item
-          Visible = True
-          ItemName = 'dxBarSeparator1'
-        end
-        item
-          Visible = True
-          ItemName = 'dxBarButton40'
-        end
-        item
-          Visible = True
-          ItemName = 'dxBarSeparator1'
-        end
-        item
-          Visible = True
-          ItemName = 'dxBarButton31'
-        end
-        item
-          Visible = True
-          ItemName = 'dxBarButton23'
-        end
-        item
-          Visible = True
-          ItemName = 'dxBarButton22'
-        end
-        item
-          Visible = True
-          ItemName = 'dxBarButton27'
-        end>
-    end
-    object dxBarSubItem9: TdxBarSubItem
-      Caption = #25104#32489#31649#29702'[&C]'
-      Category = 1
-      Visible = ivAlways
-      ItemLinks = <
-        item
-          Visible = True
-          ItemName = 'dxBarButton53'
-        end
-        item
-          BeginGroup = True
-          Visible = True
-          ItemName = 'dxBarButton49'
-        end
-        item
-          Visible = True
-          ItemName = 'dxBarSeparator1'
-        end
-        item
-          Visible = True
-          ItemName = 'dxBarButton37'
-        end
-        item
-          Visible = True
-          ItemName = 'dxBarButton50'
-        end
-        item
-          Visible = True
-          ItemName = 'dxBarSeparator1'
-        end
-        item
-          Visible = True
-          ItemName = 'dxBarButton52'
-        end
-        item
-          Visible = True
-          ItemName = 'dxBarButton54'
-        end
-        item
-          Visible = True
-          ItemName = 'dxBarSeparator1'
-        end
-        item
-          Visible = True
-          ItemName = 'dxbrbtn1'
         end>
     end
     object dxBarSubItem4: TdxBarSubItem
@@ -1046,27 +942,23 @@ object Main: TMain
       Category = 2
     end
     object dxBarButton28: TdxBarButton
-      Action = act_Data_SfDmSet
-      Category = 3
-    end
-    object dxBarButton10: TdxBarButton
-      Action = act_Data_Mz
-      Category = 3
-    end
-    object dxBarButton13: TdxBarButton
-      Action = act_Data_Zzmm
-      Category = 3
-    end
-    object dxBarButton14: TdxBarButton
-      Action = act_Data_SchoolSet
-      Category = 3
-    end
-    object dxBarButton15: TdxBarButton
-      Action = act_Data_EnglishLbSet
+      Action = act_Data_FileInput
       Category = 3
     end
     object dxBarButton16: TdxBarButton
-      Action = act_Data_JsjLbSet
+      Action = act_Data_KcxzSet
+      Category = 3
+    end
+    object dxBarButton10: TdxBarButton
+      Action = act_Data_JxmsSet
+      Category = 3
+    end
+    object dxBarButton14: TdxBarButton
+      Action = act_Data_KcxzSet
+      Category = 3
+    end
+    object dxBarButton15: TdxBarButton
+      Action = act_Data_LrkSet
       Category = 3
     end
     object dxBarButton17: TdxBarButton
@@ -1238,7 +1130,7 @@ object Main: TMain
     Left = 550
     Top = 40
     Bitmap = {
-      494C0101240026001C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010124002600200010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000A0000000010020000000000000A0
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
