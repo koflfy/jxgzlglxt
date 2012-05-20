@@ -8,7 +8,7 @@ uses
   WebBrokerSOAP;
 
 type
-  TZsbBmWebModule = class(TWebModule)
+  TjxgzlWebModule = class(TWebModule)
     HTTPSoapDispatcher1: THTTPSoapDispatcher;
     HTTPSoapPascalInvoker1: THTTPSoapPascalInvoker;
     WSDLHTMLPublish1: TWSDLHTMLPublish;
@@ -21,7 +21,7 @@ type
   end;
 
 var
-  ZsbBmWebModule: TZsbBmWebModule;
+  jxgzlWebModule: TjxgzlWebModule;
 
 implementation
 
@@ -29,13 +29,13 @@ uses WebReq;
 
 {$R *.dfm}
 
-procedure TZsbBmWebModule.WebModule3DefaultHandlerAction(Sender: TObject;
+procedure TjxgzlWebModule.WebModule3DefaultHandlerAction(Sender: TObject;
   Request: TWebRequest; Response: TWebResponse; var Handled: Boolean);
 begin
   WSDLHTMLPublish1.ServiceInfo(Sender, Request, Response, Handled);
 end;
 
 initialization
-  WebRequestHandler.WebModuleClass := TZsbBmWebModule;
+  WebRequestHandler.WebModuleClass := TjxgzlWebModule;
 
 end.

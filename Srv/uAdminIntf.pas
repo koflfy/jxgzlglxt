@@ -18,6 +18,7 @@ type
     function Update_Data(const pkField,SqlText: string;const iCompressType:Integer;
                          const sData: string; out sError:string):Boolean; stdcall;
     function GetRecordCount(const sTableName:string):Integer; stdcall;
+    function GetRecordBySqlCmd(const sqlStr:string):Integer; stdcall;
     function IsAutoIncField(const sFieldName,sTableName:string):Boolean; stdcall;
     function ExecSql(const SqlText: string;out sError:string):Boolean; stdcall;
     function GetUserInfo:string;stdcall;//获取机主用户名称

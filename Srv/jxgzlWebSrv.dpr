@@ -6,7 +6,7 @@ uses
   WebBroker,
   ISAPIApp,
   ISAPIThreadPool,
-  uJxgzlWebModule in 'uJxgzlWebModule.pas' {ZsbBmWebModule: TWebModule},
+  uJxgzlWebModule in 'uJxgzlWebModule.pas' {jxgzlWebModule: TWebModule},
   uJxgzlSoapDM in 'uJxgzlSoapDM.pas' {JxgzlSoapDM: TSoapDataModule},
   Net in '..\public\Net.pas',
   PwdFunUnit in '..\public\PwdFunUnit.pas',
@@ -26,6 +26,6 @@ exports
 begin
   CoInitFlags := COINIT_MULTITHREADED;
   Application.Initialize;
-  Application.CreateForm(TZsbBmWebModule, ZsbBmWebModule);
+  Application.CreateForm(TjxgzlWebModule, jxgzlWebModule);
   Application.Run;
 end.

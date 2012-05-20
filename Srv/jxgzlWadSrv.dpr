@@ -5,7 +5,7 @@ program jxgzlWadSrv;
 uses
   Forms,
   SockApp,
-  uJxgzlWebModule in 'uJxgzlWebModule.pas' {ZsbBmWebModule: TWebModule},
+  uJxgzlWebModule in 'uJxgzlWebModule.pas' {jxgzlWebModule: TWebModule},
   uWadSrvMain in 'uWadSrvMain.pas' {WadSrvMain},
   uJxgzlIntf in 'uJxgzlIntf.pas',
   uJxgzlSoapDM in 'uJxgzlSoapDM.pas' {JxgzlSoapDM: TSoapDataModule},
@@ -23,7 +23,7 @@ uses
 begin
   Application.Initialize;
   Application.Title := '教学工作量管理系统服务器';
-  Application.CreateForm(TZsbBmWebModule, ZsbBmWebModule);
+  Application.CreateForm(TjxgzlWebModule, jxgzlWebModule);
   Application.CreateForm(TWadSrvMain, WadSrvMain);
   Application.Run;
 end.

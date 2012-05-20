@@ -15,6 +15,7 @@ type
     function Update_Data(const pkField,SqlText: string;const iCompressType:Integer;
                          const sData: string; out sError:string):Boolean; stdcall;
     function GetRecordCount(const sTableName:string):Integer; stdcall;
+    function GetRecordBySqlCmd(const sqlStr:string):Integer; stdcall;
     function IsAutoIncField(const sFieldName,sTableName:string):Boolean; stdcall;
     function ExecSql(const SqlText: string;out sError:string):Boolean; stdcall;
     function GetUserInfo:string;stdcall;//获取机主用户名称
@@ -376,6 +377,26 @@ begin
       Result := dm.DataSet_Temp.Fields[0].AsString;
     except
       Result := '';
+    end;
+  finally
+    DM.DataSet_Temp.Active := False;
+    dm.Free;
+  end;
+end;
+
+function TAdmin.GetRecordBySqlCmd(const sqlStr: string): Integer;
+var
+  dm:TJxgzlSoapDM;
+begin
+  dm := TJxgzlSoapDM.Create(nil);
+  try
+    DM.DataSet_Temp.Close;
+    DM.DataSet_Temp.CommandText := sqlStr;
+    try
+      DM.DataSet_Temp.Active := True;
+      Result := dm.DataSet_Temp.Fields[0].AsInteger;
+    except
+      Result := -1;
     end;
   finally
     DM.DataSet_Temp.Active := False;

@@ -1,4 +1,4 @@
-unit uMzDmSet;
+unit uJxmsDmSet;
 
 interface
 
@@ -8,7 +8,7 @@ uses
   DBGrids, GridsEh, pngimage, DBGridEhGrouping, frxpngimage;
 
 type
-  TMzDmSet = class(TForm)
+  TJxmsDmSet = class(TForm)
     DataSource1: TDataSource;
     DBGrid1: TDBGridEh;
     ClientDataSet1: TClientDataSet;
@@ -39,13 +39,13 @@ type
   end;
 
 var
-  MzDmSet: TMzDmSet;
+  JxmsDmSet: TJxmsDmSet;
 
 implementation
 uses uDM;
 {$R *.dfm}
 
-procedure TMzDmSet.btn_AddClick(Sender: TObject);
+procedure TJxmsDmSet.btn_AddClick(Sender: TObject);
 begin
   if not ClientDataSet1.ReadOnly then
   begin
@@ -54,7 +54,7 @@ begin
   end;
 end;
 
-procedure TMzDmSet.btn_DelClick(Sender: TObject);
+procedure TJxmsDmSet.btn_DelClick(Sender: TObject);
 begin
   if ClientDataSet1.ReadOnly then Exit;
   
@@ -67,12 +67,12 @@ begin
   btn_Save.Click;
 end;
 
-procedure TMzDmSet.btn_ExitClick(Sender: TObject);
+procedure TJxmsDmSet.btn_ExitClick(Sender: TObject);
 begin
   close;
 end;
 
-procedure TMzDmSet.btn_SaveClick(Sender: TObject);
+procedure TJxmsDmSet.btn_SaveClick(Sender: TObject);
 begin
   if not DataSetNoSave(ClientDataSet1) then
     Exit;
@@ -85,12 +85,12 @@ begin
   end;
 end;
 
-procedure TMzDmSet.ClientDataSet1NewRecord(DataSet: TDataSet);
+procedure TJxmsDmSet.ClientDataSet1NewRecord(DataSet: TDataSet);
 begin
   DataSet.FieldByName('显示顺序').AsInteger := DataSet.RecordCount+1;
 end;
 
-procedure TMzDmSet.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TJxmsDmSet.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   if ClientDataSet1.State in [dsInsert,dsEdit] then
     ClientDataSet1.Post;
@@ -105,20 +105,20 @@ begin
   Action := caFree;
 end;
 
-procedure TMzDmSet.FormCreate(Sender: TObject);
+procedure TJxmsDmSet.FormCreate(Sender: TObject);
 begin
   OpenTable;
 end;
 
-procedure TMzDmSet.OpenTable;
+procedure TJxmsDmSet.OpenTable;
 var
   i: Integer;
 begin
-  sqlStr := 'select * from 民族代码表 order by 显示顺序';
+  sqlStr := 'select * from 教学模式表 order by 显示顺序';
   ClientDataSet1.XMLData := dm.OpenData(sqlStr);
 end;
 
-procedure TMzDmSet.PageControl1Change(Sender: TObject);
+procedure TJxmsDmSet.PageControl1Change(Sender: TObject);
 begin
   OpenTable;
 end;

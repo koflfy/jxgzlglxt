@@ -214,7 +214,7 @@ object ServiceSet: TServiceSet
     EditLabel.Caption = #34394#25311#30446#24405#65306
     Enabled = False
     TabOrder = 1
-    Text = 'Jcgl'
+    Text = 'jxgzl'
     OnChange = lbledt_VirtualDirChange
   end
   object lbledt_Path: TLabeledEdit

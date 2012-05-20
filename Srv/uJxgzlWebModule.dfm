@@ -1,4 +1,4 @@
-object ZsbBmWebModule: TZsbBmWebModule
+object jxgzlWebModule: TjxgzlWebModule
   OldCreateOrder = False
   Actions = <
     item
@@ -24,6 +24,7 @@ object ZsbBmWebModule: TZsbBmWebModule
     WebDispatch.MethodType = mtAny
     WebDispatch.PathInfo = 'wsdl*'
     AdminEnabled = True
+    TargetNamespace = 'http://tempuri.org/'
     Left = 60
     Top = 123
   end
