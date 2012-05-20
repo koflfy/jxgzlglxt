@@ -6,7 +6,8 @@ uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   ExtCtrls, ActnMan, ActnList, RzStatus, RzPanel, uStatusDisplay,
   StdActns, auAutoUpgrader, DB, DBClient,ShellAPI, 
-  dxBar, ImgList, cxClasses, auHTTP, XPStyleActnCtrls, Dialogs;
+  dxBar, ImgList, cxClasses, auHTTP, XPStyleActnCtrls, Dialogs, RzBckgnd,
+  StdCtrls, RzLabel;
 
 type
   TMain = class(TForm)
@@ -15,7 +16,6 @@ type
     lbl_CzyName: TRzStatusPane;
     RzStatusPane3: TRzStatusPane;
     RzFieldStatus1: TRzFieldStatus;
-    RzClockStatus1: TRzClockStatus;
     auAutoUpgrader1: TauAutoUpgrader;
     cds_Temp: TClientDataSet;
     tmr_Count: TTimer;
@@ -35,11 +35,11 @@ type
     act_Win_CloseCurWin: TWindowClose;
     act_Win_Wizard: TAction;
     act_cwsf_print: TAction;
-    act_cwgl_SfCsSet: TAction;
-    act_cwgl_SfInfoPublish: TAction;
+    act_Data_WebSet: TAction;
+    act_Data_WebInfoPublish: TAction;
     act_Interface_Xjgl: TAction;
     act_Win_HintMessage: TAction;
-    act_Stu_BmBrowse: TAction;
+    act_jxgzl_Cx: TAction;
     Status_SrvInfo: TRzStatusPane;
     dxBarManager1: TdxBarManager;
     dxBarManager1Bar1: TdxBar;
@@ -88,30 +88,21 @@ type
     dxBarButton26: TdxBarButton;
     dxBarButton51: TdxBarButton;
     act_Stu_BmInput: TAction;
-    act_Stu_BmConfirm: TAction;
     dxBarButton9: TdxBarButton;
-    act_Data_BkZySet: TAction;
-    act_Data_BkLbSet: TAction;
-    act_Data_JxmsSet: TAction;
-    act_Data_LrkSet: TAction;
-    act_Data_KcxzSet: TAction;
     dxBarSubItem2: TdxBarSubItem;
     act_Pk_RoomSet: TAction;
     act_Pk_KsPcSet: TAction;
     act_Pk_Input: TAction;
     act_Pk_Browse: TAction;
-    dxBarButton14: TdxBarButton;
-    dxBarButton15: TdxBarButton;
     dxBarButton16: TdxBarButton;
     dxBarButton17: TdxBarButton;
-    dxBarButton18: TdxBarButton;
     dxBarButton20: TdxBarButton;
     dxBarButton22: TdxBarButton;
     dxBarButton23: TdxBarButton;
     dxBarButton27: TdxBarButton;
     act_Data_FileInput: TAction;
     dxBarButton28: TdxBarButton;
-    act_cwgl_WebSite: TAction;
+    act_cwgl_OpenWebSite: TAction;
     dxBarButton29: TdxBarButton;
     act_Pk_KsKcSet: TAction;
     dxBarButton30: TdxBarButton;
@@ -135,13 +126,21 @@ type
     dxBarButton54: TdxBarButton;
     act_Cj_Upload: TAction;
     dxbrbtn1: TdxBarButton;
-    act_Stu_BmData_Clear: TAction;
+    act_Data_ReleaseGzlb: TAction;
     dxBarButton55: TdxBarButton;
-    act_Data_SykSet: TAction;
     dxBarButton10: TdxBarButton;
+    act_Data_jxgzlSet: TAction;
+    dxBarButton13: TdxBarButton;
+    RzBackground1: TRzBackground;
+    act_Data_Jxms: TAction;
+    act_Data_Kcxz: TAction;
+    lbl_SystemName: TRzLabel;
+    act_jxgzl_DataImport: TAction;
+    act_Data_XnXqSet: TAction;
+    Status_CurXnXq: TRzStatusPane;
+    act_jxgzl_js: TAction;
+    dxBarButton14: TdxBarButton;
     procedure act_Cj_CjBrowseExecute(Sender: TObject);
-    procedure act_Cj_CjInputExecute(Sender: TObject);
-    procedure act_Cj_InitKsCjbExecute(Sender: TObject);
     procedure act_sys_ExitExecute(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure act_hlp_aboutExecute(Sender: TObject);
@@ -149,7 +148,6 @@ type
     procedure act_sys_CzyExecute(Sender: TObject);
     procedure act_sys_ChgCzyPwdExecute(Sender: TObject);
     procedure act_hlp_RegExecute(Sender: TObject);
-    procedure act_StudentExecute(Sender: TObject);
     procedure FormPaint(Sender: TObject);
     procedure FormCanResize(Sender: TObject; var NewWidth, NewHeight: Integer;
       var Resize: Boolean);
@@ -168,8 +166,8 @@ type
     procedure act_sys_IpSetExecute(Sender: TObject);
     procedure act_Interface_XjglExecute(Sender: TObject);
     procedure act_cwgl_NetPaySetExecute(Sender: TObject);
-    procedure act_cwgl_SfInfoPublishExecute(Sender: TObject);
-    procedure act_cwgl_SfCsSetExecute(Sender: TObject);
+    procedure act_Data_WebInfoPublishExecute(Sender: TObject);
+    procedure act_Data_WebSetExecute(Sender: TObject);
     procedure act_cwsf_POSExecute(Sender: TObject);
     procedure act_cwgl_AuditAndIntoExecute(Sender: TObject);
     procedure act_Interface_OtherExecute(Sender: TObject);
@@ -179,7 +177,7 @@ type
     procedure FormResize(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure act_Interface_KsxtSetExecute(Sender: TObject);
-    procedure act_Stu_BmBrowseExecute(Sender: TObject);
+    procedure act_jxgzl_Browse(Sender: TObject);
     procedure act_Win_CloseAllExecute(Sender: TObject);
     procedure act_sys_LockScreenExecute(Sender: TObject);
     procedure act_ReportDesignExecute(Sender: TObject);
@@ -188,31 +186,18 @@ type
     procedure tmr1Timer(Sender: TObject);
     procedure act_sys_SysLogExecute(Sender: TObject);
     procedure act_cwgl_NetBankLoginExecute(Sender: TObject);
-    procedure act_Data_MzExecute(Sender: TObject);
-    procedure act_Data_ZzmmExecute(Sender: TObject);
-    procedure act_Data_BkLbSetExecute(Sender: TObject);
-    procedure act_Data_BkZySetExecute(Sender: TObject);
-    procedure act_Data_KcxzSetExecute(Sender: TObject);
-    procedure act_Data_JxmsSetExecute(Sender: TObject);
-    procedure act_Data_LrkSetExecute(Sender: TObject);
-    procedure act_Pk_RoomSetExecute(Sender: TObject);
     procedure act_Data_FileInputExecute(Sender: TObject);
-    procedure act_Stu_BmInputExecute(Sender: TObject);
-    procedure act_Stu_BmConfirmExecute(Sender: TObject);
-    procedure act_cwgl_WebSiteExecute(Sender: TObject);
-    procedure act_Pk_KsKcSetExecute(Sender: TObject);
-    procedure act_Pk_InputExecute(Sender: TObject);
-    procedure act_Pk_AutoCreateExecute(Sender: TObject);
-    procedure act_Pk_KsPcSetExecute(Sender: TObject);
-    procedure act_Pk_BrowseExecute(Sender: TObject);
+    procedure act_cwgl_OpenWebSiteExecute(Sender: TObject);
     procedure act_PK_DeleteAllPKRecordExecute(Sender: TObject);
-    procedure act_PK_KsxzSetExecute(Sender: TObject);
-    procedure act_Cj_PrintDfbExecute(Sender: TObject);
-    procedure act_Cj_CjTotalExecute(Sender: TObject);
-    procedure act_Cj_CjImportExecute(Sender: TObject);
     procedure act_hlp_HelpExecute(Sender: TObject);
-    procedure act_Cj_UploadExecute(Sender: TObject);
-    procedure act_Stu_BmData_ClearExecute(Sender: TObject);
+    procedure act_Data_ReleaseGzlbExecute(Sender: TObject);
+    procedure act_Data_jxgzlSetExecute(Sender: TObject);
+    procedure act_Data_JxmsExecute(Sender: TObject);
+    procedure act_Data_KcxzExecute(Sender: TObject);
+    procedure act_Data_XnXqSetExecute(Sender: TObject);
+    procedure act_jxgzl_DataImportExecute(Sender: TObject);
+    procedure act_Stu_BmInputExecute(Sender: TObject);
+    procedure act_jxgzl_jsExecute(Sender: TObject);
   private
     { Private declarations }
     StatusDisplay: TStatusDisplay;
@@ -231,47 +216,16 @@ var
   Main: TMain;
 
 implementation
-uses Net, udm, uCzyRightSet, uCzyEdit,uChangeCzyPwd,uKsInfoBrowse,uPrintBHSet,uSchoolSet,uRoomSet,
-  uUserLoginLog, uOnlineUpdateSet, uIpSet, uNetBmTimeSet,uMzDmSet,uZzMmSet,uEnglishDjKsSet,uJsjDjKsSet,
-  uWebMessagePublish,uLockScreen,uSysLog,uReportDesign,uBkZyLbSet,uBkZySet,uSfDmSet,uKsBmEdit,
-  uKsBmConfirm,uKsKcSet,uZkzEdit,uAutoPkInput,uKcRoomEdit,uZkzInfoBrowse,uKsXzSet,uInitKsCjb,uCjTotal,
-  uCjInput,uCjBrowse,uKsDfbPrint,uCjImport,uCjUpload;
+uses Net, udm, uCzyRightSet, uCzyEdit,uChangeCzyPwd,uPrintBHSet,
+  uUserLoginLog, uOnlineUpdateSet, uIpSet, uNetBmTimeSet,ujxDataEdit,CnProgressFrm,
+  uWebMessagePublish,uLockScreen,uSysLog,uReportDesign,uXnXqSet,
+  ujxGzlBrowse,uExecSqlSet,uKcxzDmSet,uJxmsDmSet,uDataImport;
 
 {$R *.dfm}
 
 procedure TMain.act_Cj_CjBrowseExecute(Sender: TObject);
 begin
-  ShowMdiChildForm(TCjBrowse);
-end;
-
-procedure TMain.act_Cj_CjImportExecute(Sender: TObject);
-begin
-  ShowMdiChildForm(TCjImport);
-end;
-
-procedure TMain.act_Cj_CjInputExecute(Sender: TObject);
-begin
-  ShowMdiChildForm(TCjInput);
-end;
-
-procedure TMain.act_Cj_CjTotalExecute(Sender: TObject);
-begin
-  ShowMdiChildForm(TCjTotal);
-end;
-
-procedure TMain.act_Cj_InitKsCjbExecute(Sender: TObject);
-begin
-  ShowMdiChildForm(TInitKsCjb);
-end;
-
-procedure TMain.act_Cj_PrintDfbExecute(Sender: TObject);
-begin
-  ShowMdiChildForm(TKsDfbPrint);
-end;
-
-procedure TMain.act_Cj_UploadExecute(Sender: TObject);
-begin
-  ShowMdiChildForm(TCjUpload);
+  ShowMdiChildForm(TjxGzlBrowse);
 end;
 
 procedure TMain.act_hlp_aboutExecute(Sender: TObject);
@@ -342,12 +296,12 @@ begin
   //TNetPayTimeSet.Create(nil).Show;
 end;
 
-procedure TMain.act_cwgl_SfInfoPublishExecute(Sender: TObject);
+procedure TMain.act_Data_WebInfoPublishExecute(Sender: TObject);
 begin
   ShowMdiChildForm(TWebMessagePublish);
 end;
 
-procedure TMain.act_cwgl_WebSiteExecute(Sender: TObject);
+procedure TMain.act_cwgl_OpenWebSiteExecute(Sender: TObject);
 var
   sWebSrvUrl:string;
 begin
@@ -393,44 +347,24 @@ begin
   ShowMdiChildForm(TCzyRightSet);
 end;
 
-procedure TMain.act_Data_BkLbSetExecute(Sender: TObject);
+procedure TMain.act_Data_JxmsExecute(Sender: TObject);
 begin
-  ShowMdiChildForm(TBkZyLbSet);
+  ShowMdiChildForm(TJxmsDmSet);
 end;
 
-procedure TMain.act_Data_BkZySetExecute(Sender: TObject);
+procedure TMain.act_Data_KcxzExecute(Sender: TObject);
 begin
-  ShowMdiChildForm(TBkZySet);
-end;
-
-procedure TMain.act_Data_LrkSetExecute(Sender: TObject);
-begin
-  ShowMdiChildForm(TEnglishDjKsSet);
-end;
-
-procedure TMain.act_Data_JxmsSetExecute(Sender: TObject);
-begin
-  ShowMdiChildForm(TJsjDjKsSet);
-end;
-
-procedure TMain.act_Data_MzExecute(Sender: TObject);
-begin
-  ShowMdiChildForm(TMzDmSet);
-end;
-
-procedure TMain.act_Data_KcxzSetExecute(Sender: TObject);
-begin
-  ShowMdiChildForm(TSchoolSet);
+  ShowMdiChildForm(TKcxzDmSet);
 end;
 
 procedure TMain.act_Data_FileInputExecute(Sender: TObject);
 begin
-  ShowMdiChildForm(TSfDmSet);
+  //ShowMdiChildForm(TSfDmSet);
 end;
 
-procedure TMain.act_Data_ZzmmExecute(Sender: TObject);
+procedure TMain.act_Data_jxgzlSetExecute(Sender: TObject);
 begin
-  ShowMdiChildForm(TZzMmSet);
+  ShowMdiChildForm(TExecSqlSet);
 end;
 
 procedure TMain.act_DdMoneyExecute(Sender: TObject);
@@ -500,39 +434,48 @@ begin
   //ShowMdiChildForm(TIntf_Jwxt);
 end;
 
-procedure TMain.act_Pk_AutoCreateExecute(Sender: TObject);
+procedure TMain.act_jxgzl_DataImportExecute(Sender: TObject);
 begin
-  ShowMdiChildForm(TAutoPkInput);
+  ShowMdiChildForm(TDataImport);
 end;
 
-procedure TMain.act_Pk_BrowseExecute(Sender: TObject);
+procedure TMain.act_jxgzl_jsExecute(Sender: TObject);
+var
+  iCount:Integer;
+  sqlstr:string;
+  cds_Temp:TClientDataSet;
 begin
-  ShowMdiChildForm(TZkzInfoBrowse);
-end;
-
-procedure TMain.act_Pk_InputExecute(Sender: TObject);
-begin
-  ShowMdiChildForm(TZkzEdit);
-end;
-
-procedure TMain.act_Pk_KsKcSetExecute(Sender: TObject);
-begin
-  ShowMdiChildForm(TKsKcSet);
-end;
-
-procedure TMain.act_Pk_KsPcSetExecute(Sender: TObject);
-begin
-  ShowMdiChildForm(TKcRoomEdit);
-end;
-
-procedure TMain.act_PK_KsxzSetExecute(Sender: TObject);
-begin
-  ShowMdiChildForm(TKsxzSet);
-end;
-
-procedure TMain.act_Pk_RoomSetExecute(Sender: TObject);
-begin
-  ShowMdiChildForm(TRoomSet);
+  if MessageBox(Handle, '真的要开始计算当前学年学期的教学工作量吗？　',
+    '系统提示', MB_YESNO + MB_ICONQUESTION + MB_DEFBUTTON2 + MB_TOPMOST) =
+    IDNO then
+  begin
+    Exit;
+  end;
+  sqlstr := 'select count(*) from 当前工作量核算表';
+  iCount := vobj_Admin.GetRecordBySqlCmd(sqlstr);
+  ShowProgress('核算工作量...');
+  sqlstr := 'select * from 系数配置表 order by 规则类型,系数类别,执行顺序';
+  cds_Temp := TClientDataSet.Create(nil);
+  try
+    cds_Temp.XMLData := dm.OpenData(sqlstr);
+    UpdateProgressMax(cds_Temp.RecordCount);
+    while not cds_Temp.Eof do
+    begin
+      UpdateProgress(cds_Temp.RecNo);
+      if not DM.ExecSql(cds_Temp.FieldByName('sqltext').AsString) then
+      begin
+        Exit;
+      end;
+      cds_Temp.Next;
+    end;
+    dm.ExecSql('update 当前工作量核算表 set 理论工作量=理论学时*理论课型系数*理论规模系数,实践工作量=实践课型系数*实践规模系数');
+    dm.ExecSql('update 当前工作量核算表 set 合计工作量=理论工作量+实践工作量');
+    MessageBox(Handle, '当前学年学期的教学工作量核算完成！　', '系统提示', 
+      MB_OK + MB_ICONINFORMATION + MB_TOPMOST);
+  finally
+    HideProgress;
+    cds_Temp.Free;
+  end;
 end;
 
 procedure TMain.act_ReportDesignExecute(Sender: TObject);
@@ -569,9 +512,14 @@ begin
   ShowMdiChildForm(TSysLog);
 end;
 
-procedure TMain.act_cwgl_SfCsSetExecute(Sender: TObject);
+procedure TMain.act_Data_WebSetExecute(Sender: TObject);
 begin
   ShowMdiChildForm(TNetBmTimeSet);
+end;
+
+procedure TMain.act_Data_XnXqSetExecute(Sender: TObject);
+begin
+  ShowMdiChildForm(TXnXqSet);
 end;
 
 procedure TMain.act_sys_LockScreenExecute(Sender: TObject);
@@ -579,38 +527,34 @@ begin
   TLockScreen.Create(Self).ShowModal;
 end;
 
-procedure TMain.act_StudentExecute(Sender: TObject);
+procedure TMain.act_Stu_BmInputExecute(Sender: TObject);
 begin
-  ShowMdiChildForm(TKsInfoBrowse);
+  ShowMdiChildForm(TjxDataEdit);
 end;
 
-procedure TMain.act_Stu_BmBrowseExecute(Sender: TObject);
+procedure TMain.act_jxgzl_Browse(Sender: TObject);
 begin
-  ShowMdiChildForm(TKsInfoBrowse);
+  ShowMdiChildForm(TjxGzlBrowse);
 end;
 
-procedure TMain.act_Stu_BmConfirmExecute(Sender: TObject);
-begin
-  ShowMdiChildForm(TKsBmConfirm);
-end;
-
-procedure TMain.act_Stu_BmData_ClearExecute(Sender: TObject);
+procedure TMain.act_Data_ReleaseGzlbExecute(Sender: TObject);
 var
-  sOk:string;
+  sqlstr,sOK:string;
   iCount:Integer;
 begin
-  if MessageBox(Handle, '真的清空考生报名表中的所有的考生报名记录吗？　',
+  if MessageBox(Handle, PAnsiChar('真的要清空【'+gb_Cur_Xn+'学年第'+gb_Cur_Xq+'学期】工作量核算表中的所有数据吗？　'),
     '系统提示', MB_YESNO + MB_ICONQUESTION + MB_DEFBUTTON2 + MB_TOPMOST) =
     IDNO then
   begin
     Exit;
   end;
 
-  iCount := vobj_Admin.GetRecordCount('考生报名表');
-  if iCount>0 then
+  sqlstr := 'select count(*) from 当前工作量核算表';
+  iCount := vobj_Admin.GetRecordBySqlCmd(sqlstr);
+  //if iCount>0 then
   begin
     if MessageBox(Handle, PChar('严重警告！' + #13#10#13#10 +
-      '　　数据库中已存在【'+IntToStr(iCount)+'】条考生报名记录！真的要删除它们吗？　'),
+      '　　数据库中已存在【'+IntToStr(iCount)+'】条记录！真的要删除它们吗？　'),
       '系统提示', MB_YESNO + MB_ICONSTOP + MB_DEFBUTTON2 +
       MB_TOPMOST) = IDNO then
     begin
@@ -621,14 +565,9 @@ begin
   if not InputQuery('操作确认','请输入【OK】两个字符以确认删除：',sOK) then Exit;
   if UpperCase(sOk)<>'OK' then Exit;
 
-  if dm.ExecSql('delete from 准考证表') and dm.ExecSql('delete from 考生报名表') then
-    MessageBox(Handle, '操作完成！考生报名表中的所有记录已删除！　',
+  if dm.ExecSql('delete from 当前工作量核算表') then
+    MessageBox(Handle, '操作完成！当前学年学期工作量核算表中的所有记录已删除！　',
       '系统提示', MB_OK + MB_ICONINFORMATION + MB_TOPMOST);
-end;
-
-procedure TMain.act_Stu_BmInputExecute(Sender: TObject);
-begin
-  ShowMdiChildForm(TKsBmEdit);
 end;
 
 procedure TMain.act_sys_LoginLogExecute(Sender: TObject);
@@ -802,7 +741,7 @@ end;
 
 procedure TMain.FormCreate(Sender: TObject);
 begin
-  Application.OnMessage:=TMessageHandler.AppMessage;  //ENTER --> TAB  
+  Application.OnMessage:=TMessageHandler.AppMessage;  //ENTER --> TAB
   gbCanClose := False;
   lbl_CzyName.Caption := gb_Czy_Name;
   UpdateStatus;//更新状态
@@ -827,6 +766,8 @@ begin
     Self.Top := 1;
     Self.Left := 1;
   end;
+  lbl_SystemName.Left := Trunc((Self.ClientWidth-lbl_SystemName.Width)/2);
+  lbl_SystemName.Top := Trunc((Self.ClientHeight-lbl_SystemName.Height)/2)-50;
   if StatusDisplay<>nil then
   begin
     StatusDisplay.Left := Self.ClientWidth-StatusDisplay.Width-6;
@@ -850,6 +791,11 @@ begin
   end;
   }
   tmr1.Enabled := False;
+  dm.GetCurrentXnXq;
+  if (gb_Cur_Xn='') or (gb_Cur_Xq='') then
+    act_Data_XnXqSetExecute(Self)
+  else
+    Self.Status_CurXnXq.Caption := gb_Cur_Xn+'学年第'+gb_Cur_Xq+'学期';
 end;
 
 procedure TMain.InitMenuItem;

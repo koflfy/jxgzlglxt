@@ -3,8 +3,8 @@ object DataImport: TDataImport
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = #25968#25454#23548#20837
-  ClientHeight = 331
-  ClientWidth = 491
+  ClientHeight = 519
+  ClientWidth = 743
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -5081,24 +5081,28 @@ object DataImport: TDataImport
   object Panel3: TPanel
     Left = 0
     Top = 56
-    Width = 376
-    Height = 254
+    Width = 628
+    Height = 442
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
+    ExplicitWidth = 376
+    ExplicitHeight = 254
     object GroupBox2: TGroupBox
       Left = 0
       Top = 0
-      Width = 376
-      Height = 254
+      Width = 628
+      Height = 442
       Align = alClient
       Caption = #23383#27573#37197#23545#65306
       TabOrder = 0
+      ExplicitWidth = 376
+      ExplicitHeight = 254
       object vl_Field: TValueListEditor
         Left = 2
         Top = 16
-        Width = 372
-        Height = 201
+        Width = 624
+        Height = 389
         Align = alClient
         ScrollBars = ssVertical
         TabOrder = 0
@@ -5107,19 +5111,23 @@ object DataImport: TDataImport
           #28304#23383#27573
           'aaaaa')
         OnGetPickList = vl_FieldGetPickList
+        ExplicitWidth = 372
+        ExplicitHeight = 201
         ColWidths = (
-          176
-          190)
+          266
+          352)
       end
       object pnl1: TPanel
         Left = 2
-        Top = 217
-        Width = 372
+        Top = 405
+        Width = 624
         Height = 35
         Align = alBottom
         BevelOuter = bvNone
         TabOrder = 1
         Visible = False
+        ExplicitTop = 217
+        ExplicitWidth = 372
         object lbl1: TLabel
           Left = 24
           Top = 10
@@ -5147,8 +5155,8 @@ object DataImport: TDataImport
   end
   object StatusBarEx1: TStatusBarEx
     Left = 0
-    Top = 310
-    Width = 491
+    Top = 498
+    Width = 743
     Height = 21
     Panels = <
       item
@@ -5161,46 +5169,51 @@ object DataImport: TDataImport
       end>
     ParentFont = True
     UseSystemFont = False
+    ExplicitTop = 310
+    ExplicitWidth = 491
     object ProgressBar1: TProgressBar
       Left = 72
       Top = 2
-      Width = 304
+      Width = 655
       Height = 19
       Align = alCustom
       TabOrder = 0
-    end
-    object chk_Delete: TCheckBox
-      Left = 387
-      Top = 3
-      Width = 88
-      Height = 17
-      Hint = #23548#20837#21069#20808#21024#38500#21407#26377#30340#25968#25454
-      Caption = #23548#20837#21069#28165#31354
-      ParentShowHint = False
-      ShowHint = True
-      TabOrder = 1
-      OnClick = chk_DeleteClick
     end
   end
   object GroupBox1: TGroupBox
     Left = 0
     Top = 0
-    Width = 491
+    Width = 743
     Height = 56
     Align = alTop
     Caption = #35201#23548#20837#30340'Excel'#65306
     TabOrder = 2
+    ExplicitWidth = 491
+    object lbl2: TLabel
+      Left = 16
+      Top = 23
+      Width = 36
+      Height = 14
+      Caption = #23398#24180#65306
+    end
+    object lbl3: TLabel
+      Left = 140
+      Top = 23
+      Width = 36
+      Height = 14
+      Caption = #23398#26399#65306
+    end
     object edt_Excel: TEdit
-      Left = 13
+      Left = 259
       Top = 20
-      Width = 222
+      Width = 295
       Height = 22
       ReadOnly = True
       TabOrder = 0
       OnChange = edt_ExcelChange
     end
     object btn_Open: TBitBtn
-      Left = 351
+      Left = 711
       Top = 17
       Width = 25
       Height = 25
@@ -5266,9 +5279,9 @@ object DataImport: TDataImport
       NumGlyphs = 2
     end
     object cbb_Tb: TComboBox
-      Left = 242
+      Left = 560
       Top = 20
-      Width = 97
+      Width = 139
       Height = 22
       Style = csDropDownList
       Enabled = False
@@ -5276,32 +5289,41 @@ object DataImport: TDataImport
       TabOrder = 2
       OnClick = cbb_TbClick
     end
-    object btn_Exit: TBitBtn
-      Left = 397
-      Top = 17
-      Width = 78
-      Height = 25
-      Caption = #36864#20986'[X]'
+    object edt_Year: TEdit
+      Left = 56
+      Top = 20
+      Width = 73
+      Height = 22
       TabOrder = 3
-      OnClick = btn_ExitClick
-      NumGlyphs = 2
+      Text = '2012'
+    end
+    object edt_Xq: TEdit
+      Left = 180
+      Top = 20
+      Width = 45
+      Height = 22
+      TabOrder = 4
+      Text = '2'
     end
   end
   object Panel1: TPanel
-    Left = 376
+    Left = 628
     Top = 56
     Width = 115
-    Height = 254
+    Height = 442
     Align = alRight
     BevelOuter = bvNone
     TabOrder = 3
+    ExplicitLeft = 376
+    ExplicitHeight = 254
     object lbl_Hint: TLabel
       Left = 0
-      Top = 240
+      Top = 428
       Width = 115
       Height = 14
       Align = alBottom
       Alignment = taCenter
+      ExplicitTop = 240
       ExplicitWidth = 4
     end
     object btn_Auto: TBitBtn
@@ -5493,12 +5515,34 @@ object DataImport: TDataImport
     end
     object chk_Fast: TCheckBox
       Left = 11
-      Top = 224
+      Top = 229
       Width = 91
       Height = 17
       Caption = #22823#25968#25454#37327#23548#20837
       TabOrder = 3
       OnClick = chk_FastClick
+    end
+    object btn_Exit: TBitBtn
+      Left = 21
+      Top = 407
+      Width = 78
+      Height = 25
+      Caption = #36864#20986'[X]'
+      TabOrder = 4
+      OnClick = btn_ExitClick
+      NumGlyphs = 2
+    end
+    object chk_Delete: TCheckBox
+      Left = 22
+      Top = 371
+      Width = 88
+      Height = 17
+      Hint = #23548#20837#21069#20808#21024#38500#21407#26377#30340#25968#25454
+      Caption = #23548#20837#21069#28165#31354
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 5
+      OnClick = chk_DeleteClick
     end
   end
   object OpenDialog1: TOpenDialog

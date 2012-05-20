@@ -116,7 +116,8 @@ type
     function  DownLoadKsPhoto(const sUrl:string; img:TImage;const OverPhoto:Boolean=True):Boolean;
     function  UpLoadKsPhoto(const BmNo,sFileName: string):Boolean;
 
-    procedure GetSfList(out sList:TStrings);
+    procedure GetXnList(out sList:TStrings);
+    procedure GetXyList(out sList:TStrings);
     procedure GetSchoolList(const sf:string;out sList:TStrings);
     procedure GetEnglishDjKsList(out sList:TStrings);
     procedure GetJsjDjKsList(out sList:TStrings);
@@ -126,6 +127,7 @@ type
     procedure GetZyList(const ZyLb:string;out sList:TStrings);
     procedure GetKsKcList(const bkLb:string;out sList:TStrings);
     function  GetWebSrvUrl:string;
+    procedure GetCurrentXnXq;
   end;
 
 //{$DEFINE WAD_DEBUG}
@@ -143,7 +145,7 @@ const
 var
   gbIsOK,gbCanClose:Boolean;
   gb_Czy_ID,gb_Czy_Name,gb_Czy_Level:String;
-  gb_Cur_Xn,gb_Cur_Sfmc,gb_Cur_StartTime,gb_Cur_EndTime:string; //当前收费名称,开始时间,结束时间
+  gb_Cur_Xn,gb_Cur_Xq,gb_Cur_Sfmc,gb_Cur_StartTime,gb_Cur_EndTime:string; //当前收费名称,开始时间,结束时间
 
   gb_Last_PrintBH:string; //上次用过的打印编号
   DM: TDM;
@@ -955,6 +957,22 @@ begin
   end;
 end;
 
+procedure TDM.GetCurrentXnXq;
+var
+  sqlstr,sMasterValue:string;
+  cds_Temp:TClientDataSet;
+begin
+  cds_Temp := TClientDataSet.Create(nil);
+  sqlstr := 'select 学年,学期 from 当前学年学期表';
+  try
+    cds_Temp.XMLData := OpenData(sqlstr);
+    gb_Cur_Xn := cds_Temp.FieldByName('学年').AsString;
+    gb_Cur_Xq := cds_Temp.FieldByName('学期').AsString;
+  finally
+    cds_Temp.Free;
+  end;
+end;
+
 function TDM.GetDeltaRepSetInfo(const RepFileName: string; out sDeltaTableName,
   sMasterFieldName, sDeltaFieldName: string): Boolean;
 var
@@ -1141,11 +1159,19 @@ begin
   GetListFromTable(sqlstr,sList);
 end;
 
-procedure TDM.GetSfList(out sList: TStrings);
+procedure TDM.GetXnList(out sList: TStrings);
 var
   sqlstr:string;
 begin
-  sqlstr := 'select 短名称 from 省份代码表 order by 显示顺序';
+  sqlstr := 'select distinct 学年 from 工作量核算表 order by 学年';
+  GetListFromTable(sqlstr,sList);
+end;
+
+procedure TDM.GetXyList(out sList: TStrings);
+var
+  sqlstr:string;
+begin
+  sqlstr := 'select distinct 开课学院 from 工作量核算表 order by 开课学院';
   GetListFromTable(sqlstr,sList);
 end;
 

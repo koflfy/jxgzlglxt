@@ -148,6 +148,6 @@ begin
 end;
 
 initialization
-  TWebAppSockObjectFactory.Create('ZsbBm')
+  TWebAppSockObjectFactory.Create('jxgzl')
 
 end.

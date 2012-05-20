@@ -1,4 +1,4 @@
-unit uZzMmSet;
+unit uKcxzDmSet;
 
 interface
 
@@ -8,7 +8,7 @@ uses
   DBGrids, GridsEh, pngimage, DBGridEhGrouping, frxpngimage;
 
 type
-  TZzMmSet = class(TForm)
+  TKcxzDmSet = class(TForm)
     DataSource1: TDataSource;
     DBGrid1: TDBGridEh;
     ClientDataSet1: TClientDataSet;
@@ -39,13 +39,13 @@ type
   end;
 
 var
-  ZzMmSet: TZzMmSet;
+  KcxzDmSet: TKcxzDmSet;
 
 implementation
 uses uDM;
 {$R *.dfm}
 
-procedure TZzMmSet.btn_AddClick(Sender: TObject);
+procedure TKcxzDmSet.btn_AddClick(Sender: TObject);
 begin
   if not ClientDataSet1.ReadOnly then
   begin
@@ -54,7 +54,7 @@ begin
   end;
 end;
 
-procedure TZzMmSet.btn_DelClick(Sender: TObject);
+procedure TKcxzDmSet.btn_DelClick(Sender: TObject);
 begin
   if ClientDataSet1.ReadOnly then Exit;
   
@@ -67,12 +67,12 @@ begin
   btn_Save.Click;
 end;
 
-procedure TZzMmSet.btn_ExitClick(Sender: TObject);
+procedure TKcxzDmSet.btn_ExitClick(Sender: TObject);
 begin
   close;
 end;
 
-procedure TZzMmSet.btn_SaveClick(Sender: TObject);
+procedure TKcxzDmSet.btn_SaveClick(Sender: TObject);
 begin
   if not DataSetNoSave(ClientDataSet1) then
     Exit;
@@ -85,12 +85,12 @@ begin
   end;
 end;
 
-procedure TZzMmSet.ClientDataSet1NewRecord(DataSet: TDataSet);
+procedure TKcxzDmSet.ClientDataSet1NewRecord(DataSet: TDataSet);
 begin
   DataSet.FieldByName('显示顺序').AsInteger := DataSet.RecordCount+1;
 end;
 
-procedure TZzMmSet.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TKcxzDmSet.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   if ClientDataSet1.State in [dsInsert,dsEdit] then
     ClientDataSet1.Post;
@@ -105,20 +105,20 @@ begin
   Action := caFree;
 end;
 
-procedure TZzMmSet.FormCreate(Sender: TObject);
+procedure TKcxzDmSet.FormCreate(Sender: TObject);
 begin
   OpenTable;
 end;
 
-procedure TZzMmSet.OpenTable;
+procedure TKcxzDmSet.OpenTable;
 var
   i: Integer;
 begin
-  sqlStr := 'select * from 政治面貌代码表 order by 显示顺序';
+  sqlStr := 'select * from  课程性质表 order by 显示顺序';
   ClientDataSet1.XMLData := dm.OpenData(sqlStr);
 end;
 
-procedure TZzMmSet.PageControl1Change(Sender: TObject);
+procedure TKcxzDmSet.PageControl1Change(Sender: TObject);
 begin
   OpenTable;
 end;

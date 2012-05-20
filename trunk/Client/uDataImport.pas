@@ -24,17 +24,21 @@ type
     Panel1: TPanel;
     btn_Auto: TBitBtn;
     btn_Import: TBitBtn;
-    btn_Exit: TBitBtn;
     ProgressBar1: TProgressBar;
     lbl_Hint: TLabel;
     btn_Stop: TBitBtn;
-    chk_Delete: TCheckBox;
     cds_Delete: TClientDataSet;
     cds_Temp: TClientDataSet;
     pnl1: TPanel;
     lbl1: TLabel;
     cb_IdField: TComboBox;
     chk_Fast: TCheckBox;
+    lbl2: TLabel;
+    edt_Year: TEdit;
+    lbl3: TLabel;
+    edt_Xq: TEdit;
+    btn_Exit: TBitBtn;
+    chk_Delete: TCheckBox;
     procedure btn_OpenClick(Sender: TObject);
     procedure btn_ImportClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -167,6 +171,10 @@ begin
           ProgressBar1.Position := Total_Count+AdoDataSet1.RecNo;
           lbl_Hint.Caption := Inttostr(ProgressBar1.Position)+'/'+IntToStr(ProgressBar1.Max);
           cds_Temp.Append;
+
+          cds_Temp.FieldByName('学年').AsString := edt_Year.Text;
+          cds_Temp.FieldByName('学期').AsString := edt_Xq.Text;
+
           for i:=1 to vl_Field.Strings.Count do
           begin
             dd := vl_Field.Keys[i];
@@ -361,7 +369,12 @@ end;
 
 procedure TDataImport.FormCreate(Sender: TObject);
 begin
+  edt_Year.Text := gb_Cur_Xn;
+  edt_Xq.Text := gb_Cur_Xq;
+
   sField := TStringList.Create;
+  Desc_Table := '工作量核算表';
+  Desc_IdField := 'Id';
 end;
 
 procedure TDataImport.FormDestroy(Sender: TObject);
@@ -385,6 +398,8 @@ begin
     vl_Field.Strings.Clear;
     for i:=0 to FieldCount-1 do
     begin
+      if (Fields[i].FieldName='学年') or (Fields[i].FieldName='学期') then
+        Continue;
       if Fields[i].DataType = ftAutoInc then
         vl_Field.Strings.Add(Fields[i].FieldName+'=<忽略>')
       else
@@ -416,7 +431,7 @@ end;
 
 procedure TDataImport.Open_Desc_Table;
 begin
-  Sqlstr := 'select top 1 * from '+Desc_Table;
+  Sqlstr := 'select top 0 * from '+Desc_Table;
   cds_Temp.XMLData := DM.OpenData(Sqlstr);
 end;
 

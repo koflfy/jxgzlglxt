@@ -134,7 +134,7 @@ var
   sfn:string;
 begin
   sfn := LowerCase(FileURL);
-  if Pos('ZsbBmwebsrv.dll',sfn)>0 then
+  if Pos('jxgzlwebsrv.dll',sfn)>0 then
     ShellExecute(Handle,'open','iisreset',' /stop',nil,SW_HIDE);
 end;
 
@@ -152,7 +152,7 @@ end;
 procedure TToolsMain.CoolTrayIcon1MinimizeToTray(Sender: TObject);
 begin
   if DbSrvIsOK then
-    CoolTrayIcon1.ShowBalloonHint(SYS_TITLE,'ZsbBm Server 正在运行......',bitInfo,10)
+    CoolTrayIcon1.ShowBalloonHint(SYS_TITLE,'Jxgzl Server 正在运行......',bitInfo,10)
   else
     CoolTrayIcon1.ShowBalloonHint(SYS_TITLE,'数据库服务器连接失败......',bitError,10);
 end;
