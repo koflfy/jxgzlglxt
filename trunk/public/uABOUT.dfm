@@ -379,7 +379,7 @@ object AboutBox: TAboutBox
       Width = 182
       Height = 26
       ParentEffect.ParentFont = False
-      Caption = #25945#23398#24037#20316#37327#31649#29702#31995#32479
+      Caption = #25945#23398#24037#20316#37327#26680#31639#31995#32479
       Font.Charset = GB2312_CHARSET
       Font.Color = clBlue
       Font.Height = -20

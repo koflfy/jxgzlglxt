@@ -373,7 +373,7 @@ begin
   edt_Xq.Text := gb_Cur_Xq;
 
   sField := TStringList.Create;
-  Desc_Table := '工作量核算表';
+  Desc_Table := '教学任务表';
   Desc_IdField := 'Id';
 end;
 
@@ -398,7 +398,7 @@ begin
     vl_Field.Strings.Clear;
     for i:=0 to FieldCount-1 do
     begin
-      if (Fields[i].FieldName='学年') or (Fields[i].FieldName='学期') then
+      if (Fields[i].FieldName='学年') or (Fields[i].FieldName='学期') or (Fields[i].DataType = ftAutoInc) then
         Continue;
       if Fields[i].DataType = ftAutoInc then
         vl_Field.Strings.Add(Fields[i].FieldName+'=<忽略>')
@@ -431,7 +431,7 @@ end;
 
 procedure TDataImport.Open_Desc_Table;
 begin
-  Sqlstr := 'select top 0 * from '+Desc_Table;
+  Sqlstr := 'select * from '+Desc_Table;
   cds_Temp.XMLData := DM.OpenData(Sqlstr);
 end;
 

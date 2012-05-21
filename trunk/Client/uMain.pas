@@ -68,7 +68,6 @@ type
     dxBarButton34: TdxBarButton;
     dxBarButton35: TdxBarButton;
     dxBarButton36: TdxBarButton;
-    dxBarButton38: TdxBarButton;
     dxBarButton41: TdxBarButton;
     dxBarButton42: TdxBarButton;
     dxBarButton43: TdxBarButton;
@@ -90,42 +89,12 @@ type
     act_Stu_BmInput: TAction;
     dxBarButton9: TdxBarButton;
     dxBarSubItem2: TdxBarSubItem;
-    act_Pk_RoomSet: TAction;
-    act_Pk_KsPcSet: TAction;
-    act_Pk_Input: TAction;
-    act_Pk_Browse: TAction;
     dxBarButton16: TdxBarButton;
     dxBarButton17: TdxBarButton;
-    dxBarButton20: TdxBarButton;
-    dxBarButton22: TdxBarButton;
-    dxBarButton23: TdxBarButton;
-    dxBarButton27: TdxBarButton;
     act_Data_FileInput: TAction;
     dxBarButton28: TdxBarButton;
     act_cwgl_OpenWebSite: TAction;
     dxBarButton29: TdxBarButton;
-    act_Pk_KsKcSet: TAction;
-    dxBarButton30: TdxBarButton;
-    act_Pk_AutoCreate: TAction;
-    dxBarButton31: TdxBarButton;
-    act_PK_KsxzSet: TAction;
-    dxBarButton39: TdxBarButton;
-    act_PK_DeleteAllPKRecord: TAction;
-    dxBarButton40: TdxBarButton;
-    act_Cj_InitKsCjb: TAction;
-    act_Cj_CjInput: TAction;
-    act_Cj_CjBrowse: TAction;
-    dxBarButton49: TdxBarButton;
-    dxBarButton50: TdxBarButton;
-    dxBarButton52: TdxBarButton;
-    act_Cj_CjImport: TAction;
-    dxBarButton37: TdxBarButton;
-    act_Cj_PrintDfb: TAction;
-    dxBarButton53: TdxBarButton;
-    act_Cj_CjTotal: TAction;
-    dxBarButton54: TdxBarButton;
-    act_Cj_Upload: TAction;
-    dxbrbtn1: TdxBarButton;
     act_Data_ReleaseGzlb: TAction;
     dxBarButton55: TdxBarButton;
     dxBarButton10: TdxBarButton;
@@ -140,6 +109,11 @@ type
     Status_CurXnXq: TRzStatusPane;
     act_jxgzl_js: TAction;
     dxBarButton14: TdxBarButton;
+    act_Data_KcLb: TAction;
+    act_Data_RoomType: TAction;
+    dxBarButton15: TdxBarButton;
+    dxBarButton18: TdxBarButton;
+    lbl_CurXnXq: TRzLabel;
     procedure act_Cj_CjBrowseExecute(Sender: TObject);
     procedure act_sys_ExitExecute(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -198,6 +172,8 @@ type
     procedure act_jxgzl_DataImportExecute(Sender: TObject);
     procedure act_Stu_BmInputExecute(Sender: TObject);
     procedure act_jxgzl_jsExecute(Sender: TObject);
+    procedure act_Data_KcLbExecute(Sender: TObject);
+    procedure act_Data_RoomTypeExecute(Sender: TObject);
   private
     { Private declarations }
     StatusDisplay: TStatusDisplay;
@@ -216,7 +192,7 @@ var
   Main: TMain;
 
 implementation
-uses Net, udm, uCzyRightSet, uCzyEdit,uChangeCzyPwd,uPrintBHSet,
+uses Net, udm, uCzyRightSet, uCzyEdit,uChangeCzyPwd,uPrintBHSet,uKcLbDmSet,uRoomTypeSet,
   uUserLoginLog, uOnlineUpdateSet, uIpSet, uNetBmTimeSet,ujxDataEdit,CnProgressFrm,
   uWebMessagePublish,uLockScreen,uSysLog,uReportDesign,uXnXqSet,
   ujxGzlBrowse,uExecSqlSet,uKcxzDmSet,uJxmsDmSet,uDataImport;
@@ -298,19 +274,19 @@ end;
 
 procedure TMain.act_Data_WebInfoPublishExecute(Sender: TObject);
 begin
-  ShowMdiChildForm(TWebMessagePublish);
+  //ShowMdiChildForm(TWebMessagePublish);
 end;
 
 procedure TMain.act_cwgl_OpenWebSiteExecute(Sender: TObject);
-var
-  sWebSrvUrl:string;
+//var
+//  sWebSrvUrl:string;
 begin
-  sWebSrvUrl := vobj_Admin.GetWebSrvUrl;
-  if sWebSrvUrl='' then
-    MessageBox(Handle, 'Web服务器网址信息读取失败！请配置网站参数！　', 
-      '系统提示', MB_OK + MB_ICONSTOP + MB_TOPMOST)
-  else
-    ShellExecute(Handle,'open',PChar(sWebSrvUrl),nil,nil,SW_SHOW);
+  //sWebSrvUrl := vobj_Admin.GetWebSrvUrl;
+  //if sWebSrvUrl='' then
+  //  MessageBox(Handle, 'Web服务器网址信息读取失败！请配置网站参数！　',
+  //    '系统提示', MB_OK + MB_ICONSTOP + MB_TOPMOST)
+  //else
+  //  ShellExecute(Handle,'open',PChar(sWebSrvUrl),nil,nil,SW_SHOW);
 end;
 
 procedure TMain.act_cwsf_POSExecute(Sender: TObject);
@@ -350,6 +326,11 @@ end;
 procedure TMain.act_Data_JxmsExecute(Sender: TObject);
 begin
   ShowMdiChildForm(TJxmsDmSet);
+end;
+
+procedure TMain.act_Data_KcLbExecute(Sender: TObject);
+begin
+  ShowMdiChildForm(TKcLbDmSet);
 end;
 
 procedure TMain.act_Data_KcxzExecute(Sender: TObject);
@@ -468,9 +449,10 @@ begin
       end;
       cds_Temp.Next;
     end;
-    dm.ExecSql('update 当前工作量核算表 set 理论工作量=理论学时*理论课型系数*理论规模系数,实践工作量=实践课型系数*实践规模系数');
+    dm.ExecSql('update 当前工作量核算表 set 理论工作量=理论学时*理论课型系数*理论规模系数 where 理论学时 is not null');
+    dm.ExecSql('update 当前工作量核算表 set 实践工作量=实践课型系数*实践规模系数 where 实践学时 is not null');
     dm.ExecSql('update 当前工作量核算表 set 合计工作量=理论工作量+实践工作量');
-    MessageBox(Handle, '当前学年学期的教学工作量核算完成！　', '系统提示', 
+    MessageBox(Handle, '当前学年学期的教学工作量核算完成！　', '系统提示',
       MB_OK + MB_ICONINFORMATION + MB_TOPMOST);
   finally
     HideProgress;
@@ -514,7 +496,7 @@ end;
 
 procedure TMain.act_Data_WebSetExecute(Sender: TObject);
 begin
-  ShowMdiChildForm(TNetBmTimeSet);
+  //ShowMdiChildForm(TNetBmTimeSet);
 end;
 
 procedure TMain.act_Data_XnXqSetExecute(Sender: TObject);
@@ -568,6 +550,11 @@ begin
   if dm.ExecSql('delete from 当前工作量核算表') then
     MessageBox(Handle, '操作完成！当前学年学期工作量核算表中的所有记录已删除！　',
       '系统提示', MB_OK + MB_ICONINFORMATION + MB_TOPMOST);
+end;
+
+procedure TMain.act_Data_RoomTypeExecute(Sender: TObject);
+begin
+  ShowMdiChildForm(TRoomTypeSet);
 end;
 
 procedure TMain.act_sys_LoginLogExecute(Sender: TObject);
@@ -767,7 +754,9 @@ begin
     Self.Left := 1;
   end;
   lbl_SystemName.Left := Trunc((Self.ClientWidth-lbl_SystemName.Width)/2);
-  lbl_SystemName.Top := Trunc((Self.ClientHeight-lbl_SystemName.Height)/2)-50;
+  lbl_SystemName.Top := Trunc((Self.ClientHeight-lbl_SystemName.Height)/2)-100;
+  lbl_CurXnXq.Left := lbl_SystemName.Left+lbl_SystemName.Width-lbl_CurXnXq.Width-50;
+  lbl_CurXnXq.Top := lbl_SystemName.Top+180;
   if StatusDisplay<>nil then
   begin
     StatusDisplay.Left := Self.ClientWidth-StatusDisplay.Width-6;

@@ -14,13 +14,13 @@ type
     ClientDataSet1: TClientDataSet;
     pnl_Title: TPanel;
     img_Title: TImage;
-    img_Hint: TImage;
     lbl_Title: TLabel;
     pnl1: TPanel;
     btn_Del: TBitBtn;
     btn_Save: TBitBtn;
     btn_Exit: TBitBtn;
     btn_Add: TBitBtn;
+    img_Hint: TImage;
     procedure FormCreate(Sender: TObject);
     procedure btn_AddClick(Sender: TObject);
     procedure btn_DelClick(Sender: TObject);

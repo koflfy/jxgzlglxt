@@ -939,14 +939,34 @@ object XnXqSet: TXnXqSet
       Height = 14
       Caption = #24403#21069#23398#26399#65306
     end
+    object lbl1: TLabel
+      Left = 320
+      Top = 64
+      Width = 30
+      Height = 17
+      Caption = #23398#24180
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -14
+      Font.Name = 'Verdana'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
     object edt_Xn: TDBEditEh
       Left = 168
       Top = 61
       Width = 144
-      Height = 22
+      Height = 25
+      Alignment = taLeftJustify
       DataField = #23398#24180
       DataSource = DataSource1
       EditButtons = <>
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -14
+      Font.Name = 'Verdana'
+      Font.Style = [fsBold]
+      ParentFont = False
       TabOrder = 0
       Visible = True
     end
@@ -954,10 +974,23 @@ object XnXqSet: TXnXqSet
       Left = 168
       Top = 117
       Width = 144
-      Height = 22
+      Height = 25
+      Alignment = taLeftJustify
       DataField = #23398#26399
       DataSource = DataSource1
       EditButtons = <>
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -14
+      Font.Name = 'Verdana'
+      Font.Style = [fsBold]
+      Items.Strings = (
+        #31532'1'#23398#26399
+        #31532'2'#23398#26399)
+      KeyItems.Strings = (
+        '1'
+        '2')
+      ParentFont = False
       TabOrder = 1
       Visible = True
     end

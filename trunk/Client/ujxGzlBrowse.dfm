@@ -30,7 +30,6 @@ object jxGzlBrowse: TjxGzlBrowse
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 872
     object img_Title: TImage
       Left = 0
       Top = 0
@@ -569,7 +568,6 @@ object jxGzlBrowse: TjxGzlBrowse
       Align = alRight
       Caption = #23398#26399#65306
       TabOrder = 1
-      ExplicitLeft = 603
       object cbb_Xq: TDBComboBoxEh
         Left = 8
         Top = 20
@@ -595,7 +593,6 @@ object jxGzlBrowse: TjxGzlBrowse
       Align = alRight
       Caption = #23398#24180#65306
       TabOrder = 0
-      ExplicitLeft = 475
       object cbb_Xn: TDBComboBoxEh
         Left = 8
         Top = 20
@@ -616,7 +613,6 @@ object jxGzlBrowse: TjxGzlBrowse
       Align = alRight
       Caption = #23398#38498#65306
       TabOrder = 2
-      ExplicitLeft = 696
       object cbb_Xy: TDBComboBoxEh
         Left = 8
         Top = 20
@@ -646,8 +642,6 @@ object jxGzlBrowse: TjxGzlBrowse
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 2
-    ExplicitTop = 556
-    ExplicitWidth = 872
     DesignSize = (
       1042
       41)
@@ -673,7 +667,6 @@ object jxGzlBrowse: TjxGzlBrowse
       Caption = #20851#38381'[&C]'
       TabOrder = 4
       OnClick = btn_ExitClick
-      ExplicitLeft = 779
     end
     object cbb_Field: TDBFieldComboBox
       Left = 10
@@ -844,6 +837,18 @@ object jxGzlBrowse: TjxGzlBrowse
       end
       item
         EditButtons = <>
+        FieldName = #35838#31243#31867#21035
+        Footers = <>
+        Title.TitleButton = True
+      end
+      item
+        EditButtons = <>
+        FieldName = #25945#23398#22330#25152
+        Footers = <>
+        Title.TitleButton = True
+      end
+      item
+        EditButtons = <>
         FieldName = #25945#23398#27169#24335
         Footers = <>
         Title.ToolTips = True
@@ -955,12 +960,9 @@ object jxGzlBrowse: TjxGzlBrowse
     Top = 200
   end
   object ClientDataSet1: TClientDataSet
-    Active = True
     Aggregates = <>
     CommandText = 'select * from '#24037#20316#37327#26680#31639#34920
     Params = <>
-    ProviderName = 'DSP_Query'
-    RemoteServer = DM.SoapConnection1
     OnFilterRecord = ClientDataSet1FilterRecord
     Left = 288
     Top = 200

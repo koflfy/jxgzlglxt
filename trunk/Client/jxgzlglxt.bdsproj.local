@@ -57,5 +57,7 @@
     <Transaction>2012/05/21 03:00:46.906.dfm,E:\xxx\教学工作量管理系统\Client\uBkZyLbSet.dfm=</Transaction>
     <Transaction>2012/05/21 03:00:46.907.pas,E:\xxx\教学工作量管理系统\Client\uBkZySet.pas=</Transaction>
     <Transaction>2012/05/21 03:00:46.907.dfm,E:\xxx\教学工作量管理系统\Client\uBkZySet.dfm=</Transaction>
+    <Transaction>2012-05-21 08:50:43.416.pas,E:\xxx\教学工作量管理系统\Client\uRoomType.pas=E:\xxx\教学工作量管理系统\Client\uRoomTypeSet.pas</Transaction>
+    <Transaction>2012-05-21 08:50:43.416.dfm,E:\xxx\教学工作量管理系统\Client\uRoomType.dfm=E:\xxx\教学工作量管理系统\Client\uRoomTypeSet.dfm</Transaction>
   </Transactions>
 </BorlandProject>
