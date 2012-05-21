@@ -882,6 +882,19 @@ object jxDataEdit: TjxDataEdit
       end
       item
         EditButtons = <>
+        FieldName = #35838#31243#31867#21035
+        Footers = <>
+        Title.TitleButton = True
+        Width = 61
+      end
+      item
+        EditButtons = <>
+        FieldName = #25945#23398#22330#25152
+        Footers = <>
+        Title.TitleButton = True
+      end
+      item
+        EditButtons = <>
         FieldName = #25945#23398#27169#24335
         Footers = <>
         Title.ToolTips = True

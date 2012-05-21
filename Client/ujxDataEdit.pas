@@ -171,7 +171,7 @@ var
 begin
   sWhere := ' where 开课学院='+quotedstr(cbb_Xy.Text);
   sWhere := sWhere+' and 学年='+quotedstr(cbb_Xn.Text);
-  sWhere := sWhere+' and 学期='+quotedstr(cbb_Xq.Text);
+  sWhere := sWhere+' and 学期='+quotedstr(cbb_Xq.Value);
   Result := sWhere;
 end;
 

@@ -54,6 +54,23 @@ object Main: TMain
     Transparent = True
     TextStyle = tsShadow
   end
+  object lbl_CurXnXq: TRzLabel
+    Left = 315
+    Top = 308
+    Width = 337
+    Height = 35
+    Alignment = taRightJustify
+    Caption = '2011~2012'#23398#24180#31532'2'#23398#26399
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -32
+    Font.Name = #40657#20307
+    Font.Style = [fsBold]
+    ParentFont = False
+    Transparent = True
+    Visible = False
+    TextStyle = tsShadow
+  end
   object RzStatusBar1: TRzStatusBar
     Left = 0
     Top = 471
@@ -124,7 +141,7 @@ object Main: TMain
       'http://vir.jxstnu.edu.cn/jcgl/')
     InfoFileURL = 'http://vir.jxstnu.edu.cn/Jcgl/download/AutoUpdte.inf'
     VersionControl = byNumber
-    VersionDate = '2012-05-20 00:00:00'
+    VersionDate = '2012-05-21 00:00:00'
     VersionDateAutoSet = True
     OnDoOwnCloseAppMethod = auAutoUpgrader1DoOwnCloseAppMethod
     Left = 680
@@ -334,37 +351,37 @@ object Main: TMain
       OnExecute = act_sys_ExitExecute
     end
     object act_hlp_Help: TAction
-      Category = '09.'#24110#21161
+      Category = '07.'#24110#21161
       Caption = #24110#21161#20449#24687'(&H)'
       ImageIndex = 21
       OnExecute = act_hlp_HelpExecute
     end
     object act_hlp_Reg: TAction
-      Category = '09.'#24110#21161
+      Category = '07.'#24110#21161
       Caption = #31995#32479#27880#20876'(&R)'
       ImageIndex = 31
       OnExecute = act_hlp_RegExecute
     end
     object act_hlp_Update: TAction
-      Category = '09.'#24110#21161
+      Category = '07.'#24110#21161
       Caption = #22312#32447#21319#32423'(&O)'
       ImageIndex = 26
       OnExecute = act_hlp_UpdateExecute
     end
     object act_cwsf_UpdateReport: TAction
-      Category = '09.'#24110#21161
+      Category = '07.'#24110#21161
       Caption = #26356#26032#25253#34920#27169#26495'(&B)'
       ImageIndex = 26
       OnExecute = act_cwsf_UpdateReportExecute
     end
     object act_hlp_about: TAction
-      Category = '09.'#24110#21161
+      Category = '07.'#24110#21161
       Caption = #20851#20110#26412#31995#32479'(&A)'
       ImageIndex = 22
       OnExecute = act_hlp_aboutExecute
     end
     object act_Win_CloseAll: TWindowCascade
-      Category = '08.'#31383#21475
+      Category = '06.'#31383#21475
       Caption = #20851#38381#25152#26377#25171#24320#31383#21475'(&A)'
       Enabled = False
       Hint = 'Cascade'
@@ -372,20 +389,20 @@ object Main: TMain
       OnExecute = act_Win_CloseAllExecute
     end
     object act_Win_CloseCurWin: TWindowClose
-      Category = '08.'#31383#21475
+      Category = '06.'#31383#21475
       Caption = #20851#38381#24403#21069#27963#21160#31383#21475'(&C)'
       Enabled = False
       Hint = 'Close'
     end
     object act_Win_Wizard: TAction
-      Category = '08.'#31383#21475
+      Category = '06.'#31383#21475
       Caption = #23548#33322#31383#21475'(&W)'
       ImageIndex = 18
       OnExecute = act_Win_WizardExecute
       OnUpdate = act_Win_WizardUpdate
     end
     object act_ReportDesign: TAction
-      Category = '06.'#32479#35745#25253#34920
+      Category = '04.'#32479#35745#25253#34920
       Caption = #25253#34920#27169#26495#35774#35745'(&D)'
       ImageIndex = 23
       OnExecute = act_ReportDesignExecute
@@ -410,25 +427,25 @@ object Main: TMain
       OnExecute = act_Stu_BmInputExecute
     end
     object act_Interface_Xjgl: TAction
-      Category = '07.'#25509#21475#35774#32622
+      Category = '05.'#25509#21475#35774#32622
       Caption = #25945#21153#31995#32479#25509#21475#35774#32622'(&X)'
       ImageIndex = 16
       OnExecute = act_Interface_XjglExecute
     end
     object act_Win_HintMessage: TAction
-      Category = '08.'#31383#21475
+      Category = '06.'#31383#21475
       Caption = #29366#24577#25552#31034#31383#21475'(&D)'
       ImageIndex = 31
       OnExecute = act_Win_HintMessageExecute
     end
     object act_Cwsf_PrintSet: TAction
-      Category = '06.'#32479#35745#25253#34920
+      Category = '04.'#32479#35745#25253#34920
       Caption = #21457#31080#25171#21360#35774#32622'(&S)'
       ImageIndex = 1
       OnExecute = act_Cwsf_PrintSetExecute
     end
     object act_cwsf_print: TAction
-      Category = '06.'#32479#35745#25253#34920
+      Category = '04.'#32479#35745#25253#34920
       Caption = #21457#31080#25171#21360#20013#24515'(&P)'
       ImageIndex = 19
     end
@@ -462,88 +479,23 @@ object Main: TMain
       ImageIndex = 10
       OnExecute = act_Data_KcxzExecute
     end
+    object act_Data_KcLb: TAction
+      Category = '02.'#21442#25968#35774#32622
+      Caption = #35838#31243#31867#21035#35774#32622
+      ImageIndex = 9
+      OnExecute = act_Data_KcLbExecute
+    end
+    object act_Data_RoomType: TAction
+      Category = '02.'#21442#25968#35774#32622
+      Caption = #25945#23460#31867#22411#35774#32622
+      ImageIndex = 11
+      OnExecute = act_Data_RoomTypeExecute
+    end
     object act_Data_FileInput: TAction
       Category = '02.'#21442#25968#35774#32622
       Caption = #26680#31639#21150#27861'('#21046#24230#25991#20214')'
       ImageIndex = 4
       OnExecute = act_Data_FileInputExecute
-    end
-    object act_PK_KsxzSet: TAction
-      Category = '04.'#32771#35797#23433#25490
-      Caption = #32771#29983#39035#30693#20869#23481#35774#32622
-      ImageIndex = 4
-    end
-    object act_Pk_RoomSet: TAction
-      Category = '04.'#32771#35797#23433#25490
-      Caption = #25945#23460#36164#28304#20449#24687#35774#32622
-      ImageIndex = 14
-    end
-    object act_Pk_KsKcSet: TAction
-      Category = '04.'#32771#35797#23433#25490
-      Caption = #32771#35797#31185#30446#21450#26102#38388#35774#32622
-      ImageIndex = 8
-    end
-    object act_PK_DeleteAllPKRecord: TAction
-      Category = '04.'#32771#35797#23433#25490
-      Caption = #28165#31354#25152#26377#25490#32771#35760#24405
-      ImageIndex = 25
-      OnExecute = act_PK_DeleteAllPKRecordExecute
-    end
-    object act_Pk_AutoCreate: TAction
-      Category = '04.'#32771#35797#23433#25490
-      Caption = #31995#32479#33258#21160#25490#32771#22788#29702
-      ImageIndex = 20
-    end
-    object act_Pk_Input: TAction
-      Category = '04.'#32771#35797#23433#25490
-      Caption = #20934#32771#35777#21495#32534#36753#21450#31649#29702
-      ImageIndex = 32
-    end
-    object act_Pk_KsPcSet: TAction
-      Category = '04.'#32771#35797#23433#25490
-      Caption = #32771#22330#25945#23460#36164#28304#23433#25490
-      ImageIndex = 10
-    end
-    object act_Pk_Browse: TAction
-      Category = '04.'#32771#35797#23433#25490
-      Caption = #25490#32771#32467#26524#26597#35810#21450#25171#21360
-      ImageIndex = 7
-    end
-    object act_Cj_PrintDfb: TAction
-      Category = '05.'#25104#32489#31649#29702
-      Caption = #25171#21360#31354#30333#32771#29983#30331#20998#34920
-      ImageIndex = 19
-    end
-    object act_Cj_InitKsCjb: TAction
-      Category = '05.'#25104#32489#31649#29702
-      Caption = #21021#22987#21270#25104#32489#24405#20837#34920
-      ImageIndex = 12
-    end
-    object act_Cj_CjImport: TAction
-      Category = '05.'#25104#32489#31649#29702
-      Caption = #32771#29983#25104#32489#23548#20837
-      ImageIndex = 32
-    end
-    object act_Cj_CjInput: TAction
-      Category = '05.'#25104#32489#31649#29702
-      Caption = #32771#29983#25104#32489#24405#20837
-      ImageIndex = 5
-    end
-    object act_Cj_CjBrowse: TAction
-      Category = '05.'#25104#32489#31649#29702
-      Caption = #32771#29983#25104#32489#26597#35810'('#21333#31185')'
-      ImageIndex = 7
-      OnExecute = act_Cj_CjBrowseExecute
-    end
-    object act_Cj_CjTotal: TAction
-      Category = '05.'#25104#32489#31649#29702
-      Caption = #32771#29983#25104#32489#26597#35810'('#27719#24635')'
-      ImageIndex = 4
-    end
-    object act_Cj_Upload: TAction
-      Category = '05.'#25104#32489#31649#29702
-      Caption = #32771#29983#25104#32489#26597#35810'('#25253#30424')'
-      ImageIndex = 6
     end
     object act_Data_jxgzlSet: TAction
       Category = '02.'#21442#25968#35774#32622
@@ -582,8 +534,6 @@ object Main: TMain
       #31995#32479#35774#32622
       #21442#25968#35774#32622
       #24037#20316#37327#26680#31639
-      #32771#35797#23433#25490
-      #25104#32489#31649#29702
       #32479#35745#25253#34920
       #25509#21475#35774#32622
       #31383#21475
@@ -597,12 +547,8 @@ object Main: TMain
       2
       2
       2
-      2
-      2
       2)
     Categories.Visibles = (
-      True
-      True
       True
       True
       True
@@ -710,6 +656,10 @@ object Main: TMain
         end
         item
           Visible = True
+          ItemName = 'dxBarSeparator1'
+        end
+        item
+          Visible = True
           ItemName = 'dxBarButton4'
         end
         item
@@ -726,7 +676,15 @@ object Main: TMain
         end
         item
           Visible = True
+          ItemName = 'dxBarSeparator1'
+        end
+        item
+          Visible = True
           ItemName = 'dxBarButton46'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarSeparator1'
         end
         item
           Visible = True
@@ -744,7 +702,19 @@ object Main: TMain
         end
         item
           Visible = True
+          ItemName = 'dxBarSeparator1'
+        end
+        item
+          Visible = True
           ItemName = 'dxBarButton16'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarButton15'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarButton18'
         end
         item
           Visible = True
@@ -864,10 +834,6 @@ object Main: TMain
         end
         item
           Visible = True
-          ItemName = 'dxBarButton38'
-        end
-        item
-          Visible = True
           ItemName = 'dxBarButton41'
         end>
     end
@@ -953,6 +919,14 @@ object Main: TMain
       Action = act_Data_Kcxz
       Category = 3
     end
+    object dxBarButton15: TdxBarButton
+      Action = act_Data_KcLb
+      Category = 3
+    end
+    object dxBarButton18: TdxBarButton
+      Action = act_Data_RoomType
+      Category = 3
+    end
     object dxBarButton10: TdxBarButton
       Action = act_Data_Jxms
       Category = 3
@@ -997,132 +971,64 @@ object Main: TMain
       Action = act_jxgzl_Cx
       Category = 4
     end
-    object dxBarButton39: TdxBarButton
-      Action = act_PK_KsxzSet
-      Category = 5
-    end
-    object dxBarButton20: TdxBarButton
-      Action = act_Pk_RoomSet
-      Category = 5
-    end
-    object dxBarButton30: TdxBarButton
-      Action = act_Pk_KsKcSet
-      Category = 5
-    end
-    object dxBarButton40: TdxBarButton
-      Action = act_PK_DeleteAllPKRecord
-      Category = 5
-    end
-    object dxBarButton31: TdxBarButton
-      Action = act_Pk_AutoCreate
-      Category = 5
-    end
-    object dxBarButton22: TdxBarButton
-      Action = act_Pk_KsPcSet
-      Category = 5
-    end
-    object dxBarButton23: TdxBarButton
-      Action = act_Pk_Input
-      Category = 5
-    end
-    object dxBarButton27: TdxBarButton
-      Action = act_Pk_Browse
-      Category = 5
-    end
-    object dxBarButton53: TdxBarButton
-      Action = act_Cj_PrintDfb
-      Category = 6
-    end
-    object dxBarButton49: TdxBarButton
-      Action = act_Cj_InitKsCjb
-      Category = 6
-    end
-    object dxBarButton37: TdxBarButton
-      Action = act_Cj_CjImport
-      Category = 6
-    end
-    object dxBarButton50: TdxBarButton
-      Action = act_Cj_CjInput
-      Category = 6
-    end
-    object dxBarButton52: TdxBarButton
-      Action = act_Cj_CjBrowse
-      Category = 6
-    end
-    object dxBarButton54: TdxBarButton
-      Action = act_Cj_CjTotal
-      Category = 6
-    end
-    object dxbrbtn1: TdxBarButton
-      Action = act_Cj_Upload
-      Category = 6
-    end
     object dxBarButton25: TdxBarButton
       Action = act_Cwsf_PrintSet
-      Category = 7
+      Category = 5
     end
     object dxBarButton47: TdxBarButton
       Action = act_ReportDesign
-      Category = 7
+      Category = 5
     end
     object dxBarButton24: TdxBarButton
       Action = act_cwsf_print
-      Category = 7
+      Category = 5
     end
     object dxBarButton36: TdxBarButton
       Action = act_Interface_Xjgl
-      Category = 8
-    end
-    object dxBarButton38: TdxBarButton
-      Caption = #32771#35797#31995#32479#25509#21475#35774#32622'(&K)'
-      Category = 8
-      Hint = #32771#35797#36153#20351#29992#24773#20917#26597#35810#25509#21475#35774#32622
-      Visible = ivAlways
-      ImageIndex = 5
-      OnClick = act_Interface_KsxtSetExecute
+      Category = 6
     end
     object dxBarButton41: TdxBarButton
       Caption = #20854#20182#19994#21153#25509#21475#35774#32622'(&O)'
-      Category = 8
+      Category = 6
       Visible = ivAlways
       ImageIndex = 35
       OnClick = act_Interface_OtherExecute
     end
     object dxBarButton32: TdxBarButton
       Action = act_Win_CloseAll
-      Category = 9
+      Category = 7
     end
     object dxBarButton33: TdxBarButton
       Action = act_Win_CloseCurWin
-      Category = 9
+      Category = 7
     end
     object dxBarButton34: TdxBarButton
       Action = act_Win_Wizard
-      Category = 9
+      Category = 7
     end
     object dxBarButton35: TdxBarButton
       Action = act_Win_HintMessage
-      Category = 9
+      Category = 7
     end
     object dxBarButton42: TdxBarButton
       Action = act_hlp_Help
-      Category = 10
+      Category = 8
     end
     object dxBarButton43: TdxBarButton
       Action = act_hlp_Reg
-      Category = 10
+      Category = 8
     end
     object dxBarButton44: TdxBarButton
       Action = act_hlp_Update
-      Category = 10
+      Category = 8
     end
     object dxBarButton48: TdxBarButton
       Action = act_cwsf_UpdateReport
-      Category = 10
+      Category = 8
     end
     object dxBarButton45: TdxBarButton
       Action = act_hlp_about
-      Category = 10
+      Category = 8
     end
   end
   object ImageList_mm: TImageList
@@ -1130,7 +1036,7 @@ object Main: TMain
     Left = 550
     Top = 40
     Bitmap = {
-      494C0101240026002C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010124002600380010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000A0000000010020000000000000A0
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

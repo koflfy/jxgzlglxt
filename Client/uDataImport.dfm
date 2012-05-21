@@ -11,6 +11,7 @@ object DataImport: TDataImport
   Font.Height = -12
   Font.Name = 'Tahoma'
   Font.Style = []
+  FormStyle = fsMDIChild
   Icon.Data = {
     0000010008001010000001002000680400008600000018180000010020008809
     0000EE0400002020000001002000A8100000760E00003030000001002000A825
@@ -5073,6 +5074,7 @@ object DataImport: TDataImport
     FFFFFFFFFFFF}
   OldCreateOrder = False
   Position = poMainFormCenter
+  Visible = True
   OnClose = FormClose
   OnCreate = FormCreate
   OnDestroy = FormDestroy
@@ -5086,8 +5088,6 @@ object DataImport: TDataImport
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitWidth = 376
-    ExplicitHeight = 254
     object GroupBox2: TGroupBox
       Left = 0
       Top = 0
@@ -5096,8 +5096,6 @@ object DataImport: TDataImport
       Align = alClient
       Caption = #23383#27573#37197#23545#65306
       TabOrder = 0
-      ExplicitWidth = 376
-      ExplicitHeight = 254
       object vl_Field: TValueListEditor
         Left = 2
         Top = 16
@@ -5111,8 +5109,6 @@ object DataImport: TDataImport
           #28304#23383#27573
           'aaaaa')
         OnGetPickList = vl_FieldGetPickList
-        ExplicitWidth = 372
-        ExplicitHeight = 201
         ColWidths = (
           266
           352)
@@ -5126,8 +5122,6 @@ object DataImport: TDataImport
         BevelOuter = bvNone
         TabOrder = 1
         Visible = False
-        ExplicitTop = 217
-        ExplicitWidth = 372
         object lbl1: TLabel
           Left = 24
           Top = 10
@@ -5147,7 +5141,7 @@ object DataImport: TDataImport
           Width = 189
           Height = 22
           Style = csDropDownList
-          ItemHeight = 14
+          ItemHeight = 0
           TabOrder = 0
         end
       end
@@ -5169,8 +5163,6 @@ object DataImport: TDataImport
       end>
     ParentFont = True
     UseSystemFont = False
-    ExplicitTop = 310
-    ExplicitWidth = 491
     object ProgressBar1: TProgressBar
       Left = 72
       Top = 2
@@ -5188,7 +5180,6 @@ object DataImport: TDataImport
     Align = alTop
     Caption = #35201#23548#20837#30340'Excel'#65306
     TabOrder = 2
-    ExplicitWidth = 491
     object lbl2: TLabel
       Left = 16
       Top = 23
@@ -5285,7 +5276,7 @@ object DataImport: TDataImport
       Height = 22
       Style = csDropDownList
       Enabled = False
-      ItemHeight = 14
+      ItemHeight = 0
       TabOrder = 2
       OnClick = cbb_TbClick
     end
@@ -5314,8 +5305,6 @@ object DataImport: TDataImport
     Align = alRight
     BevelOuter = bvNone
     TabOrder = 3
-    ExplicitLeft = 376
-    ExplicitHeight = 254
     object lbl_Hint: TLabel
       Left = 0
       Top = 428
@@ -5323,7 +5312,6 @@ object DataImport: TDataImport
       Height = 14
       Align = alBottom
       Alignment = taCenter
-      ExplicitTop = 240
       ExplicitWidth = 4
     end
     object btn_Auto: TBitBtn
@@ -5524,7 +5512,7 @@ object DataImport: TDataImport
     end
     object btn_Exit: TBitBtn
       Left = 21
-      Top = 407
+      Top = 380
       Width = 78
       Height = 25
       Caption = #36864#20986'[X]'
@@ -5534,7 +5522,7 @@ object DataImport: TDataImport
     end
     object chk_Delete: TCheckBox
       Left = 22
-      Top = 371
+      Top = 344
       Width = 88
       Height = 17
       Hint = #23548#20837#21069#20808#21024#38500#21407#26377#30340#25968#25454

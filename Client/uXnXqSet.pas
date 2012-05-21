@@ -26,6 +26,7 @@ type
     edt_Xn: TDBEditEh;
     Label2: TLabel;
     cbb_Xq: TDBComboBoxEh;
+    lbl1: TLabel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btn_SaveClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);

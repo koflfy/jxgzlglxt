@@ -31,13 +31,16 @@ uses
   uExecSqlSet in 'uExecSqlSet.pas' {ExecSqlSet},
   uJxmsDmSet in 'uJxmsDmSet.pas' {JxmsDmSet},
   uXnXqSet in 'uXnXqSet.pas' {XnXqSet},
-  ujxDataEdit in 'ujxDataEdit.pas' {jxDataEdit};
+  ujxDataEdit in 'ujxDataEdit.pas' {jxDataEdit},
+  uKcLbDmSet in 'uKcLbDmSet.pas' {KcLbDmSet},
+  uRoomTypeSet in 'uRoomTypeSet.pas' {RoomTypeSet},
+  uKcxzDmSet in 'uKcxzDmSet.pas' {KcxzDmSet};
 
 {$R *.res}
 
 begin
   Application.Initialize;
-  Application.Title := '教学工作量管理系统';
+  Application.Title := '“教学工作量”核算系统';
   dm := TDM.Create(Application);
   gbIsOK := False;
   Login := TLogin.Create(Application);
