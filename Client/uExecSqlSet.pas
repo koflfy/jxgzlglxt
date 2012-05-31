@@ -39,11 +39,13 @@ type
     Label2: TLabel;
     Label3: TLabel;
     DBEdit1: TDBEdit;
-    DBMemo1: TDBMemo;
+    DBMemo2: TDBMemo;
     btn_Test: TBitBtn;
     edt_BH: TDBEdit;
     lbl1: TLabel;
     cbb_XsLb: TDBComboBoxEh;
+    lbl2: TLabel;
+    DBMemo1: TDBMemo;
     procedure btn_SaveClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -54,12 +56,13 @@ type
     procedure btn_ExitClick(Sender: TObject);
     procedure cbb_TypeChange(Sender: TObject);
     procedure ClientDataSet1NewRecord(DataSet: TDataSet);
-    procedure DBMemo1Change(Sender: TObject);
+    procedure DBMemo2Change(Sender: TObject);
     procedure cbb_XsLbChange(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure btn_RefreshClick(Sender: TObject);
   private
     { Private declarations }
+    sqlWhere:String;
     function FormatSql(var sqlText:string):Boolean;
     procedure Open_Table;
   public
@@ -136,6 +139,7 @@ procedure TExecSqlSet.cbb_XsLbChange(Sender: TObject);
 begin
   if Self.Showing then
   begin
+    sqlWhere := DM.GetHsgzWhere(cbb_Mode.Text);
     Open_Table;
     dxgrd_1.SetFocus;
   end;
@@ -152,9 +156,10 @@ begin
   //ClientDataSet1.FieldByName('系数类别').AsString := cbb_XsLb.Value;
 end;
 
-procedure TExecSqlSet.DBMemo1Change(Sender: TObject);
+procedure TExecSqlSet.DBMemo2Change(Sender: TObject);
 begin
-  btn_Test.Enabled := DBMemo1.Text<>'';
+  btn_Test.Enabled := DBMemo2.Text<>'';
+  DBMemo1.Text := DBMemo2.Text+' where '+sqlWhere;
 end;
 
 function TExecSqlSet.FormatSql(var sqlText: string): Boolean;
@@ -189,9 +194,21 @@ begin
 end;
 
 procedure TExecSqlSet.FormCreate(Sender: TObject);
+var
+  sList:TStrings;
 begin
   //cbb_Mode.Text := gb_System_Mode;
-  Open_Table;
+  sList := TStringList.Create;
+  try
+    dm.GetHsgzTypeXyList(sList);
+    cbb_Mode.Items.Assign(sList);
+    if cbb_Mode.Items.Count>0 then
+      cbb_Mode.ItemIndex := 0;
+    sqlWhere := DM.GetHsgzWhere(cbb_XsLb.Text);
+    Open_Table;
+  finally
+    sList.Free;
+  end;
 end;
 
 procedure TExecSqlSet.N2Click(Sender: TObject);
@@ -203,7 +220,7 @@ procedure TExecSqlSet.Open_Table;
 var
   sqlstr :string;
 begin
-  sqlstr := 'select * from 系数配置表 where 规则类型='+quotedstr(cbb_Mode.Text)+
+  sqlstr := 'select * from 核算规则配置表 where 规则类型='+quotedstr(cbb_Mode.Text)+
             ' order by 系数类别,执行顺序';
   ClientDataSet1.XMLData := dm.OpenData(sqlstr);
 end;

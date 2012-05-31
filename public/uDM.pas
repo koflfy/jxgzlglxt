@@ -118,6 +118,7 @@ type
 
     procedure GetXnList(out sList:TStrings);
     procedure GetXyList(out sList:TStrings);
+    procedure GetHsgzTypeXyList(out sList:TStrings); //核算规则类型
     procedure GetSchoolList(const sf:string;out sList:TStrings);
     procedure GetEnglishDjKsList(out sList:TStrings);
     procedure GetJsjDjKsList(out sList:TStrings);
@@ -128,6 +129,7 @@ type
     procedure GetKsKcList(const bkLb:string;out sList:TStrings);
     function  GetWebSrvUrl:string;
     procedure GetCurrentXnXq;
+    function  GetHsgzWhere(const HsgzType:string):string;
   end;
 
 //{$DEFINE WAD_DEBUG}
@@ -1028,6 +1030,37 @@ begin
   GetListFromTable(sqlstr,sList);
 end;
 
+procedure TDM.GetHsgzTypeXyList(out sList: TStrings);
+var
+  sqlstr:string;
+begin
+  sqlstr := 'select 规则类型 from 核算规则类型表 order by 显示顺序';
+  GetListFromTable(sqlstr,sList);
+end;
+
+function TDM.GetHsgzWhere(const HsgzType: string): string;
+var
+  sData:string;
+  cds_Temp:TClientDataSet;
+  iCompressType:Integer;
+begin
+  cds_Temp := TClientDataSet.Create(nil);
+  try
+    vobj_Admin.Query_Data('select 默认检索条件 from 核算规则类型表 where 规则类型='+quotedstr(HsgzType),iCompressType,sData);
+
+    if iCompressType=1 then
+    begin
+      sData := VCLZip1.ZLibDecompressString(sData);
+      sData := DecodeString(sData);
+    end;
+
+    cds_Temp.XMLData := sData;
+    Result := cds_Temp.Fields[0].AsString;
+  finally
+    cds_Temp.Free;
+  end;
+end;
+
 function TDM.GetJjList(var JjList: TStrings): Boolean;
 var
   sData:string;
@@ -1037,7 +1070,7 @@ begin
   cds_Temp := TClientDataSet.Create(nil);
   try
     vobj_Admin.Query_Data('select * from 季节表 order by 季节',iCompressType,sData);
-    
+
     if iCompressType=1 then
     begin
       sData := VCLZip1.ZLibDecompressString(sData);

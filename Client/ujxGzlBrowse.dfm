@@ -675,7 +675,7 @@ object jxGzlBrowse: TjxGzlBrowse
       Height = 22
       ItemHeight = 14
       TabOrder = 0
-      Text = #25945#24072#32534#21495
+      Text = #25945#24072#32844#24037#21495
       DataSource = DataSource1
     end
     object edt_Value: TEdit
@@ -784,6 +784,13 @@ object jxGzlBrowse: TjxGzlBrowse
       end
       item
         EditButtons = <>
+        FieldName = #35268#21017#21495
+        Footers = <>
+        Title.TitleButton = True
+        Visible = False
+      end
+      item
+        EditButtons = <>
         FieldName = #23398#24180
         Footers = <>
         Title.ToolTips = True
@@ -798,7 +805,7 @@ object jxGzlBrowse: TjxGzlBrowse
       end
       item
         EditButtons = <>
-        FieldName = #25945#24072#32534#21495
+        FieldName = #25945#24072#32844#24037#21495
         Footers = <>
         Title.ToolTips = True
       end
@@ -817,7 +824,7 @@ object jxGzlBrowse: TjxGzlBrowse
       end
       item
         EditButtons = <>
-        FieldName = #35838#31243#32534#21495
+        FieldName = #35838#31243#20195#30721
         Footers = <>
         Title.ToolTips = True
       end
@@ -905,43 +912,31 @@ object jxGzlBrowse: TjxGzlBrowse
       end
       item
         EditButtons = <>
-        FieldName = #29702#35770#31995#25968
-        Footers = <>
-        Title.ToolTips = True
-      end
-      item
-        EditButtons = <>
         FieldName = #29702#35770#24037#20316#37327
         Footers = <>
         Title.ToolTips = True
       end
       item
         EditButtons = <>
-        FieldName = #23454#36341#23398#26102
+        FieldName = #23454#39564#23398#26102
         Footers = <>
         Title.ToolTips = True
       end
       item
         EditButtons = <>
-        FieldName = #23454#36341#35838#22411#31995#25968
+        FieldName = #23454#39564#35838#22411#31995#25968
         Footers = <>
         Title.ToolTips = True
       end
       item
         EditButtons = <>
-        FieldName = #23454#36341#35268#27169#31995#25968
+        FieldName = #23454#39564#35268#27169#31995#25968
         Footers = <>
         Title.ToolTips = True
       end
       item
         EditButtons = <>
-        FieldName = #23454#36341#31995#25968
-        Footers = <>
-        Title.ToolTips = True
-      end
-      item
-        EditButtons = <>
-        FieldName = #23454#36341#24037#20316#37327
+        FieldName = #23454#39564#24037#20316#37327
         Footers = <>
         Title.ToolTips = True
       end
