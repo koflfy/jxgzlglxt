@@ -34,7 +34,9 @@ uses
   ujxDataEdit in 'ujxDataEdit.pas' {jxDataEdit},
   uKcLbDmSet in 'uKcLbDmSet.pas' {KcLbDmSet},
   uRoomTypeSet in 'uRoomTypeSet.pas' {RoomTypeSet},
-  uKcxzDmSet in 'uKcxzDmSet.pas' {KcxzDmSet};
+  uKcxzDmSet in 'uKcxzDmSet.pas' {KcxzDmSet},
+  uHsgzLxDmSet in 'uHsgzLxDmSet.pas' {HsgzLxDmSet},
+  uHsgzLxWhereSet in 'uHsgzLxWhereSet.pas' {HsgzLxWhereSet};
 
 {$R *.res}
 

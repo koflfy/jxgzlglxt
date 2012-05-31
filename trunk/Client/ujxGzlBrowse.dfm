@@ -856,12 +856,6 @@ object jxGzlBrowse: TjxGzlBrowse
       end
       item
         EditButtons = <>
-        FieldName = #25945#23398#27169#24335
-        Footers = <>
-        Title.ToolTips = True
-      end
-      item
-        EditButtons = <>
         FieldName = #24320#35838#23398#38498
         Footers = <>
         Title.ToolTips = True
