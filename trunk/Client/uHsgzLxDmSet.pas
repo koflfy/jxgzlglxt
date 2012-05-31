@@ -73,13 +73,19 @@ begin
 end;
 
 procedure THsgzLxDmSet.btn_SaveClick(Sender: TObject);
+var
+  sError:string;
 begin
   if not DataSetNoSave(ClientDataSet1) then
     Exit;
 
   try
-    if DM.UpdateData('id',sqlStr,ClientDataSet1.Delta) then
-      ClientDataSet1.MergeChangeLog;
+    //if DM.UpdateData('id',sqlStr,ClientDataSet1.Delta) then
+    if vobj_Admin.WriteHsgzLxData(ClientDataSet1.XMLData,sError) then
+      ClientDataSet1.MergeChangeLog
+    else
+      MessageBox(Handle, PAnsiChar('数据保存失败！原因为：'+sError+'　'), '系统提示', MB_OK + 
+        MB_ICONSTOP + MB_TOPMOST);
   finally
     //cds_Temp.Free;
   end;
@@ -111,11 +117,10 @@ begin
 end;
 
 procedure THsgzLxDmSet.OpenTable;
-var
-  i: Integer;
 begin
   sqlStr := 'select * from  核算规则类型表 order by 显示顺序';
-  ClientDataSet1.XMLData := dm.OpenData(sqlStr);
+  //ClientDataSet1.XMLData := dm.OpenData(sqlStr);
+  ClientDataSet1.XMLData := vobj_Admin.ReadHsgzLxData;
 end;
 
 procedure THsgzLxDmSet.PageControl1Change(Sender: TObject);

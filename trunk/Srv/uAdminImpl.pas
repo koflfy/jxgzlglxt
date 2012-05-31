@@ -68,6 +68,10 @@ type
     function GetUploadVirtualDir:string;stdcall;  //上传文件存放目录（相对路径），如：UploadFiles/
     function GetKsXz:string;stdcall;    //得到考生须知内容
     function GetKsCj(const bkLb:string):string;stdcall; //得到考生成绩，多行变单行之后的结果
+
+    function ReadHsgzLxData:string;stdcall; //得到核算规则类型数据表内容
+    function WriteHsgzLxData(const sData:string;out sError:string):Boolean;stdcall; //保存核算规则类型数据表内容
+    function CreateView(const ViewName,sqlStr:string):Boolean;stdcall; //创建视图
   end;
 
 implementation
@@ -540,6 +544,24 @@ begin
   end;
 end;
 
+function TAdmin.ReadHsgzLxData: string;
+var
+  sqlStr:string;
+  iCompressType:Integer;
+  dm:TJxgzlSoapDM;
+begin
+  dm := TJxgzlSoapDM.Create(nil);
+  try
+    iCompressType := 0; //不压缩
+    sqlStr := 'select * from 核算规则类型表 order by 显示顺序';
+    if dm.Query_Data(sqlStr,iCompressType,Result)<>S_OK then
+      Result := '';
+  finally
+    DM.DataSet_Temp.Active := False;
+    dm.Free;
+  end;
+end;
+
 function TAdmin.RecordIsExists(const sWhere, sTable: string): Boolean;
 var
   dm:TJxgzlSoapDM;
@@ -552,6 +574,18 @@ begin
     Result := dm.DataSet_Temp.Fields[0].AsInteger>0;
   finally
     DM.DataSet_Temp.Active := False;
+    dm.Free;
+  end;
+end;
+
+function TAdmin.CreateView(const ViewName, sqlStr: string): Boolean;
+var
+  dm:TJxgzlSoapDM;
+begin
+  dm := TJxgzlSoapDM.Create(nil);
+  try
+    Result := dm.CreateView(ViewName,sqlStr);
+  finally
     dm.Free;
   end;
 end;
@@ -746,6 +780,41 @@ begin
       Result := True;
     end;
   finally
+    cds_Temp.Free;
+  end;
+end;
+
+function TAdmin.WriteHsgzLxData(const sData:string;out sError:string): Boolean;
+var
+  dm:TJxgzlSoapDM;
+  cds_Temp:TClientDataSet;
+  sqlStr:string;
+begin
+  dm := TJxgzlSoapDM.Create(nil);
+  cds_Temp := TClientDataSet.Create(nil);
+  cds_Temp.XMLData := ReadHsgzLxData;
+  Result := Update_Data('Id','select top 0 * from 核算规则类型表',0,sData,sError);
+  if not Result then Exit;
+  try
+    while not cds_Temp.Eof do
+    begin
+      if (cds_Temp.FieldByName('规则类型').AsString<>'') then
+        dm.DropView(cds_Temp.FieldByName('规则类型').AsString);
+      cds_Temp.Next;
+    end;
+    cds_Temp.Close;
+
+    cds_Temp.XMLData := sData;
+    while not cds_Temp.Eof do
+    begin
+      sqlStr := cds_Temp.FieldByName('默认检索条件').AsString;
+      if (cds_Temp.FieldByName('规则类型').AsString<>'') and (sqlStr<>'') then
+        dm.CreateView(cds_Temp.FieldByName('规则类型').AsString,sqlStr);
+      cds_Temp.Next;
+    end;
+    Result := True;
+  finally
+    dm.Free;
     cds_Temp.Free;
   end;
 end;

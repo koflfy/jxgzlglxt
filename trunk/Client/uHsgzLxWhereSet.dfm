@@ -40,6 +40,7 @@ object HsgzLxWhereSet: THsgzLxWhereSet
     OddRowColor = 13823456
     OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghMultiSortMarking, dghRowHighlight, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove]
     PopupMenu = DM.PopupMenu1
+    ReadOnly = True
     RowDetailPanel.Color = clBtnFace
     SortLocal = True
     TabOrder = 0
@@ -1013,10 +1014,9 @@ object HsgzLxWhereSet: THsgzLxWhereSet
         Width = 75
         Height = 25
         Anchors = [akRight, akBottom]
-        Caption = #39044#35272
+        Caption = #27979#35797
         TabOrder = 0
         OnClick = btn_PrivewClick
-        ExplicitTop = 157
       end
     end
     object DBMemo1: TDBMemo
@@ -1029,9 +1029,6 @@ object HsgzLxWhereSet: THsgzLxWhereSet
       DataSource = DataSource1
       TabOrder = 1
       OnChange = DBMemo1Change
-      ExplicitLeft = -58
-      ExplicitTop = 6
-      ExplicitWidth = 491
     end
     object DBGridEh1: TDBGridEh
       Left = 2
@@ -1050,6 +1047,7 @@ object HsgzLxWhereSet: THsgzLxWhereSet
       FooterFont.Height = -12
       FooterFont.Name = 'Tahoma'
       FooterFont.Style = []
+      ImeMode = imDisable
       IndicatorTitle.ShowDropDownSign = True
       IndicatorTitle.TitleButton = True
       OddRowColor = 13823456
@@ -1071,6 +1069,7 @@ object HsgzLxWhereSet: THsgzLxWhereSet
           EditButtons = <>
           FieldName = 'Id'
           Footers = <>
+          Title.TitleButton = True
           Title.ToolTips = True
           Visible = False
         end
@@ -1085,6 +1084,7 @@ object HsgzLxWhereSet: THsgzLxWhereSet
           EditButtons = <>
           FieldName = #23398#24180
           Footers = <>
+          Title.TitleButton = True
           Title.ToolTips = True
           Visible = False
           Width = 65
@@ -1093,6 +1093,7 @@ object HsgzLxWhereSet: THsgzLxWhereSet
           EditButtons = <>
           FieldName = #23398#26399
           Footers = <>
+          Title.TitleButton = True
           Title.ToolTips = True
           Visible = False
           Width = 32
@@ -1101,12 +1102,14 @@ object HsgzLxWhereSet: THsgzLxWhereSet
           EditButtons = <>
           FieldName = #25945#24072#32844#24037#21495
           Footers = <>
+          Title.TitleButton = True
           Title.ToolTips = True
         end
         item
           EditButtons = <>
           FieldName = #25945#24072#22995#21517
           Footers = <>
+          Title.TitleButton = True
           Title.ToolTips = True
           Width = 59
         end
@@ -1114,6 +1117,7 @@ object HsgzLxWhereSet: THsgzLxWhereSet
           EditButtons = <>
           FieldName = #32844#31216
           Footers = <>
+          Title.TitleButton = True
           Title.ToolTips = True
           Visible = False
           Width = 69
@@ -1122,6 +1126,7 @@ object HsgzLxWhereSet: THsgzLxWhereSet
           EditButtons = <>
           FieldName = #35838#31243#20195#30721
           Footers = <>
+          Title.TitleButton = True
           Title.ToolTips = True
           Width = 61
         end
@@ -1129,6 +1134,7 @@ object HsgzLxWhereSet: THsgzLxWhereSet
           EditButtons = <>
           FieldName = #35838#31243#21517#31216
           Footers = <>
+          Title.TitleButton = True
           Title.ToolTips = True
           Width = 179
         end
@@ -1136,6 +1142,7 @@ object HsgzLxWhereSet: THsgzLxWhereSet
           EditButtons = <>
           FieldName = #35838#31243#24615#36136
           Footers = <>
+          Title.TitleButton = True
           Title.ToolTips = True
           Width = 61
         end
@@ -1147,7 +1154,13 @@ object HsgzLxWhereSet: THsgzLxWhereSet
         end
         item
           EditButtons = <>
-          FieldName = #25945#23398#22330#25152
+          FieldName = #22330#25152#35201#27714
+          Footers = <>
+          Title.TitleButton = True
+        end
+        item
+          EditButtons = <>
+          FieldName = #23454#39564#22330#22320
           Footers = <>
           Title.TitleButton = True
         end
@@ -1155,6 +1168,7 @@ object HsgzLxWhereSet: THsgzLxWhereSet
           EditButtons = <>
           FieldName = #24320#35838#23398#38498
           Footers = <>
+          Title.TitleButton = True
           Title.ToolTips = True
           Width = 117
         end
@@ -1162,6 +1176,7 @@ object HsgzLxWhereSet: THsgzLxWhereSet
           EditButtons = <>
           FieldName = #25480#35838#23545#35937
           Footers = <>
+          Title.TitleButton = True
           Title.ToolTips = True
           Visible = False
           Width = 131
@@ -1170,30 +1185,35 @@ object HsgzLxWhereSet: THsgzLxWhereSet
           EditButtons = <>
           FieldName = #24050#36873#20154#25968
           Footers = <>
+          Title.TitleButton = True
           Title.ToolTips = True
         end
         item
           EditButtons = <>
           FieldName = #21608#23398#26102
           Footers = <>
+          Title.TitleButton = True
           Title.ToolTips = True
         end
         item
           EditButtons = <>
           FieldName = #36215#27490#21608
           Footers = <>
+          Title.TitleButton = True
           Title.ToolTips = True
         end
         item
           EditButtons = <>
           FieldName = #29702#35770#23398#26102
           Footers = <>
+          Title.TitleButton = True
           Title.ToolTips = True
         end
         item
           EditButtons = <>
           FieldName = #23454#39564#23398#26102
           Footers = <>
+          Title.TitleButton = True
           Title.ToolTips = True
         end>
       object RowDetailData: TRowDetailPanelControlEh

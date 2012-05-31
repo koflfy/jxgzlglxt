@@ -72,6 +72,10 @@ type
     function GetUploadVirtualDir:string;stdcall;  //上传文件存放目录（相对路径），如：UploadFiles/
     function GetKsXz:string;stdcall;    //得到考生须知内容
     function GetKsCj(const bkLb:string):string;stdcall; //得到考生成绩，多行变单行之后的结果
+
+    function ReadHsgzLxData:string;stdcall; //得到核算规则类型数据表内容
+    function WriteHsgzLxData(const sData:string;out sError:string):Boolean;stdcall; //保存核算规则类型数据表内容
+    function CreateView(const ViewName,sqlStr:string):Boolean;stdcall; //创建视图
   end;
 
 
