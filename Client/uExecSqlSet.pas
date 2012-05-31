@@ -111,7 +111,7 @@ end;
 procedure TExecSqlSet.btn_SaveClick(Sender: TObject);
 begin
   if DataSetNoSave(ClientDataSet1) then
-    if dm.UpdateData('Id','select top 0 * from 系数配置表',ClientDataSet1.Delta) then
+    if dm.UpdateData('Id','select top 0 * from 核算规则配置表',ClientDataSet1.Delta) then
       ClientDataSet1.MergeChangeLog;
 end;
 
@@ -157,9 +157,15 @@ begin
 end;
 
 procedure TExecSqlSet.DBMemo2Change(Sender: TObject);
+var
+  sTemp:string;
 begin
   btn_Test.Enabled := DBMemo2.Text<>'';
-  DBMemo1.Text := DBMemo2.Text+' where '+sqlWhere;
+  sTemp := LowerCase(DBMemo2.Text);
+  if pos(' where ',sTemp)>0 then
+    DBMemo1.Text := DBMemo2.Text+' and ('+sqlWhere+')'
+  else
+    DBMemo1.Text := DBMemo2.Text+' where ('+sqlWhere+')'
 end;
 
 function TExecSqlSet.FormatSql(var sqlText: string): Boolean;
@@ -204,7 +210,7 @@ begin
     cbb_Mode.Items.Assign(sList);
     if cbb_Mode.Items.Count>0 then
       cbb_Mode.ItemIndex := 0;
-    sqlWhere := DM.GetHsgzWhere(cbb_XsLb.Text);
+    sqlWhere := DM.GetHsgzWhere(cbb_Mode.Text);
     Open_Table;
   finally
     sList.Free;

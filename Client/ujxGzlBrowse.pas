@@ -91,7 +91,7 @@ procedure TjxGzlBrowse.btn_SaveClick(Sender: TObject);
 begin
   if DataSetNoSave(ClientDataSet1) then
   begin
-    if dm.UpdateData('id','select top 0 * from 工作量核算表',ClientDataSet1.Delta,True) then
+    if dm.UpdateData('id','select top 0 * from 工作量总表',ClientDataSet1.Delta,True) then
       ClientDataSet1.MergeChangeLog;
   end;
 end;
@@ -188,7 +188,7 @@ var
 begin
   Screen.Cursor := crHourGlass;
   try
-    sqlstr := 'select * from 工作量核算表 '+GetWhere+' order by 学年,学期,教师编号';
+    sqlstr := 'select * from 工作量总表 '+GetWhere+' order by 学年,学期,教师职工号';
     ClientDataSet1.XMLData := DM.OpenData(sqlstr);
     if Self.Showing then
     begin

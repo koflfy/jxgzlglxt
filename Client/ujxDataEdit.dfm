@@ -786,6 +786,15 @@ object jxDataEdit: TjxDataEdit
         EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE}
       NumGlyphs = 2
     end
+    object btn_UpdateHsgzLx: TBitBtn
+      Left = 534
+      Top = 9
+      Width = 107
+      Height = 25
+      Anchors = [akRight, akBottom]
+      Caption = #26356#26032#35268#21017#31867#22411
+      TabOrder = 6
+    end
   end
   object DBGridEh1: TDBGridEh
     Left = 0
@@ -829,16 +838,25 @@ object jxDataEdit: TjxDataEdit
       end
       item
         EditButtons = <>
+        FieldName = #35268#21017#31867#22411
+        Footers = <>
+        Title.TitleButton = True
+        Width = 87
+      end
+      item
+        EditButtons = <>
         FieldName = #35268#21017#21495
         Footers = <>
         Title.TitleButton = True
+        Visible = False
+        Width = 102
       end
       item
         EditButtons = <>
         FieldName = #23398#24180
         Footers = <>
         Title.ToolTips = True
-        Width = 65
+        Width = 68
       end
       item
         EditButtons = <>
@@ -858,26 +876,28 @@ object jxDataEdit: TjxDataEdit
         FieldName = #25945#24072#22995#21517
         Footers = <>
         Title.ToolTips = True
+        Width = 63
       end
       item
         EditButtons = <>
         FieldName = #32844#31216
         Footers = <>
         Title.ToolTips = True
-        Width = 69
+        Width = 53
       end
       item
         EditButtons = <>
         FieldName = #35838#31243#20195#30721
         Footers = <>
         Title.ToolTips = True
+        Width = 61
       end
       item
         EditButtons = <>
         FieldName = #35838#31243#21517#31216
         Footers = <>
         Title.ToolTips = True
-        Width = 210
+        Width = 172
       end
       item
         EditButtons = <>
@@ -892,12 +912,6 @@ object jxDataEdit: TjxDataEdit
         Footers = <>
         Title.TitleButton = True
         Width = 61
-      end
-      item
-        EditButtons = <>
-        FieldName = #25945#23398#22330#25152
-        Footers = <>
-        Title.TitleButton = True
       end
       item
         EditButtons = <>
@@ -939,65 +953,21 @@ object jxDataEdit: TjxDataEdit
       end
       item
         EditButtons = <>
-        FieldName = #29702#35770#35838#22411#31995#25968
-        Footers = <>
-        Title.ToolTips = True
-        Visible = False
-      end
-      item
-        EditButtons = <>
-        FieldName = #29702#35770#35268#27169#31995#25968
-        Footers = <>
-        Title.ToolTips = True
-        Visible = False
-      end
-      item
-        EditButtons = <>
-        FieldName = #29702#35770#31995#25968
-        Footers = <>
-        Title.ToolTips = True
-        Visible = False
-      end
-      item
-        EditButtons = <>
-        FieldName = #29702#35770#24037#20316#37327
-        Footers = <>
-        Title.ToolTips = True
-        Visible = False
-      end
-      item
-        EditButtons = <>
         FieldName = #23454#39564#23398#26102
         Footers = <>
         Title.ToolTips = True
       end
       item
         EditButtons = <>
-        FieldName = #23454#39564#35838#22411#31995#25968
+        FieldName = #22330#22320#35201#27714
         Footers = <>
-        Title.ToolTips = True
-        Visible = False
+        Title.TitleButton = True
       end
       item
         EditButtons = <>
-        FieldName = #23454#39564#35268#27169#31995#25968
+        FieldName = #23454#39564#22330#22320
         Footers = <>
-        Title.ToolTips = True
-        Visible = False
-      end
-      item
-        EditButtons = <>
-        FieldName = #23454#39564#24037#20316#37327
-        Footers = <>
-        Title.ToolTips = True
-        Visible = False
-      end
-      item
-        EditButtons = <>
-        FieldName = #21512#35745#24037#20316#37327
-        Footers = <>
-        Title.ToolTips = True
-        Visible = False
+        Title.TitleButton = True
       end>
     object RowDetailData: TRowDetailPanelControlEh
     end

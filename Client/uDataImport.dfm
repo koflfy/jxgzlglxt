@@ -5141,7 +5141,7 @@ object DataImport: TDataImport
           Width = 189
           Height = 22
           Style = csDropDownList
-          ItemHeight = 0
+          ItemHeight = 14
           TabOrder = 0
         end
       end
@@ -5276,7 +5276,7 @@ object DataImport: TDataImport
       Height = 22
       Style = csDropDownList
       Enabled = False
-      ItemHeight = 0
+      ItemHeight = 14
       TabOrder = 2
       OnClick = cbb_TbClick
     end
@@ -5569,8 +5569,8 @@ object DataImport: TDataImport
     Aggregates = <>
     CommandText = 'select top 1 * from '#32771#29983#20449#24687#34920
     FetchOnDemand = False
-    PacketRecords = 100
     Params = <>
+    BeforePost = cds_TempBeforePost
     Left = 199
     Top = 192
   end

@@ -1,6 +1,7 @@
 object ExecSqlSet: TExecSqlSet
   Left = 0
   Top = 0
+  ActiveControl = DBMemo2
   BorderIcons = [biSystemMenu, biMaximize]
   Caption = #24037#20316#37327#35745#31639#35268#21017#35774#23450
   ClientHeight = 621
@@ -39,7 +40,6 @@ object ExecSqlSet: TExecSqlSet
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 3
-    ExplicitTop = 521
     DesignSize = (
       814
       41)
@@ -319,8 +319,6 @@ object ExecSqlSet: TExecSqlSet
     Align = alClient
     Caption = #35268#21017#31867#22411#65306
     TabOrder = 2
-    ExplicitTop = 271
-    ExplicitHeight = 250
     object dxgrd_1: TDBGridEh
       Left = 2
       Top = 16
@@ -1026,7 +1024,6 @@ object ExecSqlSet: TExecSqlSet
       Enabled = False
       TabOrder = 4
       OnClick = btn_TestClick
-      ExplicitTop = 183
     end
     object edt_BH: TDBEdit
       Left = 702
@@ -1056,9 +1053,9 @@ object ExecSqlSet: TExecSqlSet
     end
     object DBMemo1: TDBMemo
       Left = 41
-      Top = 171
+      Top = 174
       Width = 770
-      Height = 71
+      Height = 73
       Anchors = [akLeft, akTop, akRight, akBottom]
       Color = 13823456
       DataField = 'sqlText'

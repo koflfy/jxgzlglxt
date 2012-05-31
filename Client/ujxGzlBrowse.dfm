@@ -794,7 +794,7 @@ object jxGzlBrowse: TjxGzlBrowse
         FieldName = #23398#24180
         Footers = <>
         Title.ToolTips = True
-        Width = 65
+        Width = 69
       end
       item
         EditButtons = <>
@@ -814,6 +814,7 @@ object jxGzlBrowse: TjxGzlBrowse
         FieldName = #25945#24072#22995#21517
         Footers = <>
         Title.ToolTips = True
+        Width = 70
       end
       item
         EditButtons = <>
@@ -833,7 +834,7 @@ object jxGzlBrowse: TjxGzlBrowse
         FieldName = #35838#31243#21517#31216
         Footers = <>
         Title.ToolTips = True
-        Width = 210
+        Width = 186
       end
       item
         EditButtons = <>
@@ -909,6 +910,12 @@ object jxGzlBrowse: TjxGzlBrowse
         FieldName = #29702#35770#24037#20316#37327
         Footers = <>
         Title.ToolTips = True
+      end
+      item
+        EditButtons = <>
+        FieldName = #23454#39564#22330#22320
+        Footers = <>
+        Title.TitleButton = True
       end
       item
         EditButtons = <>
