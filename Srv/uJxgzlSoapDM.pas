@@ -77,6 +77,9 @@ type
 
     function GetBmNo:string;    //得到报名流水号
 
+    function DropView(const ViewName:string):Boolean; //删除视图
+    function CreateView(const ViewName,sqlStr:string):Boolean; //创建视图
+
   end;
 
 implementation
@@ -87,6 +90,66 @@ uses uDbConnect,Net,uAdminIntf,EncdDecdEx;
 procedure TJxgzlSoapDMCreateInstance(out obj: TObject);
 begin
  obj := TJxgzlSoapDM.Create(nil);
+end;
+
+function TJxgzlSoapDM.CreateView(const ViewName, sqlStr: string): Boolean;
+var
+  adoqry:TADOQuery;
+  sList:TStrings;
+begin
+  sList := TStringList.Create;
+  adoqry := TADOQuery.Create(nil);
+  adoqry.Connection := ADOConnection1;
+
+  DropView(ViewName);
+
+  sList.Add('CREATE VIEW '+ViewName+' AS ');
+  sList.Add(sqlStr);
+  //sList.Add('go');
+  try
+    try
+      adoqry.SQL.Assign(sList);
+      adoqry.ExecSQL;
+      Result := True;
+    except
+      on e:Exception do
+      begin
+        Result := False;
+      end;
+    end;
+  finally
+    sList.Free;
+    FreeAndNil(adoqry);
+  end;
+end;
+
+function TJxgzlSoapDM.DropView(const ViewName: string): Boolean;
+var
+  adoqry:TADOQuery;
+  sList:TStrings;
+begin
+  sList := TStringList.Create;
+  adoqry := TADOQuery.Create(nil);
+  adoqry.Connection := ADOConnection1;
+  sList.Add('IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID('+quotedstr(ViewName)+'))');
+  sList.Add('drop view '+ViewName);
+  //sList.Add('go');
+
+  try
+    try
+      adoqry.SQL.Assign(sList);
+      adoqry.ExecSQL;
+      Result := True;
+    except
+      on e:Exception do
+      begin
+        Result := False;
+      end;
+    end;
+  finally
+    sList.Free;
+    FreeAndNil(adoqry);
+  end;
 end;
 
 function TJxgzlSoapDM.ExecSqlCmd(const sSqlStr: string;var sError:string): Boolean;
