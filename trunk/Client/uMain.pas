@@ -539,7 +539,7 @@ begin
     Exit;
   end;
 
-  sqlstr := 'select count(*) from 当前工作量核算表';
+  sqlstr := 'select count(*) from 工作量核算表';
   iCount := vobj_Admin.GetRecordBySqlCmd(sqlstr);
   //if iCount>0 then
   begin
@@ -555,7 +555,7 @@ begin
   if not InputQuery('操作确认','请输入【OK】两个字符以确认删除：',sOK) then Exit;
   if UpperCase(sOk)<>'OK' then Exit;
 
-  if dm.ExecSql('delete from 当前工作量核算表') then
+  if dm.ExecSql('delete from 工作量总表 where 学年='+quotedstr(gb_Cur_Xn)+' and 学期='+quotedstr(gb_Cur_Xq)) then
     MessageBox(Handle, '操作完成！当前学年学期工作量核算表中的所有记录已删除！　',
       '系统提示', MB_OK + MB_ICONINFORMATION + MB_TOPMOST);
 end;

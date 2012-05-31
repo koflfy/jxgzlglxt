@@ -132,7 +132,7 @@ type
     function  GetHsgzWhere(const HsgzType:string):string;
   end;
 
-//{$DEFINE WAD_DEBUG}
+{$DEFINE WAD_DEBUG}
 const
   GbConnSrvFileName = 'ConnjxgzlSrvSet.ini';
 {$IFNDEF WAD_DEBUG}
@@ -1196,7 +1196,7 @@ procedure TDM.GetXnList(out sList: TStrings);
 var
   sqlstr:string;
 begin
-  sqlstr := 'select distinct 学年 from 工作量核算表 order by 学年';
+  sqlstr := 'select distinct 学年 from 工作量总表 order by 学年';
   GetListFromTable(sqlstr,sList);
 end;
 
@@ -1204,7 +1204,7 @@ procedure TDM.GetXyList(out sList: TStrings);
 var
   sqlstr:string;
 begin
-  sqlstr := 'select distinct 开课学院 from 工作量核算表 order by 开课学院';
+  sqlstr := 'select distinct 开课学院 from 工作量总表 order by 开课学院';
   GetListFromTable(sqlstr,sList);
 end;
 

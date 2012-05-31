@@ -31,6 +31,7 @@ type
     grp3: TGroupBox;
     cbb_Xy: TDBComboBoxEh;
     btn_Save: TBitBtn;
+    btn_UpdateHsgzLx: TBitBtn;
     procedure btn_ExitClick(Sender: TObject);
     procedure btn_RefreshClick(Sender: TObject);
     procedure btn_AddClick(Sender: TObject);
@@ -114,6 +115,10 @@ begin
   DataSet.FieldByName('学年').AsString := cbb_Xn.Value;
   DataSet.FieldByName('学期').AsString := cbb_Xq.Value;
   DataSet.FieldByName('开课学院').AsString := cbb_Xy.Text;
+  DataSet.FieldByName('规则号').AsString := DataSet.FieldByName('学年').AsString+
+                                            DataSet.FieldByName('学期').AsString+
+                                            DataSet.FieldByName('教师职工号').AsString+
+                                            DataSet.FieldByName('课程代码').AsString;
 end;
 
 procedure TjxDataEdit.ClientDataSet1FilterRecord(DataSet: TDataSet; var Accept:
@@ -189,7 +194,7 @@ var
 begin
   Screen.Cursor := crHourGlass;
   try
-    sqlstr := 'select * from 工作量核算表 '+GetWhere+' order by 学年,学期,教师编号';
+    sqlstr := 'select * from 工作量核算表 '+GetWhere+' order by 学年,学期,教师职工号';
     ClientDataSet1.XMLData := DM.OpenData(sqlstr);
     if Self.Showing then
     begin

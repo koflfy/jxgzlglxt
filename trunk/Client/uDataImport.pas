@@ -54,6 +54,7 @@ type
     procedure btn_StopClick(Sender: TObject);
     procedure chk_FastClick(Sender: TObject);
     procedure chk_DeleteClick(Sender: TObject);
+    procedure cds_TempBeforePost(DataSet: TDataSet);
   private
     { Private declarations }
     sField :TStrings;
@@ -90,6 +91,7 @@ begin
     else
       vl_Field.Values[vl_Field.Keys[i]] := '<忽略>';
   end;
+  vl_Field.DeleteRow(i);
 end;
 
 procedure TDataImport.btn_ExitClick(Sender: TObject);
@@ -199,7 +201,7 @@ begin
         begin
           if cds_Temp.ChangeCount>0 then
             //cds_Temp.ApplyUpdates(0);
-            isStop := not DM.UpdateData(Desc_IdField,Sqlstr,cds_Temp.Delta);
+            isStop := not DM.UpdateData(Desc_IdField,Sqlstr,cds_Temp.Delta,False);
         end;
         Total_Count := Total_Count + ADODataSet1.RecordCount;
 
@@ -286,6 +288,14 @@ procedure TDataImport.cbb_TbClick(Sender: TObject);
 begin
   if cbb_Tb.Text<>'' then
     Init_Source;
+end;
+
+procedure TDataImport.cds_TempBeforePost(DataSet: TDataSet);
+begin
+  DataSet.FieldByName('规则号').AsString := DataSet.FieldByName('学年').AsString+
+                                            DataSet.FieldByName('学期').AsString+
+                                            DataSet.FieldByName('教师职工号').AsString+
+                                            DataSet.FieldByName('课程代码').AsString;
 end;
 
 procedure TDataImport.chk_DeleteClick(Sender: TObject);
@@ -398,7 +408,9 @@ begin
     vl_Field.Strings.Clear;
     for i:=0 to FieldCount-1 do
     begin
-      if (Fields[i].FieldName='学年') or (Fields[i].FieldName='学期') or (Fields[i].DataType = ftAutoInc) then
+      if (Fields[i].FieldName='学年') or (Fields[i].FieldName='学期') or
+         (Fields[i].FieldName='规则类型') or (Fields[i].FieldName='规则号') or 
+         (Fields[i].DataType = ftAutoInc) then
         Continue;
       if Fields[i].DataType = ftAutoInc then
         vl_Field.Strings.Add(Fields[i].FieldName+'=<忽略>')
