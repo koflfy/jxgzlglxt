@@ -3,7 +3,7 @@ object ExecSqlSet: TExecSqlSet
   Top = 0
   BorderIcons = [biSystemMenu, biMaximize]
   Caption = #24037#20316#37327#35745#31639#35268#21017#35774#23450
-  ClientHeight = 562
+  ClientHeight = 621
   ClientWidth = 814
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -21,7 +21,7 @@ object ExecSqlSet: TExecSqlSet
   TextHeight = 14
   object Splitter1: TSplitter
     Left = 0
-    Top = 269
+    Top = 308
     Width = 814
     Height = 2
     Cursor = crVSplit
@@ -33,12 +33,13 @@ object ExecSqlSet: TExecSqlSet
   end
   object Panel2: TPanel
     Left = 0
-    Top = 521
+    Top = 580
     Width = 814
     Height = 41
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 3
+    ExplicitTop = 521
     DesignSize = (
       814
       41)
@@ -312,19 +313,19 @@ object ExecSqlSet: TExecSqlSet
   end
   object grp2: TGroupBox
     Left = 0
-    Top = 271
+    Top = 310
     Width = 814
-    Height = 250
+    Height = 270
     Align = alClient
     Caption = #35268#21017#31867#22411#65306
     TabOrder = 2
-    ExplicitTop = 291
-    ExplicitHeight = 230
+    ExplicitTop = 271
+    ExplicitHeight = 250
     object dxgrd_1: TDBGridEh
       Left = 2
       Top = 16
       Width = 810
-      Height = 232
+      Height = 252
       Align = alClient
       AutoFitColWidths = True
       DataGrouping.GroupLevels = <>
@@ -919,7 +920,7 @@ object ExecSqlSet: TExecSqlSet
       Width = 142
       Height = 50
       Align = alRight
-      Caption = #35838#31243#31867#22411#65306
+      Caption = #35268#21017#31867#22411#65306
       TabOrder = 0
       object cbb_Mode: TDBComboBoxEh
         Left = 9
@@ -941,13 +942,13 @@ object ExecSqlSet: TExecSqlSet
     Left = 0
     Top = 50
     Width = 814
-    Height = 219
+    Height = 258
     Align = alTop
     Caption = #32479#35745#39033#30446#32534#36753#65306
     TabOrder = 1
     DesignSize = (
       814
-      219)
+      258)
     object Label1: TLabel
       Left = 16
       Top = 24
@@ -959,10 +960,10 @@ object ExecSqlSet: TExecSqlSet
     object Label2: TLabel
       Left = 16
       Top = 72
-      Width = 58
+      Width = 60
       Height = 14
-      Caption = 'SQL'#21629#20196#65306
-      FocusControl = DBMemo1
+      Caption = #35268#21017#21629#20196#65306
+      FocusControl = DBMemo2
     end
     object Label3: TLabel
       Left = 676
@@ -978,6 +979,14 @@ object ExecSqlSet: TExecSqlSet
       Height = 14
       Caption = #31995#25968#31867#21035#65306
     end
+    object lbl2: TLabel
+      Left = 21
+      Top = 154
+      Width = 58
+      Height = 14
+      Caption = 'SQL'#21629#20196#65306
+      FocusControl = DBMemo1
+    end
     object DBEdit1: TDBEdit
       Left = 40
       Top = 44
@@ -987,14 +996,14 @@ object ExecSqlSet: TExecSqlSet
       DataSource = DataSource1
       TabOrder = 0
     end
-    object DBMemo1: TDBMemo
+    object DBMemo2: TDBMemo
       Left = 41
       Top = 89
       Width = 770
-      Height = 88
+      Height = 55
       Anchors = [akLeft, akTop, akRight, akBottom]
       Color = 13823456
-      DataField = 'sqlText'
+      DataField = 'ExecSql'
       DataSource = DataSource1
       Font.Charset = ANSI_CHARSET
       Font.Color = clBlack
@@ -1005,11 +1014,11 @@ object ExecSqlSet: TExecSqlSet
       PopupMenu = pm1
       ScrollBars = ssVertical
       TabOrder = 3
-      OnChange = DBMemo1Change
+      OnChange = DBMemo2Change
     end
     object btn_Test: TBitBtn
       Left = 734
-      Top = 183
+      Top = 222
       Width = 75
       Height = 25
       Anchors = [akRight, akBottom]
@@ -1017,6 +1026,7 @@ object ExecSqlSet: TExecSqlSet
       Enabled = False
       TabOrder = 4
       OnClick = btn_TestClick
+      ExplicitTop = 183
     end
     object edt_BH: TDBEdit
       Left = 702
@@ -1043,6 +1053,26 @@ object ExecSqlSet: TExecSqlSet
         #35268#27169#31995#25968)
       TabOrder = 1
       Visible = True
+    end
+    object DBMemo1: TDBMemo
+      Left = 41
+      Top = 171
+      Width = 770
+      Height = 71
+      Anchors = [akLeft, akTop, akRight, akBottom]
+      Color = 13823456
+      DataField = 'sqlText'
+      DataSource = DataSource1
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -12
+      Font.Name = 'Verdana'
+      Font.Style = []
+      ParentFont = False
+      PopupMenu = pm1
+      ReadOnly = True
+      ScrollBars = ssVertical
+      TabOrder = 5
     end
   end
   object DataSource1: TDataSource
