@@ -141,7 +141,7 @@ object Main: TMain
       'http://vir.jxstnu.edu.cn/jcgl/')
     InfoFileURL = 'http://vir.jxstnu.edu.cn/Jcgl/download/AutoUpdte.inf'
     VersionControl = byNumber
-    VersionDate = '2012-05-21 00:00:00'
+    VersionDate = '2012-05-31 00:00:00'
     VersionDateAutoSet = True
     OnDoOwnCloseAppMethod = auAutoUpgrader1DoOwnCloseAppMethod
     Left = 680
@@ -467,12 +467,6 @@ object Main: TMain
       ImageIndex = 23
       OnExecute = act_Data_XnXqSetExecute
     end
-    object act_Data_Jxms: TAction
-      Category = '02.'#21442#25968#35774#32622
-      Caption = #25945#23398#27169#24335#35774#32622
-      ImageIndex = 9
-      OnExecute = act_Data_JxmsExecute
-    end
     object act_Data_Kcxz: TAction
       Category = '02.'#21442#25968#35774#32622
       Caption = #35838#31243#24615#36136#35774#32622
@@ -497,9 +491,21 @@ object Main: TMain
       ImageIndex = 4
       OnExecute = act_Data_FileInputExecute
     end
+    object act_Data_Jxms: TAction
+      Category = '02.'#21442#25968#35774#32622
+      Caption = #26680#31639#31867#22411#35774#32622
+      ImageIndex = 9
+      OnExecute = act_Data_JxmsExecute
+    end
+    object act_Data_HsgzWhereSet: TAction
+      Category = '02.'#21442#25968#35774#32622
+      Caption = #26680#31639#31867#22411#33539#22260#35774#32622
+      ImageIndex = 1
+      OnExecute = act_Data_HsgzWhereSetExecute
+    end
     object act_Data_jxgzlSet: TAction
       Category = '02.'#21442#25968#35774#32622
-      Caption = #24037#20316#37327#35745#31639#35268#21017#35774#32622
+      Caption = #26680#31639#35268#21017#35774#32622
       ImageIndex = 10
       OnExecute = act_Data_jxgzlSetExecute
     end
@@ -718,15 +724,19 @@ object Main: TMain
         end
         item
           Visible = True
-          ItemName = 'dxBarButton10'
-        end
-        item
-          Visible = True
           ItemName = 'dxBarSeparator1'
         end
         item
           Visible = True
           ItemName = 'dxBarButton28'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarButton10'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarButton20'
         end
         item
           Visible = True
@@ -927,12 +937,16 @@ object Main: TMain
       Action = act_Data_RoomType
       Category = 3
     end
+    object dxBarButton28: TdxBarButton
+      Action = act_Data_FileInput
+      Category = 3
+    end
     object dxBarButton10: TdxBarButton
       Action = act_Data_Jxms
       Category = 3
     end
-    object dxBarButton28: TdxBarButton
-      Action = act_Data_FileInput
+    object dxBarButton20: TdxBarButton
+      Action = act_Data_HsgzWhereSet
       Category = 3
     end
     object dxBarButton13: TdxBarButton
@@ -1036,7 +1050,7 @@ object Main: TMain
     Left = 550
     Top = 40
     Bitmap = {
-      494C010124002600380010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101240026003C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000A0000000010020000000000000A0
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
