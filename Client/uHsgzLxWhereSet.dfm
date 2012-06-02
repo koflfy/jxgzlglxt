@@ -948,6 +948,8 @@ object HsgzLxWhereSet: THsgzLxWhereSet
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 2
+    ExplicitLeft = 80
+    ExplicitTop = 445
     DesignSize = (
       742
       41)
@@ -956,8 +958,10 @@ object HsgzLxWhereSet: THsgzLxWhereSet
       Top = 7
       Width = 75
       Height = 25
+      Anchors = [akRight, akBottom]
       Caption = #21024#38500'[&D]'
       TabOrder = 2
+      Visible = False
       OnClick = btn_DelClick
     end
     object btn_Save: TBitBtn
@@ -965,6 +969,7 @@ object HsgzLxWhereSet: THsgzLxWhereSet
       Top = 7
       Width = 75
       Height = 25
+      Anchors = [akRight, akBottom]
       Caption = #20445#23384'[&S]'
       TabOrder = 3
       OnClick = btn_SaveClick
@@ -984,8 +989,10 @@ object HsgzLxWhereSet: THsgzLxWhereSet
       Top = 7
       Width = 75
       Height = 25
+      Anchors = [akRight, akBottom]
       Caption = #22686#21152'[&A]'
       TabOrder = 1
+      Visible = False
       OnClick = btn_AddClick
     end
   end
@@ -995,7 +1002,7 @@ object HsgzLxWhereSet: THsgzLxWhereSet
     Width = 509
     Height = 389
     Align = alClient
-    Caption = #26465#20214#33539#22260#35774#32622#65306
+    Caption = #35270#22270'SQL'#35774#32622#65306
     TabOrder = 3
     object Panel1: TPanel
       Left = 2
@@ -1136,7 +1143,7 @@ object HsgzLxWhereSet: THsgzLxWhereSet
           Footers = <>
           Title.TitleButton = True
           Title.ToolTips = True
-          Width = 179
+          Width = 140
         end
         item
           EditButtons = <>

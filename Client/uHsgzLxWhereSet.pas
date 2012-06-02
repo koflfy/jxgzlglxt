@@ -82,21 +82,31 @@ begin
 end;
 
 procedure THsgzLxWhereSet.btn_PrivewClick(Sender: TObject);
+var
+  vn,sData:string;
 begin
+  if DBMemo1.Text='' then Exit;
   //ClientDataSet2.XMLData := dm.OpenData('select 年度,学期,课程代码,课程名称,教师职工号,教师姓名,开课学院 from 工作量核算表 where '+DBMemo1.Text);
-  ClientDataSet2.XMLData := dm.OpenData(DBMemo1.Text);
+  sData := dm.OpenData(DBMemo1.Text);
+  if sData='' then Exit;
+
+  ClientDataSet2.XMLData := sData;
+  vn := ClientDataSet1.FieldByName('规则类型').AsString;
+  if vobj_Admin.CreateView(vn,DBMemo1.Text) then
+    if DataSetNoSave(ClientDataSet1) then
+      ClientDataSet1.MergeChangeLog;
 end;
 
 procedure THsgzLxWhereSet.btn_SaveClick(Sender: TObject);
 var
   sqlStr,sError:string;
 begin
-  if not DataSetNoSave(ClientDataSet1) then
-    Exit;
+  if not DataSetNoSave(ClientDataSet1) then Exit;
 
   try
     //if DM.UpdateData('id',sqlStr,ClientDataSet1.Delta) then
-    if vobj_Admin.WriteHsgzLxData(ClientDataSet1.XMLData,sError) then
+    //if vobj_Admin.WriteHsgzLxData(ClientDataSet1.XMLData,sError) then
+    if vobj_Admin.CreateView(ClientDataSet1.FieldByName('规则类型').AsString,DBMemo1.Text) then
       ClientDataSet1.MergeChangeLog
     else
       MessageBox(Handle, PAnsiChar('数据保存失败！原因为：'+sError+'　'), '系统提示', MB_OK +
@@ -137,11 +147,10 @@ begin
 end;
 
 procedure THsgzLxWhereSet.OpenTable;
-var
-  i: Integer;
 begin
   sqlStr := 'select * from  核算规则类型表 order by 显示顺序';
-  ClientDataSet1.XMLData := vobj_Admin.ReadHsgzLxData;// dm.OpenData(sqlStr);
+  //ClientDataSet1.XMLData := vobj_Admin.ReadHsgzLxData;// dm.OpenData(sqlStr);
+  ClientDataSet1.XMLData := dm.OpenData(sqlStr);
 end;
 
 procedure THsgzLxWhereSet.PageControl1Change(Sender: TObject);

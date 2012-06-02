@@ -10,5 +10,9 @@
     <Transaction>2012/04/14 15:34:31.492.bdsproj,E:\xxx\教学工作量管理系统\Srv\ZsbBmWadSrv.bdsproj=E:\xxx\教学工作量管理系统\Srv\JxgzlWadSrv.bdsproj</Transaction>
     <Transaction>2012/04/14 16:28:19.248.bdsproj,E:\xxx\教学工作量管理系统\Srv\JxgzlWadSrv.bdsproj=E:\xxx\教学工作量管理系统\Srv\jjxgzlWadSrv.bdsproj</Transaction>
     <Transaction>2012/04/14 16:28:23.990.bdsproj,E:\xxx\教学工作量管理系统\Srv\jjxgzlWadSrv.bdsproj=E:\xxx\教学工作量管理系统\Srv\jxgzlWadSrv.bdsproj</Transaction>
+    <Transaction>2012-06-02 22:21:49.905.pas,E:\xxx\教学工作量管理系统\Srv\Unit1.pas=E:\xxx\教学工作量管理系统\Srv\uHsgzLxInput.pas</Transaction>
+    <Transaction>2012-06-02 22:21:49.905.dfm,E:\xxx\教学工作量管理系统\Srv\Unit1.dfm=E:\xxx\教学工作量管理系统\Srv\uHsgzLxInput.dfm</Transaction>
+    <Transaction>2012-06-02 22:44:29.775.pas,E:\xxx\教学工作量管理系统\Srv\uHsgzLxInput.pas=</Transaction>
+    <Transaction>2012-06-02 22:44:29.775.dfm,E:\xxx\教学工作量管理系统\Srv\uHsgzLxInput.dfm=</Transaction>
   </Transactions>
 </BorlandProject>

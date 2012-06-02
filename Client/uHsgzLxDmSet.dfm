@@ -17,6 +17,7 @@ object HsgzLxDmSet: THsgzLxDmSet
   Visible = True
   OnClose = FormClose
   OnCreate = FormCreate
+  OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 14
   object DBGrid1: TDBGridEh
@@ -41,9 +42,10 @@ object HsgzLxDmSet: THsgzLxDmSet
     OddRowColor = 13823456
     OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghMultiSortMarking, dghRowHighlight, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove]
     PopupMenu = DM.PopupMenu1
+    ReadOnly = True
     RowDetailPanel.Color = clBtnFace
     SortLocal = True
-    TabOrder = 0
+    TabOrder = 1
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -12
@@ -85,7 +87,7 @@ object HsgzLxDmSet: THsgzLxDmSet
     BevelOuter = bvNone
     Color = clWhite
     ParentBackground = False
-    TabOrder = 1
+    TabOrder = 0
     object img_Title: TImage
       Left = 0
       Top = 0
@@ -951,21 +953,22 @@ object HsgzLxDmSet: THsgzLxDmSet
       552
       41)
     object btn_Del: TBitBtn
-      Left = 102
+      Left = 203
       Top = 9
       Width = 75
       Height = 25
       Caption = #21024#38500'[&D]'
-      TabOrder = 2
+      TabOrder = 3
       OnClick = btn_DelClick
     end
     object btn_Save: TBitBtn
-      Left = 193
+      Left = 299
       Top = 9
       Width = 75
       Height = 25
       Caption = #20445#23384'[&S]'
-      TabOrder = 3
+      TabOrder = 4
+      Visible = False
       OnClick = btn_SaveClick
     end
     object btn_Exit: TBitBtn
@@ -987,6 +990,15 @@ object HsgzLxDmSet: THsgzLxDmSet
       TabOrder = 1
       OnClick = btn_AddClick
     end
+    object btn_Edit: TBitBtn
+      Left = 107
+      Top = 9
+      Width = 75
+      Height = 25
+      Caption = #32534#36753'[&E]'
+      TabOrder = 2
+      OnClick = btn_EditClick
+    end
   end
   object DataSource1: TDataSource
     DataSet = ClientDataSet1
@@ -997,6 +1009,8 @@ object HsgzLxDmSet: THsgzLxDmSet
     Aggregates = <>
     CommandText = 'select * from  '#26680#31639#35268#21017#31867#22411#34920
     Params = <>
+    AfterOpen = ClientDataSet1AfterOpen
+    AfterPost = ClientDataSet1AfterPost
     OnNewRecord = ClientDataSet1NewRecord
     Left = 246
     Top = 169

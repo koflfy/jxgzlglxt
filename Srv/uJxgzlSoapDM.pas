@@ -110,7 +110,8 @@ begin
     try
       adoqry.SQL.Assign(sList);
       adoqry.ExecSQL;
-      Result := True;
+      sList.Text := 'update 核算规则类型表 set 默认检索条件='+quotedstr(sqlStr)+' where 规则类型='+quotedstr(ViewName);
+      Result := ExecSqlCmd(sList.Text);
     except
       on e:Exception do
       begin

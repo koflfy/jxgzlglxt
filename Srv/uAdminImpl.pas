@@ -71,6 +71,7 @@ type
 
     function ReadHsgzLxData:string;stdcall; //得到核算规则类型数据表内容
     function WriteHsgzLxData(const sData:string;out sError:string):Boolean;stdcall; //保存核算规则类型数据表内容
+    function DropView(const ViewName:string):Boolean;stdcall; //创建视图
     function CreateView(const ViewName,sqlStr:string):Boolean;stdcall; //创建视图
   end;
 
@@ -626,6 +627,18 @@ begin
   WriteLogoutLog(Czy_ID);
   //WriteLog(Czy_ID,'用户注销');
   Result := True;
+end;
+
+function TAdmin.DropView(const ViewName: string): Boolean;
+var
+  dm:TJxgzlSoapDM;
+begin
+  dm := TJxgzlSoapDM.Create(nil);
+  try
+    Result := dm.DropView(ViewName);
+  finally
+    dm.Free;
+  end;
 end;
 
 function TAdmin.ExecSql(const SqlText: string; out sError: string): Boolean;
