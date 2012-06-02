@@ -42,13 +42,13 @@ object Main: TMain
   object lbl_SystemName: TRzLabel
     Left = -165
     Top = 176
-    Width = 829
-    Height = 102
+    Width = 873
+    Height = 87
     Caption = '"'#25945#23398#24037#20316#37327'"'#26680#31639#31995#32479
     Font.Charset = GB2312_CHARSET
     Font.Color = clMaroon
     Font.Height = -85
-    Font.Name = #26041#27491#23002#20307#31616#20307
+    Font.Name = #26999#20307'_GB2312'
     Font.Style = [fsBold]
     ParentFont = False
     Transparent = True
@@ -141,7 +141,7 @@ object Main: TMain
       'http://vir.jxstnu.edu.cn/jcgl/')
     InfoFileURL = 'http://vir.jxstnu.edu.cn/Jcgl/download/AutoUpdte.inf'
     VersionControl = byNumber
-    VersionDate = '2012-05-31 00:00:00'
+    VersionDate = '2012-06-02 00:00:00'
     VersionDateAutoSet = True
     OnDoOwnCloseAppMethod = auAutoUpgrader1DoOwnCloseAppMethod
     Left = 680
@@ -1050,7 +1050,7 @@ object Main: TMain
     Left = 550
     Top = 40
     Bitmap = {
-      494C010124002600400010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010124002600440010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000A0000000010020000000000000A0
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

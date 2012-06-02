@@ -36,7 +36,8 @@ uses
   uRoomTypeSet in 'uRoomTypeSet.pas' {RoomTypeSet},
   uKcxzDmSet in 'uKcxzDmSet.pas' {KcxzDmSet},
   uHsgzLxDmSet in 'uHsgzLxDmSet.pas' {HsgzLxDmSet},
-  uHsgzLxWhereSet in 'uHsgzLxWhereSet.pas' {HsgzLxWhereSet};
+  uHsgzLxWhereSet in 'uHsgzLxWhereSet.pas' {HsgzLxWhereSet},
+  uHsgzLxInput in 'uHsgzLxInput.pas' {HsgzLxInput};
 
 {$R *.res}
 
