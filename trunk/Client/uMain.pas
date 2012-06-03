@@ -116,6 +116,8 @@ type
     lbl_CurXnXq: TRzLabel;
     act_Data_HsgzWhereSet: TAction;
     dxBarButton20: TdxBarButton;
+    act_jxgzl_InitHsgzlTable: TAction;
+    dxBarButton22: TdxBarButton;
     procedure act_Cj_CjBrowseExecute(Sender: TObject);
     procedure act_sys_ExitExecute(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -177,6 +179,7 @@ type
     procedure act_Data_KcLbExecute(Sender: TObject);
     procedure act_Data_RoomTypeExecute(Sender: TObject);
     procedure act_Data_HsgzWhereSetExecute(Sender: TObject);
+    procedure act_jxgzl_InitHsgzlTableExecute(Sender: TObject);
   private
     { Private declarations }
     StatusDisplay: TStatusDisplay;
@@ -197,7 +200,7 @@ var
 implementation
 uses Net, udm, uCzyRightSet, uCzyEdit,uChangeCzyPwd,uPrintBHSet,uKcLbDmSet,uRoomTypeSet,
   uUserLoginLog, uOnlineUpdateSet, uIpSet, uNetBmTimeSet,ujxDataEdit,CnProgressFrm,
-  uWebMessagePublish,uLockScreen,uSysLog,uReportDesign,uXnXqSet,uHsgzLxDmSet,
+  uWebMessagePublish,uLockScreen,uSysLog,uReportDesign,uXnXqSet,uHsgzLxDmSet,ujxGzlInitialize,
   ujxGzlBrowse,uExecSqlSet,uKcxzDmSet,uJxmsDmSet,uDataImport,uHsgzLxWhereSet;
 
 {$R *.dfm}
@@ -426,6 +429,11 @@ end;
 procedure TMain.act_jxgzl_DataImportExecute(Sender: TObject);
 begin
   ShowMdiChildForm(TDataImport);
+end;
+
+procedure TMain.act_jxgzl_InitHsgzlTableExecute(Sender: TObject);
+begin
+  ShowMdiChildForm(TjxGzlInitialize);
 end;
 
 procedure TMain.act_jxgzl_jsExecute(Sender: TObject);

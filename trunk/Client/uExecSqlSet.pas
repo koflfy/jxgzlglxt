@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, DBCtrls, Mask, DB, DBClient, Buttons,StrUtils,
   ExtCtrls, GridsEh, DBGridEh, MyDBNavigator, DBCtrlsEh, DBGridEhGrouping, Menus,
-  frxpngimage, pngimage;
+  frxpngimage, pngimage, RzLstBox;
 
 type
   TExecSqlSet = class(TForm)
@@ -25,27 +25,27 @@ type
     P1: TMenuItem;
     N1: TMenuItem;
     N2: TMenuItem;
-    grp2: TGroupBox;
     pnl_Title: TPanel;
     img_Title: TImage;
     img_Hint: TImage;
     lbl_Title: TLabel;
-    GroupBox1: TGroupBox;
-    cbb_Mode: TDBComboBoxEh;
-    dxgrd_1: TDBGridEh;
-    Splitter1: TSplitter;
+    GroupBox2: TPanel;
     grp1: TGroupBox;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
+    lbl1: TLabel;
     DBEdit1: TDBEdit;
-    DBMemo2: TDBMemo;
     btn_Test: TBitBtn;
     edt_BH: TDBEdit;
-    lbl1: TLabel;
     cbb_XsLb: TDBComboBoxEh;
-    lbl2: TLabel;
     DBMemo1: TDBMemo;
+    Splitter1: TSplitter;
+    grp2: TGroupBox;
+    dxgrd_1: TDBGridEh;
+    GroupBox3: TGroupBox;
+    lst_HsgzLx: TRzListBox;
+    btn_Init: TBitBtn;
     procedure btn_SaveClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -56,10 +56,11 @@ type
     procedure btn_ExitClick(Sender: TObject);
     procedure cbb_TypeChange(Sender: TObject);
     procedure ClientDataSet1NewRecord(DataSet: TDataSet);
-    procedure DBMemo2Change(Sender: TObject);
     procedure cbb_XsLbChange(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure btn_RefreshClick(Sender: TObject);
+    procedure btn_InitClick(Sender: TObject);
+    procedure DBMemo1Change(Sender: TObject);
   private
     { Private declarations }
     sqlWhere:String;
@@ -102,6 +103,17 @@ begin
   Close;
 end;
 
+procedure TExecSqlSet.btn_InitClick(Sender: TObject);
+var
+  sqlstr:string;
+begin
+  if not (ClientDataSet1.State in [dsInsert,dsEdit]) then
+    ClientDataSet1.Edit;
+  sqlstr := 'update 工作量核算表 set '+cbb_XsLb.Text+'=1.0 where 核算类型='+quotedstr(lst_HsgzLx.Items[lst_HsgzLx.ItemIndex])+#13+DbMemo1.Text;
+  ClientDataSet1.FieldByName('sqlText').AsString := sqlstr;
+  DBMemo1.SetFocus; 
+end;
+
 procedure TExecSqlSet.btn_RefreshClick(Sender: TObject);
 begin
   Open_Table;
@@ -139,7 +151,7 @@ procedure TExecSqlSet.cbb_XsLbChange(Sender: TObject);
 begin
   if Self.Showing then
   begin
-    sqlWhere := DM.GetHsgzWhere(cbb_Mode.Text);
+    sqlWhere := DM.GetHsgzWhere(lst_HsgzLx.Items[lst_HsgzLx.ItemIndex]);
     Open_Table;
     dxgrd_1.SetFocus;
   end;
@@ -152,20 +164,13 @@ end;
 
 procedure TExecSqlSet.ClientDataSet1NewRecord(DataSet: TDataSet);
 begin
-  ClientDataSet1.FieldByName('规则类型').AsString := cbb_Mode.Text;//gb_System_Mode;
+  ClientDataSet1.FieldByName('规则类型').AsString := lst_HsgzLx.Items[lst_HsgzLx.ItemIndex];//gb_System_Mode;
   //ClientDataSet1.FieldByName('系数类别').AsString := cbb_XsLb.Value;
 end;
 
-procedure TExecSqlSet.DBMemo2Change(Sender: TObject);
-var
-  sTemp:string;
+procedure TExecSqlSet.DBMemo1Change(Sender: TObject);
 begin
-  btn_Test.Enabled := DBMemo2.Text<>'';
-  sTemp := LowerCase(DBMemo2.Text);
-  if pos(' where ',sTemp)>0 then
-    DBMemo1.Text := DBMemo2.Text+' and ('+sqlWhere+')'
-  else
-    DBMemo1.Text := DBMemo2.Text+' where ('+sqlWhere+')'
+  btn_Test.Enabled := DBMemo1.Text<>'';
 end;
 
 function TExecSqlSet.FormatSql(var sqlText: string): Boolean;
@@ -207,10 +212,10 @@ begin
   sList := TStringList.Create;
   try
     dm.GetHsgzTypeXyList(sList);
-    cbb_Mode.Items.Assign(sList);
-    if cbb_Mode.Items.Count>0 then
-      cbb_Mode.ItemIndex := 0;
-    sqlWhere := DM.GetHsgzWhere(cbb_Mode.Text);
+    lst_HsgzLx.Items.Assign(sList);
+    if lst_HsgzLx.Items.Count>0 then
+      lst_HsgzLx.ItemIndex := 0;
+    sqlWhere := DM.GetHsgzWhere(lst_HsgzLx.Items[lst_HsgzLx.ItemIndex]);
     Open_Table;
   finally
     sList.Free;
@@ -226,7 +231,7 @@ procedure TExecSqlSet.Open_Table;
 var
   sqlstr :string;
 begin
-  sqlstr := 'select * from 核算规则配置表 where 规则类型='+quotedstr(cbb_Mode.Text)+
+  sqlstr := 'select * from 核算规则配置表 where 规则类型='+quotedstr(lst_HsgzLx.Items[lst_HsgzLx.ItemIndex])+
             ' order by 系数类别,执行顺序';
   ClientDataSet1.XMLData := dm.OpenData(sqlstr);
 end;

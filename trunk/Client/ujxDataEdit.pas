@@ -31,7 +31,10 @@ type
     grp3: TGroupBox;
     cbb_Xy: TDBComboBoxEh;
     btn_Save: TBitBtn;
-    btn_UpdateHsgzLx: TBitBtn;
+    chk_DisplayErrorRecord: TCheckBox;
+    chk_AllowEdit: TCheckBox;
+    btn_Delete: TBitBtn;
+    btn_Edit: TBitBtn;
     procedure btn_ExitClick(Sender: TObject);
     procedure btn_RefreshClick(Sender: TObject);
     procedure btn_AddClick(Sender: TObject);
@@ -41,12 +44,16 @@ type
     procedure cbb_XqChange(Sender: TObject);
     procedure btn_SearchClick(Sender: TObject);
     procedure edt_ValueChange(Sender: TObject);
-    procedure ClientDataSet1BeforePost(DataSet: TDataSet);
     procedure btn_SaveClick(Sender: TObject);
     procedure ClientDataSet1FilterRecord(DataSet: TDataSet; var Accept: Boolean);
     procedure ClientDataSet1NewRecord(DataSet: TDataSet);
     procedure rg_PostClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure btn_DisplayErrorRecordClick(Sender: TObject);
+    procedure chk_DisplayErrorRecordClick(Sender: TObject);
+    procedure chk_AllowEditClick(Sender: TObject);
+    procedure btn_EditClick(Sender: TObject);
+    procedure btn_DeleteClick(Sender: TObject);
   private
     { Private declarations }
     function  GetWhere:string;
@@ -74,6 +81,27 @@ begin
   ClientDataSet1.Cancel;
 end;
 
+procedure TjxDataEdit.btn_DeleteClick(Sender: TObject);
+begin
+  if MessageBox(Handle, '真的要删除当前记录吗？　', '系统提示', MB_YESNO + 
+    MB_ICONWARNING + MB_DEFBUTTON2 + MB_TOPMOST) = IDYES then
+  begin
+    ClientDataSet1.Delete;
+  end;
+end;
+
+procedure TjxDataEdit.btn_DisplayErrorRecordClick(Sender: TObject);
+var
+  sqlStr:string;
+begin
+  sqlStr := 'select * from 教学任务表 where 规则号 in (select 规则号 from 教学任务表 group by 规则号 having count(*)>1)';
+end;
+
+procedure TjxDataEdit.btn_EditClick(Sender: TObject);
+begin
+  DBGridEh1.SetFocus;
+end;
+
 procedure TjxDataEdit.btn_ExitClick(Sender: TObject);
 begin
   Close;
@@ -93,7 +121,7 @@ procedure TjxDataEdit.btn_SaveClick(Sender: TObject);
 begin
   if DataSetNoSave(ClientDataSet1) then
   begin
-    if dm.UpdateData('id','select top 0 * from 工作量核算表',ClientDataSet1.Delta,True) then
+    if dm.UpdateData('id','select top 0 * from 教学任务表',ClientDataSet1.Delta,True) then
       ClientDataSet1.MergeChangeLog;
   end;
 end;
@@ -110,15 +138,18 @@ begin
     Open_Table;
 end;
 
-procedure TjxDataEdit.ClientDataSet1BeforePost(DataSet: TDataSet);
+procedure TjxDataEdit.chk_AllowEditClick(Sender: TObject);
 begin
-  DataSet.FieldByName('学年').AsString := cbb_Xn.Value;
-  DataSet.FieldByName('学期').AsString := cbb_Xq.Value;
-  DataSet.FieldByName('开课学院').AsString := cbb_Xy.Text;
-  DataSet.FieldByName('规则号').AsString := DataSet.FieldByName('学年').AsString+
-                                            DataSet.FieldByName('学期').AsString+
-                                            DataSet.FieldByName('教师职工号').AsString+
-                                            DataSet.FieldByName('课程代码').AsString;
+  DBGridEh1.ReadOnly := not TCheckBox(Sender).Checked;
+  ClientDataSet1.ReadOnly := DBGridEh1.ReadOnly;
+  btn_Edit.Visible := TCheckBox(Sender).Checked;
+  btn_Delete.Visible := TCheckBox(Sender).Checked;
+  btn_Save.Visible := TCheckBox(Sender).Checked;
+end;
+
+procedure TjxDataEdit.chk_DisplayErrorRecordClick(Sender: TObject);
+begin
+  Open_Table;
 end;
 
 procedure TjxDataEdit.ClientDataSet1FilterRecord(DataSet: TDataSet; var Accept:
@@ -159,7 +190,8 @@ begin
 
     cbb_Xy.Items.Clear;
     DM.GetXyList(sList);
-    cbb_Xy.Items.Assign(sList);
+    cbb_Xy.Items.Add('不限');
+    cbb_Xy.Items.AddStrings(sList);
 
     if cbb_Xy.Items.Count>0 then
       cbb_Xy.ItemIndex := 0;
@@ -174,7 +206,8 @@ function TjxDataEdit.GetWhere: string;
 var
   sWhere:string;
 begin
-  sWhere := ' where 开课学院='+quotedstr(cbb_Xy.Text);
+  if cbb_Xy.Text<>'不限' then
+    sWhere := ' and 开课学院='+quotedstr(cbb_Xy.Text);
   sWhere := sWhere+' and 学年='+quotedstr(cbb_Xn.Text);
   sWhere := sWhere+' and 学期='+quotedstr(cbb_Xq.Value);
   Result := sWhere;
@@ -194,7 +227,12 @@ var
 begin
   Screen.Cursor := crHourGlass;
   try
-    sqlstr := 'select * from 工作量核算表 '+GetWhere+' order by 学年,学期,教师职工号';
+    if chk_DisplayErrorRecord.Checked then
+      sqlStr := 'select * from 教学任务表 where 规则号+授课对象 in '+
+                '(select 规则号+授课对象 from 教学任务表 group by 规则号+授课对象 having count(*)>1)'+
+                GetWhere+' order by 规则号'
+    else
+      sqlstr := 'select * from 教学任务表 where 1>0 '+GetWhere+' order by 规则号';
     ClientDataSet1.XMLData := DM.OpenData(sqlstr);
     if Self.Showing then
     begin

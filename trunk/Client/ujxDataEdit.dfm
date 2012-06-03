@@ -3,7 +3,7 @@ object jxDataEdit: TjxDataEdit
   Top = 0
   ActiveControl = DBGridEh1
   BorderStyle = bsSingle
-  Caption = #25945#23398#20219#21153#25968#25454#20462#25913
+  Caption = #25945#23398#20219#21153#25968#25454#26597#35810
   ClientHeight = 703
   ClientWidth = 1042
   Color = clBtnFace
@@ -30,6 +30,9 @@ object jxDataEdit: TjxDataEdit
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    DesignSize = (
+      1042
+      50)
     object img_Title: TImage
       Left = 0
       Top = 0
@@ -531,9 +534,9 @@ object jxDataEdit: TjxDataEdit
     object lbl_Title: TLabel
       Left = 80
       Top = 13
-      Width = 160
+      Width = 120
       Height = 23
-      Caption = #25945#23398#20219#21153#25968#25454#20462#25913
+      Caption = #25945#23398#20219#21153#25968#25454
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clNavy
       Font.Height = -19
@@ -615,6 +618,26 @@ object jxDataEdit: TjxDataEdit
         OnChange = cbb_XqChange
       end
     end
+    object chk_DisplayErrorRecord: TCheckBox
+      Left = 486
+      Top = 25
+      Width = 115
+      Height = 17
+      Anchors = [akRight, akBottom]
+      Caption = #26174#31034#26377#30097#38382#30340#35760#24405
+      TabOrder = 4
+      OnClick = chk_DisplayErrorRecordClick
+    end
+    object chk_AllowEdit: TCheckBox
+      Left = 486
+      Top = 6
+      Width = 97
+      Height = 17
+      Anchors = [akRight, akBottom]
+      Caption = #20801#35768#20462#25913#25968#25454
+      TabOrder = 3
+      OnClick = chk_AllowEditClick
+    end
   end
   object Panel2: TPanel
     Left = 0
@@ -647,7 +670,7 @@ object jxDataEdit: TjxDataEdit
       Height = 25
       Anchors = [akTop, akRight]
       Caption = #20851#38381'[&C]'
-      TabOrder = 4
+      TabOrder = 7
       OnClick = btn_ExitClick
     end
     object cbb_Field: TDBFieldComboBox
@@ -657,7 +680,7 @@ object jxDataEdit: TjxDataEdit
       Height = 22
       ItemHeight = 14
       TabOrder = 0
-      Text = #25945#24072#32534#21495
+      Text = #25945#24072#32844#24037#21495
       DataSource = DataSource1
     end
     object edt_Value: TEdit
@@ -684,7 +707,7 @@ object jxDataEdit: TjxDataEdit
       Height = 25
       Anchors = [akRight, akBottom]
       Caption = #25968#25454#23548#20986'[&E]'
-      TabOrder = 3
+      TabOrder = 6
       OnClick = btn_ExportClick
       Glyph.Data = {
         36040000424D3604000000000000360000002800000010000000100000000100
@@ -732,6 +755,7 @@ object jxDataEdit: TjxDataEdit
       ParentShowHint = False
       ShowHint = True
       TabOrder = 5
+      Visible = False
       OnClick = btn_SaveClick
       Glyph.Data = {
         36060000424D3606000000000000360400002800000020000000100000000100
@@ -786,14 +810,27 @@ object jxDataEdit: TjxDataEdit
         EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE}
       NumGlyphs = 2
     end
-    object btn_UpdateHsgzLx: TBitBtn
-      Left = 534
+    object btn_Delete: TBitBtn
+      Left = 598
       Top = 9
-      Width = 107
+      Width = 95
       Height = 25
       Anchors = [akRight, akBottom]
-      Caption = #26356#26032#35268#21017#31867#22411
-      TabOrder = 6
+      Caption = #21024#38500#24403#21069#35760#24405
+      TabOrder = 4
+      Visible = False
+      OnClick = btn_DeleteClick
+    end
+    object btn_Edit: TBitBtn
+      Left = 494
+      Top = 9
+      Width = 95
+      Height = 25
+      Anchors = [akRight, akBottom]
+      Caption = #20462#25913#24403#21069#35760#24405
+      TabOrder = 3
+      Visible = False
+      OnClick = btn_EditClick
     end
   end
   object DBGridEh1: TDBGridEh
@@ -819,6 +856,7 @@ object jxDataEdit: TjxDataEdit
     Options = [dgEditing, dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
     OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghEnterAsTab, dghRowHighlight, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove, dghHotTrack]
     PopupMenu = DM.PopupMenu1
+    ReadOnly = True
     RowDetailPanel.Color = clBtnFace
     SortLocal = True
     TabOrder = 1
@@ -833,6 +871,7 @@ object jxDataEdit: TjxDataEdit
         EditButtons = <>
         FieldName = 'Id'
         Footers = <>
+        Title.TitleButton = True
         Title.ToolTips = True
         Visible = False
       end
@@ -841,6 +880,7 @@ object jxDataEdit: TjxDataEdit
         FieldName = #35268#21017#31867#22411
         Footers = <>
         Title.TitleButton = True
+        Visible = False
         Width = 87
       end
       item
@@ -848,33 +888,46 @@ object jxDataEdit: TjxDataEdit
         FieldName = #35268#21017#21495
         Footers = <>
         Title.TitleButton = True
+        Width = 230
+      end
+      item
+        EditButtons = <>
+        FieldName = #36873#35838#35838#21495
+        Footers = <>
+        Title.TitleButton = True
         Visible = False
-        Width = 102
+        Width = 191
       end
       item
         EditButtons = <>
         FieldName = #23398#24180
         Footers = <>
+        Title.TitleButton = True
         Title.ToolTips = True
+        Visible = False
         Width = 68
       end
       item
         EditButtons = <>
         FieldName = #23398#26399
         Footers = <>
+        Title.TitleButton = True
         Title.ToolTips = True
+        Visible = False
         Width = 32
       end
       item
         EditButtons = <>
         FieldName = #25945#24072#32844#24037#21495
         Footers = <>
+        Title.TitleButton = True
         Title.ToolTips = True
       end
       item
         EditButtons = <>
         FieldName = #25945#24072#22995#21517
         Footers = <>
+        Title.TitleButton = True
         Title.ToolTips = True
         Width = 63
       end
@@ -882,6 +935,7 @@ object jxDataEdit: TjxDataEdit
         EditButtons = <>
         FieldName = #32844#31216
         Footers = <>
+        Title.TitleButton = True
         Title.ToolTips = True
         Width = 53
       end
@@ -889,6 +943,7 @@ object jxDataEdit: TjxDataEdit
         EditButtons = <>
         FieldName = #35838#31243#20195#30721
         Footers = <>
+        Title.TitleButton = True
         Title.ToolTips = True
         Width = 61
       end
@@ -896,13 +951,15 @@ object jxDataEdit: TjxDataEdit
         EditButtons = <>
         FieldName = #35838#31243#21517#31216
         Footers = <>
+        Title.TitleButton = True
         Title.ToolTips = True
-        Width = 172
+        Width = 116
       end
       item
         EditButtons = <>
         FieldName = #35838#31243#24615#36136
         Footers = <>
+        Title.TitleButton = True
         Title.ToolTips = True
         Width = 61
       end
@@ -917,6 +974,7 @@ object jxDataEdit: TjxDataEdit
         EditButtons = <>
         FieldName = #24320#35838#23398#38498
         Footers = <>
+        Title.TitleButton = True
         Title.ToolTips = True
         Width = 117
       end
@@ -924,6 +982,7 @@ object jxDataEdit: TjxDataEdit
         EditButtons = <>
         FieldName = #25480#35838#23545#35937
         Footers = <>
+        Title.TitleButton = True
         Title.ToolTips = True
         Width = 131
       end
@@ -931,30 +990,35 @@ object jxDataEdit: TjxDataEdit
         EditButtons = <>
         FieldName = #24050#36873#20154#25968
         Footers = <>
+        Title.TitleButton = True
         Title.ToolTips = True
       end
       item
         EditButtons = <>
         FieldName = #21608#23398#26102
         Footers = <>
+        Title.TitleButton = True
         Title.ToolTips = True
       end
       item
         EditButtons = <>
         FieldName = #36215#27490#21608
         Footers = <>
+        Title.TitleButton = True
         Title.ToolTips = True
       end
       item
         EditButtons = <>
         FieldName = #29702#35770#23398#26102
         Footers = <>
+        Title.TitleButton = True
         Title.ToolTips = True
       end
       item
         EditButtons = <>
         FieldName = #23454#39564#23398#26102
         Footers = <>
+        Title.TitleButton = True
         Title.ToolTips = True
       end
       item
@@ -982,6 +1046,7 @@ object jxDataEdit: TjxDataEdit
     Aggregates = <>
     CommandText = 'select * from '#24037#20316#37327#26680#31639#34920
     Params = <>
+    ReadOnly = True
     OnFilterRecord = ClientDataSet1FilterRecord
     OnNewRecord = ClientDataSet1NewRecord
     Left = 288

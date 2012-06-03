@@ -5571,6 +5571,7 @@ object DataImport: TDataImport
     FetchOnDemand = False
     Params = <>
     BeforePost = cds_TempBeforePost
+    OnReconcileError = cds_TempReconcileError
     Left = 199
     Top = 192
   end

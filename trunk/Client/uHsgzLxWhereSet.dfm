@@ -38,7 +38,8 @@ object HsgzLxWhereSet: THsgzLxWhereSet
     IndicatorTitle.ShowDropDownSign = True
     IndicatorTitle.TitleButton = True
     OddRowColor = 13823456
-    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghMultiSortMarking, dghRowHighlight, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove]
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
+    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghMultiSortMarking, dghRowHighlight, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove, dghHotTrack]
     PopupMenu = DM.PopupMenu1
     ReadOnly = True
     RowDetailPanel.Color = clBtnFace
@@ -948,8 +949,6 @@ object HsgzLxWhereSet: THsgzLxWhereSet
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 2
-    ExplicitLeft = 80
-    ExplicitTop = 445
     DesignSize = (
       742
       41)
@@ -1021,7 +1020,7 @@ object HsgzLxWhereSet: THsgzLxWhereSet
         Width = 75
         Height = 25
         Anchors = [akRight, akBottom]
-        Caption = #27979#35797
+        Caption = #27979#35797'[&T]'
         TabOrder = 0
         OnClick = btn_PrivewClick
       end
