@@ -141,7 +141,7 @@ object Main: TMain
       'http://vir.jxstnu.edu.cn/jcgl/')
     InfoFileURL = 'http://vir.jxstnu.edu.cn/Jcgl/download/AutoUpdte.inf'
     VersionControl = byNumber
-    VersionDate = '2012-06-02 00:00:00'
+    VersionDate = '2012-06-03 00:00:00'
     VersionDateAutoSet = True
     OnDoOwnCloseAppMethod = auAutoUpgrader1DoOwnCloseAppMethod
     Left = 680
@@ -422,8 +422,8 @@ object Main: TMain
     end
     object act_Stu_BmInput: TAction
       Category = '03.'#24037#20316#37327#26680#31639
-      Caption = #25945#23398#20219#21153#25968#25454#20462#25913
-      ImageIndex = 5
+      Caption = #25945#23398#20219#21153#25968#25454#26816#26597
+      ImageIndex = 28
       OnExecute = act_Stu_BmInputExecute
     end
     object act_Interface_Xjgl: TAction
@@ -449,10 +449,16 @@ object Main: TMain
       Caption = #21457#31080#25171#21360#20013#24515'(&P)'
       ImageIndex = 19
     end
+    object act_jxgzl_InitHsgzlTable: TAction
+      Category = '03.'#24037#20316#37327#26680#31639
+      Caption = #21021#22987#21270#24037#20316#37327#26680#31639#34920
+      ImageIndex = 30
+      OnExecute = act_jxgzl_InitHsgzlTableExecute
+    end
     object act_jxgzl_js: TAction
       Category = '03.'#24037#20316#37327#26680#31639
       Caption = #25945#23398#24037#20316#37327#26680#31639
-      ImageIndex = 28
+      ImageIndex = 5
       OnExecute = act_jxgzl_jsExecute
     end
     object act_jxgzl_Cx: TAction
@@ -786,6 +792,10 @@ object Main: TMain
         end
         item
           Visible = True
+          ItemName = 'dxBarButton22'
+        end
+        item
+          Visible = True
           ItemName = 'dxBarButton14'
         end
         item
@@ -977,6 +987,10 @@ object Main: TMain
       Action = act_Stu_BmInput
       Category = 4
     end
+    object dxBarButton22: TdxBarButton
+      Action = act_jxgzl_InitHsgzlTable
+      Category = 4
+    end
     object dxBarButton14: TdxBarButton
       Action = act_jxgzl_js
       Category = 4
@@ -1050,7 +1064,7 @@ object Main: TMain
     Left = 550
     Top = 40
     Bitmap = {
-      494C010124002600440010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010124002600480010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000A0000000010020000000000000A0
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

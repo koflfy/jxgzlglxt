@@ -1,11 +1,10 @@
 object ExecSqlSet: TExecSqlSet
   Left = 0
   Top = 0
-  ActiveControl = DBMemo2
   BorderIcons = [biSystemMenu, biMaximize]
   Caption = #24037#20316#37327#35745#31639#35268#21017#35774#23450
   ClientHeight = 621
-  ClientWidth = 814
+  ClientWidth = 912
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,31 +19,19 @@ object ExecSqlSet: TExecSqlSet
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 14
-  object Splitter1: TSplitter
-    Left = 0
-    Top = 308
-    Width = 814
-    Height = 2
-    Cursor = crVSplit
-    Align = alTop
-    Color = clSkyBlue
-    ParentColor = False
-    ExplicitLeft = -8
-    ExplicitTop = 307
-  end
   object Panel2: TPanel
     Left = 0
     Top = 580
-    Width = 814
+    Width = 912
     Height = 41
     Align = alBottom
     BevelOuter = bvNone
-    TabOrder = 3
+    TabOrder = 1
     DesignSize = (
-      814
+      912
       41)
     object btn_Exit: TBitBtn
-      Left = 724
+      Left = 822
       Top = 9
       Width = 75
       Height = 25
@@ -54,7 +41,7 @@ object ExecSqlSet: TExecSqlSet
       OnClick = btn_ExitClick
     end
     object btn_Save: TBitBtn
-      Left = 605
+      Left = 703
       Top = 9
       Width = 78
       Height = 25
@@ -125,7 +112,7 @@ object ExecSqlSet: TExecSqlSet
       OnClick = btn_RefreshClick
     end
     object btn_Add: TBitBtn
-      Left = 371
+      Left = 469
       Top = 9
       Width = 78
       Height = 25
@@ -187,7 +174,7 @@ object ExecSqlSet: TExecSqlSet
       NumGlyphs = 2
     end
     object btn_Del: TBitBtn
-      Left = 449
+      Left = 547
       Top = 9
       Width = 78
       Height = 25
@@ -249,7 +236,7 @@ object ExecSqlSet: TExecSqlSet
       NumGlyphs = 2
     end
     object btn_Cancel: TBitBtn
-      Left = 527
+      Left = 625
       Top = 9
       Width = 78
       Height = 25
@@ -311,112 +298,10 @@ object ExecSqlSet: TExecSqlSet
       NumGlyphs = 2
     end
   end
-  object grp2: TGroupBox
-    Left = 0
-    Top = 310
-    Width = 814
-    Height = 270
-    Align = alClient
-    Caption = #35268#21017#31867#22411#65306
-    TabOrder = 2
-    object dxgrd_1: TDBGridEh
-      Left = 2
-      Top = 16
-      Width = 810
-      Height = 252
-      Align = alClient
-      AutoFitColWidths = True
-      DataGrouping.GroupLevels = <>
-      DataSource = DataSource1
-      EditActions = [geaCutEh, geaCopyEh, geaPasteEh, geaDeleteEh]
-      Flat = False
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
-      Font.Height = -12
-      Font.Name = 'Verdana'
-      Font.Style = []
-      FooterColor = clWindow
-      FooterFont.Charset = ANSI_CHARSET
-      FooterFont.Color = clWindowText
-      FooterFont.Height = -12
-      FooterFont.Name = 'Verdana'
-      FooterFont.Style = []
-      ImeMode = imDisable
-      IndicatorTitle.ShowDropDownSign = True
-      IndicatorTitle.TitleButton = True
-      OddRowColor = 13823456
-      OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghMultiSortMarking, dghRowHighlight, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove]
-      ParentFont = False
-      PopupMenu = DM.PopupMenu1
-      ReadOnly = True
-      RowDetailPanel.Color = clBtnFace
-      SortLocal = True
-      TabOrder = 0
-      TitleFont.Charset = ANSI_CHARSET
-      TitleFont.Color = clWindowText
-      TitleFont.Height = -12
-      TitleFont.Name = 'Verdana'
-      TitleFont.Style = []
-      VertScrollBar.VisibleMode = sbAlwaysShowEh
-      Columns = <
-        item
-          AutoFitColWidth = False
-          EditButtons = <>
-          FieldName = 'Id'
-          Footers = <>
-          Title.TitleButton = True
-          Visible = False
-          Width = 28
-        end
-        item
-          AutoFitColWidth = False
-          EditButtons = <>
-          FieldName = #35268#21017#31867#22411
-          Footers = <>
-          Title.TitleButton = True
-          Visible = False
-          Width = 60
-        end
-        item
-          Alignment = taCenter
-          AutoFitColWidth = False
-          EditButtons = <>
-          FieldName = #25191#34892#39034#24207
-          Footers = <>
-          Title.TitleButton = True
-          Width = 52
-        end
-        item
-          AutoFitColWidth = False
-          EditButtons = <>
-          FieldName = #31995#25968#31867#21035
-          Footers = <>
-          Title.TitleButton = True
-          Width = 78
-        end
-        item
-          AutoFitColWidth = False
-          EditButtons = <>
-          FieldName = #35268#21017#35828#26126
-          Footers = <>
-          Title.TitleButton = True
-          Width = 231
-        end
-        item
-          EditButtons = <>
-          FieldName = 'sqltext'
-          Footers = <>
-          Title.TitleButton = True
-          Width = 449
-        end>
-      object RowDetailData: TRowDetailPanelControlEh
-      end
-    end
-  end
   object pnl_Title: TPanel
     Left = 0
     Top = 0
-    Width = 814
+    Width = 912
     Height = 50
     Align = alTop
     BevelOuter = bvNone
@@ -912,164 +797,270 @@ object ExecSqlSet: TExecSqlSet
       ParentFont = False
       Transparent = True
     end
-    object GroupBox1: TGroupBox
-      Left = 672
+  end
+  object GroupBox2: TPanel
+    Left = 237
+    Top = 50
+    Width = 675
+    Height = 530
+    Align = alClient
+    BevelOuter = bvNone
+    TabOrder = 2
+    object Splitter1: TSplitter
+      Left = 0
+      Top = 258
+      Width = 675
+      Height = 2
+      Cursor = crVSplit
+      Align = alTop
+      Color = clSkyBlue
+      ParentColor = False
+      ExplicitLeft = 2
+      ExplicitTop = 274
+      ExplicitWidth = 181
+    end
+    object grp1: TGroupBox
+      Left = 0
       Top = 0
-      Width = 142
-      Height = 50
-      Align = alRight
-      Caption = #35268#21017#31867#22411#65306
+      Width = 675
+      Height = 258
+      Align = alTop
+      Caption = #32479#35745#39033#30446#32534#36753#65306
       TabOrder = 0
-      object cbb_Mode: TDBComboBoxEh
-        Left = 9
-        Top = 16
-        Width = 118
+      DesignSize = (
+        675
+        258)
+      object Label1: TLabel
+        Left = 16
+        Top = 24
+        Width = 60
+        Height = 14
+        Caption = #35268#21017#35828#26126#65306
+        FocusControl = DBEdit1
+      end
+      object Label2: TLabel
+        Left = 16
+        Top = 72
+        Width = 60
+        Height = 14
+        Caption = #35268#21017#21629#20196#65306
+      end
+      object Label3: TLabel
+        Left = 509
+        Top = 24
+        Width = 60
+        Height = 14
+        Caption = #25191#34892#39034#24207#65306
+      end
+      object lbl1: TLabel
+        Left = 331
+        Top = 24
+        Width = 60
+        Height = 14
+        Caption = #31995#25968#31867#21035#65306
+      end
+      object DBEdit1: TDBEdit
+        Left = 40
+        Top = 44
+        Width = 273
         Height = 22
+        DataField = #35268#21017#35828#26126
+        DataSource = DataSource1
+        TabOrder = 0
+      end
+      object btn_Test: TBitBtn
+        Left = 588
+        Top = 222
+        Width = 75
+        Height = 25
+        Anchors = [akRight, akBottom]
+        Caption = #27979#35797'[&T]'
+        Enabled = False
+        TabOrder = 4
+        OnClick = btn_TestClick
+      end
+      object edt_BH: TDBEdit
+        Left = 535
+        Top = 44
+        Width = 129
+        Height = 22
+        DataField = #25191#34892#39034#24207
+        DataSource = DataSource1
+        TabOrder = 2
+      end
+      object cbb_XsLb: TDBComboBoxEh
+        Left = 359
+        Top = 44
+        Width = 131
+        Height = 22
+        DataField = #31995#25968#31867#21035
+        DataSource = DataSource1
         EditButtons = <>
         Items.Strings = (
-          #29702#35770#35838
-          #23454#39564#35838)
-        TabOrder = 0
-        Text = #29702#35770#35838
+          #35838#22411#31995#25968'(K1)'
+          #35268#27169#31995#25968'(K2)')
+        KeyItems.Strings = (
+          #35838#22411#31995#25968
+          #35268#27169#31995#25968)
+        TabOrder = 1
         Visible = True
-        OnChange = cbb_XsLbChange
+      end
+      object DBMemo1: TDBMemo
+        Left = 40
+        Top = 100
+        Width = 624
+        Height = 109
+        Anchors = [akLeft, akTop, akRight, akBottom]
+        Color = 13823456
+        DataField = 'sqlText'
+        DataSource = DataSource1
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = 'Verdana'
+        Font.Style = []
+        ParentFont = False
+        PopupMenu = pm1
+        ScrollBars = ssVertical
+        TabOrder = 3
+        OnChange = DBMemo1Change
+      end
+      object btn_Init: TBitBtn
+        Left = 40
+        Top = 222
+        Width = 75
+        Height = 25
+        Anchors = [akLeft, akBottom]
+        Caption = #40664#35748#23450#20041
+        TabOrder = 5
+        OnClick = btn_InitClick
+      end
+    end
+    object grp2: TGroupBox
+      Left = 0
+      Top = 260
+      Width = 675
+      Height = 270
+      Align = alClient
+      Caption = #35268#21017#31867#22411#65306
+      TabOrder = 1
+      object dxgrd_1: TDBGridEh
+        Left = 2
+        Top = 16
+        Width = 671
+        Height = 252
+        Align = alClient
+        AutoFitColWidths = True
+        DataGrouping.GroupLevels = <>
+        DataSource = DataSource1
+        EditActions = [geaCutEh, geaCopyEh, geaPasteEh, geaDeleteEh]
+        Flat = False
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = 'Verdana'
+        Font.Style = []
+        FooterColor = clWindow
+        FooterFont.Charset = ANSI_CHARSET
+        FooterFont.Color = clWindowText
+        FooterFont.Height = -12
+        FooterFont.Name = 'Verdana'
+        FooterFont.Style = []
+        ImeMode = imDisable
+        IndicatorTitle.ShowDropDownSign = True
+        IndicatorTitle.TitleButton = True
+        OddRowColor = 13823456
+        OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghMultiSortMarking, dghRowHighlight, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove]
+        ParentFont = False
+        PopupMenu = DM.PopupMenu1
+        ReadOnly = True
+        RowDetailPanel.Color = clBtnFace
+        SortLocal = True
+        TabOrder = 0
+        TitleFont.Charset = ANSI_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -12
+        TitleFont.Name = 'Verdana'
+        TitleFont.Style = []
+        VertScrollBar.VisibleMode = sbAlwaysShowEh
+        Columns = <
+          item
+            AutoFitColWidth = False
+            EditButtons = <>
+            FieldName = 'Id'
+            Footers = <>
+            Title.TitleButton = True
+            Visible = False
+            Width = 28
+          end
+          item
+            AutoFitColWidth = False
+            EditButtons = <>
+            FieldName = #35268#21017#31867#22411
+            Footers = <>
+            Title.TitleButton = True
+            Visible = False
+            Width = 60
+          end
+          item
+            Alignment = taCenter
+            AutoFitColWidth = False
+            EditButtons = <>
+            FieldName = #25191#34892#39034#24207
+            Footers = <>
+            Title.TitleButton = True
+            Width = 52
+          end
+          item
+            AutoFitColWidth = False
+            EditButtons = <>
+            FieldName = #31995#25968#31867#21035
+            Footers = <>
+            Title.TitleButton = True
+            Width = 78
+          end
+          item
+            AutoFitColWidth = False
+            EditButtons = <>
+            FieldName = #35268#21017#35828#26126
+            Footers = <>
+            Title.TitleButton = True
+            Width = 146
+          end
+          item
+            EditButtons = <>
+            FieldName = 'sqltext'
+            Footers = <>
+            Title.TitleButton = True
+            Width = 346
+          end>
+        object RowDetailData: TRowDetailPanelControlEh
+        end
       end
     end
   end
-  object grp1: TGroupBox
+  object GroupBox3: TGroupBox
     Left = 0
     Top = 50
-    Width = 814
-    Height = 258
-    Align = alTop
-    Caption = #32479#35745#39033#30446#32534#36753#65306
-    TabOrder = 1
-    DesignSize = (
-      814
-      258)
-    object Label1: TLabel
-      Left = 16
-      Top = 24
-      Width = 60
-      Height = 14
-      Caption = #35268#21017#35828#26126#65306
-      FocusControl = DBEdit1
-    end
-    object Label2: TLabel
-      Left = 16
-      Top = 72
-      Width = 60
-      Height = 14
-      Caption = #35268#21017#21629#20196#65306
-      FocusControl = DBMemo2
-    end
-    object Label3: TLabel
-      Left = 676
-      Top = 24
-      Width = 60
-      Height = 14
-      Caption = #25191#34892#39034#24207#65306
-    end
-    object lbl1: TLabel
-      Left = 454
-      Top = 24
-      Width = 60
-      Height = 14
-      Caption = #31995#25968#31867#21035#65306
-    end
-    object lbl2: TLabel
-      Left = 21
-      Top = 154
-      Width = 58
-      Height = 14
-      Caption = 'SQL'#21629#20196#65306
-      FocusControl = DBMemo1
-    end
-    object DBEdit1: TDBEdit
-      Left = 40
-      Top = 44
-      Width = 377
-      Height = 22
-      DataField = #35268#21017#35828#26126
-      DataSource = DataSource1
+    Width = 237
+    Height = 530
+    Align = alLeft
+    Caption = #26680#31639#35268#21017#65306
+    TabOrder = 3
+    object lst_HsgzLx: TRzListBox
+      Left = 2
+      Top = 16
+      Width = 233
+      Height = 512
+      Align = alClient
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ItemHeight = 14
+      ParentFont = False
       TabOrder = 0
-    end
-    object DBMemo2: TDBMemo
-      Left = 41
-      Top = 89
-      Width = 770
-      Height = 55
-      Anchors = [akLeft, akTop, akRight, akBottom]
-      Color = 13823456
-      DataField = 'ExecSql'
-      DataSource = DataSource1
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
-      Font.Height = -12
-      Font.Name = 'Verdana'
-      Font.Style = []
-      ParentFont = False
-      PopupMenu = pm1
-      ScrollBars = ssVertical
-      TabOrder = 3
-      OnChange = DBMemo2Change
-    end
-    object btn_Test: TBitBtn
-      Left = 734
-      Top = 222
-      Width = 75
-      Height = 25
-      Anchors = [akRight, akBottom]
-      Caption = #27979#35797'[&T]'
-      Enabled = False
-      TabOrder = 4
-      OnClick = btn_TestClick
-    end
-    object edt_BH: TDBEdit
-      Left = 702
-      Top = 44
-      Width = 97
-      Height = 22
-      DataField = #25191#34892#39034#24207
-      DataSource = DataSource1
-      TabOrder = 2
-    end
-    object cbb_XsLb: TDBComboBoxEh
-      Left = 482
-      Top = 44
-      Width = 118
-      Height = 22
-      DataField = #31995#25968#31867#21035
-      DataSource = DataSource1
-      EditButtons = <>
-      Items.Strings = (
-        #35838#22411#31995#25968'(K1)'
-        #35268#27169#31995#25968'(K2)')
-      KeyItems.Strings = (
-        #35838#22411#31995#25968
-        #35268#27169#31995#25968)
-      TabOrder = 1
-      Visible = True
-    end
-    object DBMemo1: TDBMemo
-      Left = 41
-      Top = 174
-      Width = 770
-      Height = 73
-      Anchors = [akLeft, akTop, akRight, akBottom]
-      Color = 13823456
-      DataField = 'sqlText'
-      DataSource = DataSource1
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
-      Font.Height = -12
-      Font.Name = 'Verdana'
-      Font.Style = []
-      ParentFont = False
-      PopupMenu = pm1
-      ReadOnly = True
-      ScrollBars = ssVertical
-      TabOrder = 5
     end
   end
   object DataSource1: TDataSource

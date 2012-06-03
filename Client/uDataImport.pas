@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls, StdCtrls, Buttons, DB, ADODB, DBClient, ComCtrls,
+  Dialogs, ExtCtrls, StdCtrls, Buttons, DB, ADODB, DBClient, ComCtrls, IniFiles,
   StatusBarEx, Grids, ValEdit;
 
 type
@@ -55,8 +55,12 @@ type
     procedure chk_FastClick(Sender: TObject);
     procedure chk_DeleteClick(Sender: TObject);
     procedure cds_TempBeforePost(DataSet: TDataSet);
+    procedure cds_TempReconcileError(DataSet: TCustomClientDataSet;
+      E: EReconcileError; UpdateKind: TUpdateKind;
+      var Action: TReconcileAction);
   private
     { Private declarations }
+    MyiniFile:string;
     sField :TStrings;
     isStop :Boolean;
     Sqlstr :string;
@@ -65,6 +69,8 @@ type
     procedure DeleteKsRecord;
     procedure Open_Desc_Table;
     function  GetRecordCount:Integer;
+    procedure LoadIni;
+    procedure SaveIni;
   public
     { Public declarations }
     Desc_Table:string;
@@ -83,13 +89,20 @@ end;
 procedure TDataImport.btn_AutoClick(Sender: TObject);
 var
   i: Integer;
+  ss:string;
 begin
-  for i := 0 to vl_Field.Strings.Count do
+  LoadIni;
+  for i := 0 to vl_Field.Strings.Count-1 do
   begin
-    if (sField.IndexOf(vl_Field.Keys[i])<>-1) then
-      vl_Field.Values[vl_Field.Keys[i]] := sField.Strings[sField.IndexOf(vl_Field.Keys[i])]
-    else
-      vl_Field.Values[vl_Field.Keys[i]] := '<忽略>';
+    ss := vl_Field.Strings.ValueFromIndex[i];
+    if (sField.IndexOf(ss)=-1) or
+       (ss='<忽略>') then //配置信息中找不到要匹配的内容
+    begin
+      if (sField.IndexOf(vl_Field.Keys[i])<>-1) then
+        vl_Field.Values[vl_Field.Keys[i]] := sField.Strings[sField.IndexOf(vl_Field.Keys[i])]
+      else
+        vl_Field.Values[vl_Field.Keys[i]] := '<忽略>';
+    end;
   end;
   vl_Field.DeleteRow(i);
 end;
@@ -105,8 +118,8 @@ var
   sSql,sWhere,ss,dd:string;
   s_IdField,s_IdValue:string;//学号对应的源字段名
 begin
-  if (not cds_Temp.Active) then
-     Exit;
+  Open_Desc_Table;
+  if (not cds_Temp.Active) then Exit;
 
   if (chk_Fast.Checked) and (cb_IdField.ItemIndex = -1) then
   begin
@@ -169,8 +182,8 @@ begin
         AdoDataSet1.First;
         while not AdoDataSet1.eof do
         begin
-          Application.ProcessMessages;
           ProgressBar1.Position := Total_Count+AdoDataSet1.RecNo;
+          Application.ProcessMessages;
           lbl_Hint.Caption := Inttostr(ProgressBar1.Position)+'/'+IntToStr(ProgressBar1.Max);
           cds_Temp.Append;
 
@@ -189,7 +202,12 @@ begin
                 cds_Temp.FieldByName(dd).Value := AdoDataSet1.Fieldbyname(ss).Value;
             end;
           end;
-          cds_Temp.Post;
+          //-------------------------------------------------------------//
+          if cds_Temp.FieldByName('已选人数').AsInteger<=0 then
+            cds_Temp.Cancel
+          else
+            cds_Temp.Post;
+          //-------------------------------------------------------------//
           AdoDataSet1.Next;
         end;
         if isStop  then
@@ -291,11 +309,28 @@ begin
 end;
 
 procedure TDataImport.cds_TempBeforePost(DataSet: TDataSet);
+var
+  xkh,jszgh,ss:string;
 begin
-  DataSet.FieldByName('规则号').AsString := DataSet.FieldByName('学年').AsString+
-                                            DataSet.FieldByName('学期').AsString+
-                                            DataSet.FieldByName('教师职工号').AsString+
-                                            DataSet.FieldByName('课程代码').AsString;
+//  DataSet.FieldByName('规则号').AsString := DataSet.FieldByName('学年').AsString+
+//                                            DataSet.FieldByName('学期').AsString+
+//                                            DataSet.FieldByName('教师职工号').AsString+
+//                                            DataSet.FieldByName('课程代码').AsString;
+  xkh := DataSet.FieldByName('选课课号').AsString;
+  ss := '-000000000-';
+  if Pos(ss,xkh)>0 then
+  begin
+    jszgh := '-'+DataSet.FieldByName('教师职工号').AsString+'-';
+    xkh := StringReplace(xkh,ss,jszgh,[rfReplaceAll]);
+  end;
+  DataSet.FieldByName('规则号').AsString := xkh;
+end;
+
+procedure TDataImport.cds_TempReconcileError(DataSet: TCustomClientDataSet;
+  E: EReconcileError; UpdateKind: TUpdateKind; var Action: TReconcileAction);
+begin
+  MessageBox(Handle, PAnsiChar('数据导入失败！原因为：　'+E.Message), '系统提示', MB_OK + 
+    MB_ICONSTOP + MB_TOPMOST);
 end;
 
 procedure TDataImport.chk_DeleteClick(Sender: TObject);
@@ -352,7 +387,7 @@ begin
       end;
       if cds_Delete.ChangeCount>0 then
         //cds_Delete.ApplyUpdates(0);
-        dm.UpdateData(Desc_IdField,sDeleteSql,cds_Delete.Delta);
+        dm.UpdateData(Desc_IdField,sDeleteSql,cds_Delete.Delta,False);
       if not chk_Fast.Checked then
          break;
     end;
@@ -374,11 +409,13 @@ begin
   AdoDataSet1.Close;
   cds_Temp.Close;
   AdoConnection1.Close;
+  SaveIni;
   Action := caFree;
 end;
 
 procedure TDataImport.FormCreate(Sender: TObject);
 begin
+  MyiniFile := ExtractFilePath(ParamStr(0))+'ImportFieldSet.ini';
   edt_Year.Text := gb_Cur_Xn;
   edt_Xq.Text := gb_Cur_Xq;
 
@@ -401,7 +438,7 @@ procedure TDataImport.Init_Desc;
 var
   i:integer;
 begin
-  Open_Desc_Table;
+  cds_Temp.XMLData := DM.OpenData('select top 0 * from '+Desc_Table);
   cds_Temp.First;
   with cds_Temp do
   begin
@@ -409,7 +446,7 @@ begin
     for i:=0 to FieldCount-1 do
     begin
       if (Fields[i].FieldName='学年') or (Fields[i].FieldName='学期') or
-         (Fields[i].FieldName='规则类型') or (Fields[i].FieldName='规则号') or 
+         (Fields[i].FieldName='规则类型') or (Fields[i].FieldName='规则号') or
          (Fields[i].DataType = ftAutoInc) then
         Continue;
       if Fields[i].DataType = ftAutoInc then
@@ -427,7 +464,7 @@ begin
   with AdoDataSet1 do
   begin
     Close;
-    CommandText := 'select top 1 * from ['+cbb_Tb.Text+']';
+    CommandText := 'select * from ['+cbb_Tb.Text+'] where 1=0';
     Open;
     sField.Clear;
     cb_IdField.Items.Clear;
@@ -441,10 +478,45 @@ begin
   end;
 end;
 
+procedure TDataImport.LoadIni;
+var
+  i,ii:Integer;
+  skey,sValue:string;
+  sList:TStringList;
+begin
+  sList := TStringList.Create;
+  try
+    if FileExists(MyiniFile) then
+      sList.LoadFromFile(MyiniFile);
+    for i := 0 to vl_Field.Strings.Count-1 do
+    begin
+      sKey := vl_Field.Keys[i];
+      //sValue := vl_Field.Values[i];
+      ii := sList.IndexOfName(skey);
+      if ii=-1 then
+        vl_Field.Values[skey] := '<忽略>'
+      else
+      begin
+        if sField.IndexOf(sList.ValueFromIndex[ii])<>-1 then
+          vl_Field.Values[skey] := sList.ValueFromIndex[ii]
+        else
+          vl_Field.Values[skey] := '<忽略>';
+      end;
+    end;
+  finally
+    sList.Free;
+  end;
+end;
+
 procedure TDataImport.Open_Desc_Table;
 begin
   Sqlstr := 'select * from '+Desc_Table;
   cds_Temp.XMLData := DM.OpenData(Sqlstr);
+end;
+
+procedure TDataImport.SaveIni;
+begin
+  vl_Field.Strings.SaveToFile(MyiniFile);
 end;
 
 procedure TDataImport.vl_FieldGetPickList(Sender: TObject;

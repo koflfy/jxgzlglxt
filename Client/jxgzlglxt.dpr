@@ -37,7 +37,8 @@ uses
   uKcxzDmSet in 'uKcxzDmSet.pas' {KcxzDmSet},
   uHsgzLxDmSet in 'uHsgzLxDmSet.pas' {HsgzLxDmSet},
   uHsgzLxWhereSet in 'uHsgzLxWhereSet.pas' {HsgzLxWhereSet},
-  uHsgzLxInput in 'uHsgzLxInput.pas' {HsgzLxInput};
+  uHsgzLxInput in 'uHsgzLxInput.pas' {HsgzLxInput},
+  ujxGzlInitialize in 'ujxGzlInitialize.pas' {jxGzlInitialize};
 
 {$R *.res}
 
