@@ -448,10 +448,10 @@ begin
   begin
     Exit;
   end;
-  sqlstr := 'select count(*) from 当前工作量核算表';
+  sqlstr := 'select count(*) from 工作量核算表';
   iCount := vobj_Admin.GetRecordBySqlCmd(sqlstr);
   ShowProgress('核算工作量...');
-  sqlstr := 'select * from 系数配置表 order by 规则类型,系数类别,执行顺序';
+  sqlstr := 'select * from 核算规则配置表 order by 规则类型,系数类别,执行顺序';
   cds_Temp := TClientDataSet.Create(nil);
   try
     cds_Temp.XMLData := dm.OpenData(sqlstr);
@@ -465,9 +465,9 @@ begin
       end;
       cds_Temp.Next;
     end;
-    dm.ExecSql('update 当前工作量核算表 set 理论工作量=理论学时*理论课型系数*理论规模系数 where 理论学时 is not null');
-    dm.ExecSql('update 当前工作量核算表 set 实践工作量=实践课型系数*实践规模系数 where 实践学时 is not null');
-    dm.ExecSql('update 当前工作量核算表 set 合计工作量=理论工作量+实践工作量');
+    dm.ExecSql('update 工作量核算表 set 理论工作量=理论学时*理论课型系数*理论规模系数 where 理论学时 is not null');
+    dm.ExecSql('update 工作量核算表 set 实践工作量=实践课型系数*实践规模系数 where 实践学时 is not null');
+    dm.ExecSql('update 工作量核算表 set 合计工作量=理论工作量+实践工作量');
     MessageBox(Handle, '当前学年学期的教学工作量核算完成！　', '系统提示',
       MB_OK + MB_ICONINFORMATION + MB_TOPMOST);
   finally

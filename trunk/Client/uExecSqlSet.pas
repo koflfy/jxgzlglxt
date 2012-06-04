@@ -61,6 +61,7 @@ type
     procedure btn_RefreshClick(Sender: TObject);
     procedure btn_InitClick(Sender: TObject);
     procedure DBMemo1Change(Sender: TObject);
+    procedure lst_HsgzLxClick(Sender: TObject);
   private
     { Private declarations }
     sqlWhere:String;
@@ -109,7 +110,7 @@ var
 begin
   if not (ClientDataSet1.State in [dsInsert,dsEdit]) then
     ClientDataSet1.Edit;
-  sqlstr := 'update 工作量核算表 set '+cbb_XsLb.Text+'=1.0 where 核算类型='+quotedstr(lst_HsgzLx.Items[lst_HsgzLx.ItemIndex])+#13+DbMemo1.Text;
+  sqlstr := 'update 工作量核算表 set '+cbb_XsLb.Text+'=1.0 where 核算类型='+quotedstr(lst_HsgzLx.Items[lst_HsgzLx.ItemIndex]);
   ClientDataSet1.FieldByName('sqlText').AsString := sqlstr;
   DBMemo1.SetFocus; 
 end;
@@ -220,6 +221,11 @@ begin
   finally
     sList.Free;
   end;
+end;
+
+procedure TExecSqlSet.lst_HsgzLxClick(Sender: TObject);
+begin
+  Open_Table;
 end;
 
 procedure TExecSqlSet.N2Click(Sender: TObject);
