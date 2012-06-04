@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, GridsEh, DBGridEh, DB, DBClient, StdCtrls, Buttons,
+  Dialogs, GridsEh, DBGridEh, DB, DBClient, StdCtrls, Buttons,CnProgressFrm,
   ExtCtrls, pngimage, frxpngimage, Mask, DBCtrlsEh, DBFieldComboBox,
   DBGridEhGrouping;
 
@@ -35,6 +35,7 @@ type
     chk_AllowEdit: TCheckBox;
     btn_Delete: TBitBtn;
     btn_Edit: TBitBtn;
+    btn_Initialize: TBitBtn;
     procedure btn_ExitClick(Sender: TObject);
     procedure btn_RefreshClick(Sender: TObject);
     procedure btn_AddClick(Sender: TObject);
@@ -54,6 +55,7 @@ type
     procedure chk_AllowEditClick(Sender: TObject);
     procedure btn_EditClick(Sender: TObject);
     procedure btn_DeleteClick(Sender: TObject);
+    procedure btn_InitializeClick(Sender: TObject);
   private
     { Private declarations }
     function  GetWhere:string;
@@ -112,6 +114,68 @@ begin
   dm.ExportDBEditEH(DBGridEH1);
 end;
 
+procedure TjxDataEdit.btn_InitializeClick(Sender: TObject);
+var
+  i,ii,iWeekCount:Integer;
+  kk,zxs1,zxs2,weekstr :string;
+  lrxs,syxs:Double;
+begin
+  ClientDataSet1.First;
+  Screen.Cursor := crHourGlass;
+  ClientDataSet1.DisableControls;
+  try
+    ShowProgress('正在处理...',ClientDataSet1.RecordCount);
+    while not ClientDataSet1.Eof do
+    begin
+      UpdateProgress(ClientDataSet1.RecNo);
+      kk := ClientDataSet1.FieldByName('周学时').AsString;
+      ii := Pos('-',kk);
+      if ii>0 then
+      begin
+        zxs1 := Copy(kk,1,ii-1);
+        zxs2 := Copy(kk,ii+1,10);
+      end else
+      begin
+        zxs1 := Copy(kk,1,10);
+        zxs2 := '0.0';
+      end;
+      lrxs := StrToFloatDef(zxs1,0);
+      syxs := StrToFloatDef(zxs2,0);
+      weekstr := ClientDataSet1.FieldByName('起止周').AsString;
+      ii := Pos('-',weekstr);
+      if ii>0 then
+      begin
+        iWeekCount := StrToIntDef(Copy(weekstr,ii+1,10),0)-StrToIntDef(Copy(weekstr,1,ii-1),0)+1;
+        lrxs := lrxs*iWeekCount;
+      end else
+      begin
+        iWeekCount := 1; //StrToIntDef(weekstr,0);
+        syxs := syxs*iWeekCount;
+      end;
+
+      if lrxs>0 then
+      begin
+        ClientDataSet1.Edit;
+        ClientDataSet1.FieldByName('理论学时').AsFloat := lrxs;
+        ClientDataSet1.Post;
+      end;
+      if syxs>0 then
+      begin
+        ClientDataSet1.Edit;
+        ClientDataSet1.FieldByName('实验学时').AsFloat := syxs;
+        ClientDataSet1.Post;
+      end;
+      ClientDataSet1.Next;
+    end;
+    btn_Save.Click;
+  finally
+    HideProgress;
+    ClientDataSet1.EnableControls;
+    Screen.Cursor := crDefault;
+  end;
+
+end;
+
 procedure TjxDataEdit.btn_RefreshClick(Sender: TObject);
 begin
   Open_Table;
@@ -141,7 +205,7 @@ end;
 procedure TjxDataEdit.chk_AllowEditClick(Sender: TObject);
 begin
   DBGridEh1.ReadOnly := not TCheckBox(Sender).Checked;
-  ClientDataSet1.ReadOnly := DBGridEh1.ReadOnly;
+  //ClientDataSet1.ReadOnly := DBGridEh1.ReadOnly;
   btn_Edit.Visible := TCheckBox(Sender).Checked;
   btn_Delete.Visible := TCheckBox(Sender).Checked;
   btn_Save.Visible := TCheckBox(Sender).Checked;

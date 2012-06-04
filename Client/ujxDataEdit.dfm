@@ -670,7 +670,7 @@ object jxDataEdit: TjxDataEdit
       Height = 25
       Anchors = [akTop, akRight]
       Caption = #20851#38381'[&C]'
-      TabOrder = 7
+      TabOrder = 8
       OnClick = btn_ExitClick
     end
     object cbb_Field: TDBFieldComboBox
@@ -701,13 +701,13 @@ object jxDataEdit: TjxDataEdit
       OnClick = btn_SearchClick
     end
     object btn_Export: TBitBtn
-      Left = 814
+      Left = 824
       Top = 9
       Width = 107
       Height = 25
       Anchors = [akRight, akBottom]
       Caption = #25968#25454#23548#20986'[&E]'
-      TabOrder = 6
+      TabOrder = 7
       OnClick = btn_ExportClick
       Glyph.Data = {
         36040000424D3604000000000000360000002800000010000000100000000100
@@ -746,7 +746,7 @@ object jxDataEdit: TjxDataEdit
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00}
     end
     object btn_Save: TBitBtn
-      Left = 703
+      Left = 609
       Top = 9
       Width = 95
       Height = 25
@@ -811,7 +811,7 @@ object jxDataEdit: TjxDataEdit
       NumGlyphs = 2
     end
     object btn_Delete: TBitBtn
-      Left = 598
+      Left = 514
       Top = 9
       Width = 95
       Height = 25
@@ -822,7 +822,7 @@ object jxDataEdit: TjxDataEdit
       OnClick = btn_DeleteClick
     end
     object btn_Edit: TBitBtn
-      Left = 494
+      Left = 418
       Top = 9
       Width = 95
       Height = 25
@@ -831,6 +831,16 @@ object jxDataEdit: TjxDataEdit
       TabOrder = 3
       Visible = False
       OnClick = btn_EditClick
+    end
+    object btn_Initialize: TBitBtn
+      Left = 726
+      Top = 9
+      Width = 90
+      Height = 25
+      Anchors = [akRight, akBottom]
+      Caption = #23398#26102#21021#22987#21270
+      TabOrder = 6
+      OnClick = btn_InitializeClick
     end
   end
   object DBGridEh1: TDBGridEh
@@ -1046,7 +1056,6 @@ object jxDataEdit: TjxDataEdit
     Aggregates = <>
     CommandText = 'select * from '#24037#20316#37327#26680#31639#34920
     Params = <>
-    ReadOnly = True
     OnFilterRecord = ClientDataSet1FilterRecord
     OnNewRecord = ClientDataSet1NewRecord
     Left = 288

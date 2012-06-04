@@ -364,10 +364,16 @@ begin
       if isStop then
          Exit;
 
+{
       if chk_Fast.Checked then
          sDeleteSql := 'select top 100 '+Desc_IdField+' from '+Desc_Table
       else
          sDeleteSql := 'select '+Desc_IdField+' from '+Desc_Table;
+}
+      if chk_Fast.Checked then
+         sDeleteSql := 'select top 100 Id from 工作量总表 where 学年='+quotedstr(edt_year.Text)+' and 学期='+quotedstr(edt_Xq.Text)
+      else
+         sDeleteSql := 'select Id from 工作量总表 where 学年='+quotedstr(edt_year.Text)+' and 学期='+quotedstr(edt_Xq.Text);
 
       cds_Delete.XMLData := dm.OpenData(sDeleteSql);
 

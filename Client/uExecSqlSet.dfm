@@ -1061,6 +1061,7 @@ object ExecSqlSet: TExecSqlSet
       ItemHeight = 14
       ParentFont = False
       TabOrder = 0
+      OnClick = lst_HsgzLxClick
     end
   end
   object DataSource1: TDataSource
