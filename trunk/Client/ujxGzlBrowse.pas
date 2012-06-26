@@ -154,7 +154,8 @@ begin
     cbb_Xy.Items.Clear;
     DM.GetXyList(sList);
     cbb_Xy.Items.Assign(sList);
-
+    //cbb_Xy.Items.Add('==不限==');
+    
     if cbb_Xy.Items.Count>0 then
       cbb_Xy.ItemIndex := 0;
       
@@ -168,9 +169,13 @@ function TjxGzlBrowse.GetWhere: string;
 var
   sWhere:string;
 begin
-  sWhere := ' where 开课学院='+quotedstr(cbb_Xy.Text);
+  if cbb_Xy.Text<>'==不限==' then
+    sWhere := ' where 开课学院='+quotedstr(cbb_Xy.Text)
+  else
+    sWhere := ' where 1>0';
+
   sWhere := sWhere+' and 学年='+quotedstr(cbb_Xn.Text);
-  sWhere := sWhere+' and 学期='+quotedstr(cbb_Xq.Text);
+  sWhere := sWhere+' and 学期='+quotedstr(cbb_Xq.Value);
   Result := sWhere;
 end;
 
