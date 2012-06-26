@@ -132,7 +132,7 @@ type
     function  GetHsgzWhere(const HsgzType:string):string;
   end;
 
-{$DEFINE WAD_DEBUG}
+//{$DEFINE WAD_DEBUG}
 const
   GbConnSrvFileName = 'ConnjxgzlSrvSet.ini';
 {$IFNDEF WAD_DEBUG}

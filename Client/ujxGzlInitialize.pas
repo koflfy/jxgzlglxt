@@ -107,10 +107,41 @@ begin
 end;
 
 procedure TjxGzlInitialize.btn_InitializeClick(Sender: TObject);
+  function getXSS(const zxs,qzz:string):Double;//得到学时数
+  var
+    ii:integer;
+    dZxs,dZc:Double;
+    s:string;
+  begin
+    ii := Pos('-',zxs);//周学时
+    if ii>0 then
+    begin
+      s := Copy(zxs,1,ii-1);
+      if StrToFloatDef(s,0.0) = 0.0 then
+        s := Copy(zxs,ii+1,10);
+    end
+    else
+      s := zxs;
+
+    dZxs := StrToFloatDef(s,0.0);
+    
+    if Copy(zxs,1,1)='+' then
+      dZc := 1
+    else
+    begin
+      ii := Pos('-',qzz);
+      if ii>0 then
+        dZc := StrToFloatDef(Copy(qzz,ii+1,10),0.0)-StrToFloatDef(Copy(qzz,1,ii-1),0.0)+1
+      else
+        dZc := StrToFloatDef(qzz,0.0);
+    end;
+    Result := dZxs*dZc;
+  end;
 var
   cds_s,cds_d:TClientDataSet;
   i,ii:Integer;
-  ss,dd,kk,zxs1,zxs2:string;
+  dXSS:Double; //学时数
+  dd:string;
 begin
   if MessageBox(Handle, '真的要生成工作量核算格式的数据吗？　', '系统提示',
     MB_YESNO + MB_ICONQUESTION + MB_DEFBUTTON2 + MB_TOPMOST) = IDNO then
@@ -128,48 +159,34 @@ begin
     UpdateProgressTitle('正在打开目标数据...');
     cds_d.XMLData := dm.OpenData('select * from 工作量核算表 order by 规则号');
     UpdateProgressMax(cds_s.RecordCount);
+    UpdateProgressTitle('正在初始化目标数据...');
     while not cds_s.Eof do
     begin
       UpdateProgress(cds_s.RecNo);
-      kk := cds_s.FieldByName('周学时').AsString;
-      ii := Pos('-',kk);
-      if ii>0 then
-      begin
-        zxs1 := Copy(kk,1,ii-1);
-        zxs2 := Copy(kk,ii+1,10);
-      end else
-      begin
-        zxs1 := Copy(kk,1,10);
-        zxs2 := '0.0';
-      end;
 
-      if StrToFloatDef(zxs1,0)>0 then
+      cds_d.Append;
+      for i := 0 to cds_d.Fields.Count - 1 do
       begin
-        cds_d.Append;
-        for i := 0 to cds_d.Fields.Count - 1 do
-        begin
-          dd := cds_d.Fields[i].FieldName;
-          if (cds_d.Fields[i].DataType<>ftAutoInc) and (cds_s.FieldList.IndexOf(dd)<>-1) then
-            cds_d.Fields[i].Value := cds_s.FieldByName(dd).Value;
-        end;
-        cds_d.Post;
+        dd := cds_d.Fields[i].FieldName;
+        if (cds_d.Fields[i].DataType<>ftAutoInc) and (cds_s.FieldList.IndexOf(dd)<>-1) then
+          cds_d.Fields[i].Value := cds_s.FieldByName(dd).Value;
       end;
-      if StrToFloatDef(zxs2,0)>0 then
-      begin
-        cds_d.Append;
-        for i := 0 to cds_d.Fields.Count - 1 do
-        begin
-          dd := cds_d.Fields[i].FieldName;
-          if (cds_d.Fields[i].DataType<>ftAutoInc) and (cds_s.FieldList.IndexOf(dd)<>-1) then
-            cds_d.Fields[i].Value := cds_s.FieldByName(dd).Value;
-        end;
-        cds_d.Post;
-      end;
-
+      cds_d.Post;
       cds_s.Next;
     end;
+    cds_d.First;
+    while not cds_d.Eof do
+    begin
+      dXSS := getXSS(cds_d.FieldByName('周学时').AsString,cds_d.FieldByName('起止周').AsString);
+      cds_d.Edit;
+      cds_d.FieldByName('学时数').AsFloat := dXSS;
+      cds_d.Post;
+      cds_d.Next;
+    end;
     if dm.UpdateData('id','select top 0 * from 工作量核算表',cds_d.Delta) then
+    begin
       ClientDataSet1.XMLData := cds_d.XMLData;
+    end;
     UpdateProgress(cds_s.RecordCount);
   finally
     HideProgress;
@@ -177,7 +194,6 @@ begin
     cds_d.Free;
     Screen.Cursor := crDefault;
   end;
-
 end;
 
 procedure TjxGzlInitialize.btn_RefreshClick(Sender: TObject);
