@@ -1160,7 +1160,7 @@ object HsgzLxWhereSet: THsgzLxWhereSet
         end
         item
           EditButtons = <>
-          FieldName = #22330#25152#35201#27714
+          FieldName = #22330#22320#35201#27714
           Footers = <>
           Title.TitleButton = True
         end
@@ -1210,14 +1210,7 @@ object HsgzLxWhereSet: THsgzLxWhereSet
         end
         item
           EditButtons = <>
-          FieldName = #29702#35770#23398#26102
-          Footers = <>
-          Title.TitleButton = True
-          Title.ToolTips = True
-        end
-        item
-          EditButtons = <>
-          FieldName = #23454#39564#23398#26102
+          FieldName = #23398#26102#25968
           Footers = <>
           Title.TitleButton = True
           Title.ToolTips = True
