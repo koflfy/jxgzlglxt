@@ -5,7 +5,7 @@ object jxGzlBrowse: TjxGzlBrowse
   BorderStyle = bsSingle
   Caption = #25945#23398#24037#20316#37327#26597#35810
   ClientHeight = 703
-  ClientWidth = 1042
+  ClientWidth = 1055
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -23,13 +23,14 @@ object jxGzlBrowse: TjxGzlBrowse
   object pnl_Title: TPanel
     Left = 0
     Top = 0
-    Width = 1042
+    Width = 1055
     Height = 50
     Align = alTop
     BevelOuter = bvNone
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 1042
     object img_Title: TImage
       Left = 0
       Top = 0
@@ -561,13 +562,14 @@ object jxGzlBrowse: TjxGzlBrowse
       Transparent = True
     end
     object grp1: TGroupBox
-      Left = 738
+      Left = 751
       Top = 0
       Width = 128
       Height = 50
       Align = alRight
       Caption = #23398#26399#65306
       TabOrder = 1
+      ExplicitLeft = 738
       object cbb_Xq: TDBComboBoxEh
         Left = 8
         Top = 20
@@ -586,13 +588,14 @@ object jxGzlBrowse: TjxGzlBrowse
       end
     end
     object grp2: TGroupBox
-      Left = 610
+      Left = 623
       Top = 0
       Width = 128
       Height = 50
       Align = alRight
       Caption = #23398#24180#65306
       TabOrder = 0
+      ExplicitLeft = 610
       object cbb_Xn: TDBComboBoxEh
         Left = 8
         Top = 20
@@ -606,13 +609,14 @@ object jxGzlBrowse: TjxGzlBrowse
       end
     end
     object grp3: TGroupBox
-      Left = 866
+      Left = 879
       Top = 0
       Width = 176
       Height = 50
       Align = alRight
       Caption = #23398#38498#65306
       TabOrder = 2
+      ExplicitLeft = 866
       object cbb_Xy: TDBComboBoxEh
         Left = 8
         Top = 20
@@ -637,13 +641,14 @@ object jxGzlBrowse: TjxGzlBrowse
   object Panel2: TPanel
     Left = 0
     Top = 662
-    Width = 1042
+    Width = 1055
     Height = 41
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 2
+    ExplicitWidth = 1042
     DesignSize = (
-      1042
+      1055
       41)
     object lbl_Len: TLabel
       Left = 288
@@ -659,7 +664,7 @@ object jxGzlBrowse: TjxGzlBrowse
       ParentFont = False
     end
     object btn_Exit: TBitBtn
-      Left = 949
+      Left = 962
       Top = 9
       Width = 75
       Height = 25
@@ -667,6 +672,7 @@ object jxGzlBrowse: TjxGzlBrowse
       Caption = #20851#38381'[&C]'
       TabOrder = 4
       OnClick = btn_ExitClick
+      ExplicitLeft = 949
     end
     object cbb_Field: TDBFieldComboBox
       Left = 10
@@ -743,7 +749,7 @@ object jxGzlBrowse: TjxGzlBrowse
   object DBGridEh1: TDBGridEh
     Left = 0
     Top = 50
-    Width = 1042
+    Width = 1055
     Height = 612
     Align = alClient
     AllowedOperations = []
@@ -779,6 +785,7 @@ object jxGzlBrowse: TjxGzlBrowse
         EditButtons = <>
         FieldName = 'Id'
         Footers = <>
+        Title.TitleButton = True
         Title.ToolTips = True
         Visible = False
       end
@@ -787,165 +794,185 @@ object jxGzlBrowse: TjxGzlBrowse
         FieldName = #35268#21017#21495
         Footers = <>
         Title.TitleButton = True
+        Width = 227
+      end
+      item
+        EditButtons = <>
+        FieldName = #36873#35838#35838#21495
+        Footers = <>
+        Title.TitleButton = True
         Visible = False
       end
       item
         EditButtons = <>
         FieldName = #23398#24180
         Footers = <>
+        Title.TitleButton = True
         Title.ToolTips = True
+        Visible = False
         Width = 69
       end
       item
         EditButtons = <>
         FieldName = #23398#26399
         Footers = <>
+        Title.TitleButton = True
         Title.ToolTips = True
+        Visible = False
         Width = 32
       end
       item
         EditButtons = <>
         FieldName = #25945#24072#32844#24037#21495
         Footers = <>
+        Title.TitleButton = True
         Title.ToolTips = True
+        Visible = False
+        Width = 66
       end
       item
         EditButtons = <>
         FieldName = #25945#24072#22995#21517
         Footers = <>
+        Title.TitleButton = True
         Title.ToolTips = True
-        Width = 70
+        Width = 57
       end
       item
         EditButtons = <>
         FieldName = #32844#31216
         Footers = <>
+        Title.TitleButton = True
         Title.ToolTips = True
-        Width = 69
+        Width = 48
       end
       item
         EditButtons = <>
         FieldName = #35838#31243#20195#30721
         Footers = <>
+        Title.TitleButton = True
         Title.ToolTips = True
+        Visible = False
       end
       item
         EditButtons = <>
         FieldName = #35838#31243#21517#31216
         Footers = <>
+        Title.TitleButton = True
         Title.ToolTips = True
-        Width = 186
+        Width = 103
       end
       item
         EditButtons = <>
         FieldName = #35838#31243#24615#36136
         Footers = <>
+        Title.TitleButton = True
         Title.ToolTips = True
-        Width = 61
+        Visible = False
+        Width = 54
       end
       item
         EditButtons = <>
         FieldName = #35838#31243#31867#21035
         Footers = <>
         Title.TitleButton = True
-      end
-      item
-        EditButtons = <>
-        FieldName = #25945#23398#22330#25152
-        Footers = <>
-        Title.TitleButton = True
+        Visible = False
+        Width = 52
       end
       item
         EditButtons = <>
         FieldName = #24320#35838#23398#38498
         Footers = <>
+        Title.TitleButton = True
         Title.ToolTips = True
-        Width = 117
+        Visible = False
+        Width = 93
       end
       item
         EditButtons = <>
         FieldName = #25480#35838#23545#35937
         Footers = <>
+        Title.TitleButton = True
         Title.ToolTips = True
-        Width = 131
+        Width = 109
       end
       item
+        Alignment = taCenter
         EditButtons = <>
         FieldName = #24050#36873#20154#25968
         Footers = <>
+        Title.TitleButton = True
         Title.ToolTips = True
+        Width = 49
       end
       item
         EditButtons = <>
         FieldName = #21608#23398#26102
         Footers = <>
+        Title.TitleButton = True
         Title.ToolTips = True
+        Width = 48
       end
       item
         EditButtons = <>
         FieldName = #36215#27490#21608
         Footers = <>
+        Title.TitleButton = True
+        Title.ToolTips = True
+        Width = 45
+      end
+      item
+        Alignment = taCenter
+        EditButtons = <>
+        FieldName = #23398#26102#25968
+        Footers = <>
+        Title.TitleButton = True
+        Title.ToolTips = True
+        Width = 41
+      end
+      item
+        EditButtons = <>
+        FieldName = #35268#21017#31867#22411
+        Footers = <>
+        Title.TitleButton = True
+        Width = 87
+      end
+      item
+        EditButtons = <>
+        FieldName = #35838#22411#31995#25968
+        Footers = <>
+        Title.TitleButton = True
+        Title.ToolTips = True
+        Width = 57
+      end
+      item
+        EditButtons = <>
+        FieldName = #35268#27169#31995#25968
+        Footers = <>
+        Title.TitleButton = True
+        Title.ToolTips = True
+        Width = 55
+      end
+      item
+        EditButtons = <>
+        FieldName = #24037#20316#37327
+        Footers = <>
+        Title.TitleButton = True
         Title.ToolTips = True
       end
       item
         EditButtons = <>
-        FieldName = #29702#35770#23398#26102
+        FieldName = #22330#22320#35201#27714
         Footers = <>
-        Title.ToolTips = True
-      end
-      item
-        EditButtons = <>
-        FieldName = #29702#35770#35838#22411#31995#25968
-        Footers = <>
-        Title.ToolTips = True
-      end
-      item
-        EditButtons = <>
-        FieldName = #29702#35770#35268#27169#31995#25968
-        Footers = <>
-        Title.ToolTips = True
-      end
-      item
-        EditButtons = <>
-        FieldName = #29702#35770#24037#20316#37327
-        Footers = <>
-        Title.ToolTips = True
+        Title.TitleButton = True
+        Visible = False
       end
       item
         EditButtons = <>
         FieldName = #23454#39564#22330#22320
         Footers = <>
         Title.TitleButton = True
-      end
-      item
-        EditButtons = <>
-        FieldName = #23454#39564#23398#26102
-        Footers = <>
-        Title.ToolTips = True
-      end
-      item
-        EditButtons = <>
-        FieldName = #23454#39564#35838#22411#31995#25968
-        Footers = <>
-        Title.ToolTips = True
-      end
-      item
-        EditButtons = <>
-        FieldName = #23454#39564#35268#27169#31995#25968
-        Footers = <>
-        Title.ToolTips = True
-      end
-      item
-        EditButtons = <>
-        FieldName = #23454#39564#24037#20316#37327
-        Footers = <>
-        Title.ToolTips = True
-      end
-      item
-        EditButtons = <>
-        FieldName = #21512#35745#24037#20316#37327
-        Footers = <>
-        Title.ToolTips = True
+        Visible = False
       end>
     object RowDetailData: TRowDetailPanelControlEh
     end

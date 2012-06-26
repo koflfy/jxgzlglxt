@@ -1010,6 +1010,7 @@ object jxGzlInitialize: TjxGzlInitialize
         Footers = <>
         Title.TitleButton = True
         Title.ToolTips = True
+        Width = 54
       end
       item
         EditButtons = <>
