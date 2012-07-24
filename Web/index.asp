@@ -53,16 +53,7 @@
   <!--左边按钮 -->
 	<DIV class=leftbox id=leftbg>
 		<DIV class=left_btn><A onmouseover="MM_swapImage('Image1','','images/zzjf.gif',1)" onmouseout=MM_swapImgRestore() href="payonline.asp"><IMG id=Image1 height=52 src="images/zzjf2.gif" width=173 border=0 name=Image1></A>		</DIV>
-	  <DIV class=left_btn><A onmouseover="MM_swapImage('Image2','','images/lscx.gif',1)" onmouseout=MM_swapImgRestore() 
-href="paid.asp"><IMG id=Image2 height=52 src="images/lscx2.gif" width=173 border=0 name=Image2></A>
-    </DIV>
-	  <DIV class=left_btn><A onmouseover="MM_swapImage('Image3','','images/sycx.gif',1)" onmouseout=MM_swapImgRestore()
-href="usedpay.asp"><IMG id=Image3 height=52 src="images/sycx2.gif" width=173 border=0 name=Image3></A>
-    </DIV>
-	  <DIV class=left_btn><A onmouseover="MM_swapImage('Image4','','images/tfcx.gif',1)" onmouseout=MM_swapImgRestore() 
-href="refund.asp"><IMG id=Image4 height=52 src="images/tfcx2.gif" width=173 border=0 name=Image4></A>
-    </DIV>
-		<br>
+	  <br>
 		<DIV class=left_btn><A onmouseover="MM_swapImage('Image5','','images/exit.gif',1)" onmouseout=MM_swapImgRestore() 
 href="logout.asp"><IMG id=Image5 height=52 src="images/exit2.gif" width=173 border=0 name=Image5></A>
     </DIV>
@@ -81,19 +72,8 @@ href="logout.asp"><IMG id=Image5 height=52 src="images/exit2.gif" width=173 bord
           			<TD width="10%" valign=top background=images/bg_tip.gif><IMG height=49 src="images/icon_tip.gif" width=48></TD>
           			<TD width="90%" background=images/bg_tip.gif>
 						<SPAN class=f_14_orange><%= StuClass %><br />
-						<%= StuName %>老师:您好</SPAN><br />
-						<%
-						If StudentNo="" Then 
-						%>
-							"该学员是新生，还没编制学号。"</br>
-						<%
-							Else
-						%>
-						   	 您的学号为<%= StudentNo %><BR>
-						<%
-							End If
-						%>
-						欢迎使用江西科技师范大学学生缴费系统！</p>
+				    <%= StuName %>老师:您好</SPAN><br />
+						欢迎使用江西科技师范大学<span class="title" style="BACKGROUND-IMAGE: none">教学工作量查询系统</span>！						</p>
 					 </TD>
 					 </TR>
 				  </TBODY>
