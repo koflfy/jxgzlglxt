@@ -83,18 +83,18 @@ window.attachEvent("onload", correctPNG);
                           <tr>
                             <td width="15%" height="38" class="login_txt">选择角色：</td>
                             <td height="38" colspan="2" class="login_txt"><p>
-                              <select name="CardType">
+                              <select name="LoginType">
                                 <option>任课教师</option>
                               </select>
                             </td>
                           </tr>
                           <tr>
                             <td width="15%" height="35" class="login_txt">教师工号：&nbsp;&nbsp;</td>
-                            <td height="35" colspan="2" class="login_txt"><input name="CardNo" class="editbox4" id="CardNo" value="" size="20" maxlength="18"></td>
+                            <td height="35" colspan="2" class="login_txt"><input name="TeacherNo" class="editbox4" id="TeacherNo" value="" size="20" maxlength="18"></td>
                           </tr>
                           <tr>
                             <td width="15%" height="35" class="login_txt">教师姓名： </td>
-                            <td height="35" colspan="2" class=""><input name="StudentName" class="editbox4" id="StudentName" value="" size="20"></td>
+                            <td height="35" colspan="2" class=""><input name="TeacherName" class="editbox4" id="TeacherName" value="" size="20"></td>
                           </tr>
                           <tr>
                             <td width="15%" height="35" class="login_txt">验证码：</td>
@@ -128,7 +128,7 @@ window.attachEvent("onload", correctPNG);
   <tr>
     <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="login_bottom_bg">
       <tr>
-        <td align="center"><span class="login_bottom_txt">Copyright &copy; 2009-2010 江西科技师范大学</span></td>
+        <td align="center"><span class="login_bottom_txt">Copyright &copy; 2009-2012 江西科技师范大学</span></td>
       </tr>
     </table></td>
   </tr>

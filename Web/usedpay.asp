@@ -9,17 +9,17 @@
 <SCRIPT language=javascript src="images/image.js"></SCRIPT>
 <!-- #include file="inc/security.asp" -->
 <%  
-    Dim StuSfzh,StudentNo,XmlUsedInfo,XmlFileName
+    Dim TeacherSfzh,TeacherNo,XmlUsedInfo,XmlFileName
 	'通过身份证号获取教材费缴纳信息（单项明细）   
-	 If Request.Cookies("StuSfzh")<>"" Then  
-	 	StuSfzh=Request.Cookies("StuSfzh")
-		XmlUsedInfo=objSOAPClient.GetJcfUsedInfoBySfzh(StuSfzh)
+	 If Request.Cookies("TeacherSfzh")<>"" Then  
+	 	TeacherSfzh=Request.Cookies("TeacherSfzh")
+		XmlUsedInfo=objSOAPClient.GetJcfUsedInfoBySfzh(TeacherSfzh)
 	 End If
   
 	'通过学号获取教材费缴纳信息（单项明细）
-	If Request.Cookies("StudentNo")<>"" Then  
-	 	StudentNo=Request.Cookies("StudentNo")
-		XmlUsedInfo=objSOAPClient.GetJcfUsedInfoByXH(StudentNo)
+	If Request.Cookies("TeacherNo")<>"" Then  
+	 	TeacherNo=Request.Cookies("TeacherNo")
+		XmlUsedInfo=objSOAPClient.GetJcfUsedInfoByXH(TeacherNo)
 	End If		
 	
 	'XmlFileName=Server.MapPath("UsedTemp.xml")

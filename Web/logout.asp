@@ -1,6 +1,6 @@
 <%
-Response.Cookies("StuSfzh")=""
-Response.Cookies("StudentNo")=""
+Response.Cookies("TeacherSfzh")=""
+Response.Cookies("TeacherNo")=""
 Response.Cookies("StuName")=""
 Response.cookies("State")=""
 Response.Cookies("JfId")=""

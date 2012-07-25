@@ -27,59 +27,18 @@ type
     function IsValidIP:Boolean;stdcall;
 
     //判断服务器当前是否可以进行网上报名，如果允许网上报名则返回字符串：OK ；如果不允许，则返回不允许的原因，如服务关闭、IP不正确、不在报名时间内等等
-    function IsCanNetBm:string;stdcall;
     function IsCanNetPrintZKZ:Boolean;stdcall;
-    function IsCanNetLocateCj:Boolean;stdcall;
 
-    function GetPhotoUrlByUserName(const UserName:string):string;stdcall;
-    function SetPhotoUrlByUserName(const UserName,sUrl:string):Boolean;stdcall;
-    function SetPhotoUrlByBmNo(const BmNo,sUrl:string):Boolean;stdcall;
+    function GetXnXqList:string;stdcall;
 
-    function GetMzList:string;stdcall;
-    function GetZzmmList:string;stdcall;
-    function GetSchoolList:string;stdcall;
-    function GetEnglistList:string;stdcall;
-    function GetComputerList:string;stdcall;
-    function GetZyLbList:string;stdcall;
-    function GetZyList(const ZyLb:string):string;stdcall;
-
-    function KsRegister(const UserName,UserPwd,Sfzh:string):Boolean;stdcall;
-    //报名：用户名，报名序号，考生号，身份证号，姓名，性别，民族，政治面貌，现就读学校，现专业，奖励情况，
-    //     暑期地址，邮政编码，暑期电话，专业综合测评情况，英语等级考试，计算机等级考试，特长
-    function KsBM(const UserName,BmNo,Ksh,Sfzh,Xm,Xb,Mz,ZzMm,OldSchool,OldZy,Jlqk,
-                  Addr,Yzbm,Tel,ZyZhcp,English,Computer,Tc:string):Boolean;stdcall;
-    //报考：用户名，专业类别，志愿1，2，3，是否允许调剂==>1：允许，0：不允许
-    function KsBK(const UserName,ZyLb,Zy1,Zy2,Zy3,SfyxTj:string):Boolean;stdcall;
-
-    function GetKsBMInfo(const UserName:string;out BmNo,Ksh,Sfzh,Xm,Xb,Mz,ZzMm,OldSchool,OldZy,Jlqk,Addr,
+    //通过职工号和学年学期获取工作量信息，返回XML格式的DataSet值
+    function GetJxgzlInfo(const sNo,sXnxq:string):string;stdcall;
+    //得到教学工作量信息
+    function GetJxgzlInfo2(const sNo,sXnxq:string;out BmNo,Ksh,Sfzh,Xm,Xb,Mz,ZzMm,OldSchool,OldZy,Jlqk,Addr,
                          Yzbm,Tel,ZyZhcp,English,Computer,Tc:string):Boolean;stdcall;
 
-    function GetKsBKInfo(const UserName:string;
-                         out ZyLb,Zy1,Zy2,Zy3,SfyxTj:string):Boolean;stdcall;
-
-    //查询本校考生的考生号
-    function GetKshBySfzh(const Sfzh:string;out Ksh:string):string;stdcall;
-    //通过用户名获取考生信息，返回XML格式的DataSet值
-    function GetKsInfo(const UserName:string):string;stdcall;
-    //通过用户名获取考生信息，返回XML格式的DataSet值
-    function GetKsZkzInfo(const UserName:string):string;stdcall;
-    //通过用户名获取考生成绩信息，返回XML格式的DataSet值
-    function GetKsCjInfo(const UserName:string):string;stdcall;
-
-    function GetKsKcTime(const bkLb:string):string;stdcall; //得到考试课程和考试时间
-    function GetKsXz:string;stdcall;    //考生须知
-
-    function KsIsExistsByUserName(const UserName:string):Boolean;stdcall;//通过报名序号判断考生是否存在
-    function KsIsExistsBySfzh(const sfzh:string):Boolean;stdcall;//通过身份证号判断考生是否存在
-
-    function KsLoginByUserName(const UserName,pwd:string):Boolean; stdcall;//输入报名序号和密码认证进行登录
-
-    function GetBmNo: string;stdcall; //得到一个报名序号
-
-    //通过户名获取考生的报名序号，返回string类型值
-    function GetKsBmNoByUserName(const UserName:string):string;stdcall;
-    //通过户名获取考生的身份证号，返回string类型值
-    function GetKsSfzhByUserName(const UserName:string):string;stdcall;
+    function TeacherLoginByNo(const sNo,sXM:string):Boolean;stdcall;//通过职工号登录
+    function TeacherLoginBySfzh(const sfzh,sXM:string):Boolean;stdcall;//通过身份证号登录
 
     //获取公告通知，RecCount为希望获取的记录数目，结果返回XML格式的DataSet值。
     function GetBullitInfo(const  RecCount:Integer=5):string;stdcall;

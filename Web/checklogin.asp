@@ -1,26 +1,26 @@
 <!-- #include file="inc/WebSvcURL.asp" -->
 <%
-Dim CardType,CardNo,StudentName,StudentNo,verifycode,StuSfzh
+Dim LoginType,TeacherNo,TeacherName,verifycode,TeacherSfzh
 Dim LoginSuccess
-CardType=Trim(request("CardType"))
-CardNo=Trim(Request("CardNo"))
-StudentName=Trim(request("StudentName"))
+LoginType=Trim(request("LoginType"))
+TeacherNo=Trim(Request("TeacherNo"))
+TeacherName=Trim(request("TeacherName"))
 verifycode=Trim(request("verifycode"))
 
-If CardNo="" or StudentName="" Then Response.redirect "show_error.asp?eid=证件号码或姓名不能为空!"
+If TeacherNo="" or TeacherName="" Then Response.redirect "show_error.asp?eid=证件号码或姓名不能为空!"
 If verifycode="" Then response.redirect "show_error.asp?eid=验证码不能为空!"
 If cstr(session("getcode"))<>cstr(verifycode) then response.redirect "show_error.asp?eid=验证码出现错误!"
 
-If CardType="学生证" Then
-	StudentNo=Trim(Request("CardNo"))
-   response.cookies("LoginIp")=Request.servervariables("REMOTE_ADDR")
-	LoginSuccess  = objSOAPClient.StuLoginByXH(StudentNo,StudentName)
- 	Response.Cookies("StudentNo")=StudentNo	
+If LoginType="任课教师" Then
+	TeacherNo=Trim(Request("TeacherNo"))
+    response.cookies("LoginIp")=Request.servervariables("REMOTE_ADDR")
+	LoginSuccess  = objSOAPClient.TeacherLoginByNo(TeacherNo,TeacherName)
+ 	Response.Cookies("TeacherNo")=TeacherNo	
 Else
- 	StuSfzh=Trim(Request("CardNo"))	
-   response.cookies("LoginIp")=Request.servervariables("REMOTE_ADDR")
-	LoginSuccess =objSOAPClient.StuLoginBySfzh(StuSfzh,StudentName) 	   
-	Response.Cookies("StuSfzh")=StuSfzh
+ 	TeacherSfzh=Trim(Request("TeacherNo"))	
+    response.cookies("LoginIp")=Request.servervariables("REMOTE_ADDR")
+	LoginSuccess =objSOAPClient.TeacherLoginBySfzh(TeacherSfzh,TeacherName) 	   
+	Response.Cookies("TeacherSfzh")=TeacherSfzh
 End If
   
 If LoginSuccess  then

@@ -2,9 +2,9 @@
 <!-- #include file="inc/function.asp" -->
 <link href="images/style.css" type="text/css" rel="stylesheet"/>
 <%
-    Dim jfid,StuSfzh
+    Dim jfid,TeacherSfzh
 	jfid=Request.QueryString("jfid")
-	StuSfzh=Request.Cookies("StuSfzh")
+	TeacherSfzh=Request.Cookies("TeacherSfzh")
 	
 	'取得指定单号的缴费明细		
 	Dim XmlDetailInfo,XmlFileName

@@ -6,9 +6,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=GBK">
 <link href="images/style.css" type="text/css" rel="stylesheet"/>
 <% 
-'Response.Cookies("StudentNo")="0744201200001"
+'Response.Cookies("TeacherNo")="0744201200001"
 
-'If Request.Cookies("StuSfzh")=""  Then
+'If Request.Cookies("TeacherSfzh")=""  Then
 	'Response.Redirect("login.asp")
 'End If
 %>
@@ -88,18 +88,18 @@
 	'		tranStat=1
 	'		bank_amount=Request.Cookies("sfbz")
 
-			Dim StudentNo,StuSfzh,sMsg 
+			Dim TeacherNo,TeacherSfzh,sMsg 
 			if (tranStat=1) or (tranStat=3) then
 					XmlPaidDetail=Request.Cookies("DetailInfo")
-					StudentNo = Request.Cookies("StudentNo")
-					StuSfzh   = Request.Cookies("StuSfzh")
+					TeacherNo = Request.Cookies("TeacherNo")
+					TeacherSfzh   = Request.Cookies("TeacherSfzh")
 					
 					'通过学号缴费
-					If StudentNo<>"" Then  
-						sMsg=objSOAPClient.NetPayByXH(StudentNo,bank_amount,TranSerialNo,tranStat,XmlPaidDetail,sMemo)
+					If TeacherNo<>"" Then  
+						sMsg=objSOAPClient.NetPayByXH(TeacherNo,bank_amount,TranSerialNo,tranStat,XmlPaidDetail,sMemo)
 					'通过身份证号缴费
-					ElseIf StuSfzh<>"" Then  
-						sMsg=objSOAPClient.NetPayBySfzh(StuSfzh,bank_amount,TranSerialNo,tranStat,XmlPaidDetail,sMemo)	
+					ElseIf TeacherSfzh<>"" Then  
+						sMsg=objSOAPClient.NetPayBySfzh(TeacherSfzh,bank_amount,TranSerialNo,tranStat,XmlPaidDetail,sMemo)	
 					End If
 			End if
 			dim sHint

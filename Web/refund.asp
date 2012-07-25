@@ -9,17 +9,17 @@
 <SCRIPT language=javascript src="images/image.js"></SCRIPT>
 <!-- #include file="inc/security.asp" -->
 <%
-    Dim StuSfzh,StudentNo,XmlRefundInfo,XmlFileName
+    Dim TeacherSfzh,TeacherNo,XmlRefundInfo,XmlFileName
 	'通过身份证号获取退费信息    
-	 If Request.Cookies("StuSfzh")<>"" Then  
-	 	StuSfzh=Request.Cookies("StuSfzh")
-		XmlRefundInfo=objSOAPClient.GetRefundedInfoBySfzh(StuSfzh)
+	 If Request.Cookies("TeacherSfzh")<>"" Then  
+	 	TeacherSfzh=Request.Cookies("TeacherSfzh")
+		XmlRefundInfo=objSOAPClient.GetRefundedInfoBySfzh(TeacherSfzh)
 	 End If
   
 	'通过学号获取退费信息
-	If Request.Cookies("StudentNo")<>"" Then  
-	 	StudentNo=Request.Cookies("StudentNo")
-		XmlRefundInfo=objSOAPClient.GetRefundedInfoByXH(StudentNo)
+	If Request.Cookies("TeacherNo")<>"" Then  
+	 	TeacherNo=Request.Cookies("TeacherNo")
+		XmlRefundInfo=objSOAPClient.GetRefundedInfoByXH(TeacherNo)
 	End If
 	
 '	XmlFileName=Server.MapPath("RefundTemp.xml")

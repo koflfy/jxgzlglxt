@@ -32,7 +32,7 @@ bank文件夹
 images文件夹
 	图片文件， 样式表文件style.css
 	
-2. 用到的Cookie：StuSfzh(身份证号)，StudentNo(学号) CooStuState（学籍状态） JfId（缴费号），sfbz（收费标准（金额）），sfmc（收费名称）,StuName(姓名),XmlPaidDetail(缴费明细数据)
+2. 用到的Cookie：TeacherSfzh(身份证号)，TeacherNo(学号) CooStuState（学籍状态） JfId（缴费号），sfbz（收费标准（金额）），sfmc（收费名称）,StuName(姓名),XmlPaidDetail(缴费明细数据)
 
 3. 调试时可能需要修改的常量
 文件WebSvcURL.asp中：

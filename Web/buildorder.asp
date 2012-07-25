@@ -49,7 +49,7 @@ function UpdateTotalJe(new_totalje)
 	</style>
 	<DIV id=payfrm>		
 	<%
-	Dim IsPaid,sfmc,sfxm,jfxn,StuSfzh,StudentNo
+	Dim IsPaid,sfmc,sfxm,jfxn,TeacherSfzh,TeacherNo
 	'判断是否已缴费
 	jfxn=trim(objSOAPClient.GetCurToPayXn)
 	sfmc=trim(objSOAPClient.GetCurToPayName)
@@ -57,15 +57,15 @@ function UpdateTotalJe(new_totalje)
 	Response.Cookies("sfmc")=sfmc
 	
 	'通过身份证号获取学生是否已缴费信息
-	If Request.Cookies("StuSfzh")<>"" Then  
-	 	StuSfzh=Request.Cookies("StuSfzh")
-		IsPaid=objSOAPClient.StuIsPaidBySfzh(StuSfzh,jfxn,sfmc)
+	If Request.Cookies("TeacherSfzh")<>"" Then  
+	 	TeacherSfzh=Request.Cookies("TeacherSfzh")
+		IsPaid=objSOAPClient.StuIsPaidBySfzh(TeacherSfzh,jfxn,sfmc)
 	 End If
    
 	'通过学号获取学生是否已缴费信息
-	If Request.Cookies("StudentNo")<>"" Then  
-	 	StudentNo=Request.Cookies("StudentNo")
-		IsPaid=objSOAPClient.StuIsPaidByXH(StudentNo,jfxn,sfmc)
+	If Request.Cookies("TeacherNo")<>"" Then  
+	 	TeacherNo=Request.Cookies("TeacherNo")
+		IsPaid=objSOAPClient.StuIsPaidByXH(TeacherNo,jfxn,sfmc)
 	End If
 	
 	If  IsPaid Then
@@ -105,17 +105,17 @@ function UpdateTotalJe(new_totalje)
 				Dim XmlPayInfo,XmlDetailInfo,XmlFileName
 				
 				'通过身份证号获取学生应缴费信息
-				If Request.Cookies("StuSfzh")<>"" Then  
-	 				StuSfzh=Request.Cookies("StuSfzh")
-					XmlPayInfo=objSOAPClient.GetToPayInfoBySfzh(StuSfzh)
-					XmlDetailInfo=objSOAPClient.GetToPayDeltaInfoBySfzh(StuSfzh)
+				If Request.Cookies("TeacherSfzh")<>"" Then  
+	 				TeacherSfzh=Request.Cookies("TeacherSfzh")
+					XmlPayInfo=objSOAPClient.GetToPayInfoBySfzh(TeacherSfzh)
+					XmlDetailInfo=objSOAPClient.GetToPayDeltaInfoBySfzh(TeacherSfzh)
 				End If
    
 				'通过学号获取学生应缴费信息
-				If Request.Cookies("StudentNo")<>"" Then  
-					StudentNo=Request.Cookies("StudentNo")
-					XmlPayInfo=objSOAPClient.GetToPayInfoByXH(StudentNo)
-					XmlDetailInfo=objSOAPClient.GetToPayDeltaInfoByXH(StudentNo)
+				If Request.Cookies("TeacherNo")<>"" Then  
+					TeacherNo=Request.Cookies("TeacherNo")
+					XmlPayInfo=objSOAPClient.GetToPayInfoByXH(TeacherNo)
+					XmlDetailInfo=objSOAPClient.GetToPayDeltaInfoByXH(TeacherNo)
 				End If					
 				
 				'response.write Server.HtmlEnCode(XmlDetailInfo)
