@@ -4,41 +4,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gbk" />
-<title>深圳电大网上缴费查询系统</title>
+<title>江西科技师范大学教学工作量查询系统</title>
 <link href="images/style.css" type="text/css" rel="stylesheet"/>
 <SCRIPT language=javascript src="images/image.js"></SCRIPT>
 <!-- #include file="inc/security.asp" -->
 <%
-    Dim StudentNo,StuSfzh,XmlStuInfo,StuName,HintInfo
-	 '通过身份证号获取学生信息    
-	 If Request.Cookies("StuSfzh")<>"" Then  
-	 	StuSfzh=Request.Cookies("StuSfzh")
-		StudentNo=objSOAPClient.GetStuXHBySfzh(StuSfzh)
-		XmlStuInfo=objSOAPClient.GetStuInfoBySfzh(StuSfzh)
-	 End If
+    Dim TeacherNo,TeacherSfzh,XmlStuInfo,TeacherName,HintInfo
    
-	'通过学号获取学生信息
-	If Request.Cookies("StudentNo")<>"" Then  
-	 	StudentNo=Request.Cookies("StudentNo")
-		XmlStuInfo=objSOAPClient.GetStuInfoByXH(StudentNo)
+	'通过职工号获取工作量信息
+	If Request.Cookies("TeacherNo")<>"" Then  
+	 	TeacherNo=Request.Cookies("TeacherNo")
+	 	TeacherName=Request.Cookies("TeacherName")
 	End If
-	
-	Dim objStuXml,objStuNode,objStuAtr,StuClass,StuState	
-	Set objStuXml=Server.CreateObject("Microsoft.XMLDOM") 
-	objStuXml.Async=False
-	objStuXml.loadXML(XmlStuInfo)
-	Set objStuNode = objStuXml.documentElement.selectSingleNode("ROWDATA")
-	Set objStuAtr=objStuNode.ChildNodes.item(0) 
-	StuClass=trim(objStuAtr.GetAttributeNode("nj").Value)
-	StuClass=StuClass & trim(objStuAtr.GetAttributeNode("zy").Value)
-	StuClass=StuClass & "（" & trim(objStuAtr.GetAttributeNode("lb").Value) & "）"
-	StuName=objStuAtr.GetAttributeNode("xm").Value
-	StuState=objStuAtr.GetAttributeNode("state").Value
-  Response.Cookies("CooStuState")=StuState
-	Response.Cookies("StuName")=StuName
 %>
 </head>
-<body>
+<body onload="MM_preloadImages('images/exit.gif')">
 <!--头部 -->
 <DIV id=top></DIV>
 <DIV id=sidebar>
@@ -52,11 +32,11 @@
 <div id=main>
   <!--左边按钮 -->
 	<DIV class=leftbox id=leftbg>
-		<DIV class=left_btn><A onmouseover="MM_swapImage('Image1','','images/zzjf.gif',1)" onmouseout=MM_swapImgRestore() href="payonline.asp"><IMG id=Image1 height=52 src="images/zzjf2.gif" width=173 border=0 name=Image1></A>		</DIV>
+		<DIV class=left_btn><A onmouseover="MM_swapImage('Image1','','images/zzjf.gif',1)" onmouseout=MM_swapImgRestore() href="Paid.asp"><IMG id=Image1 height=52 src="images/zzjf2.gif" width=173 border=0 name=Image1></A>		</DIV>
 	  <br>
 		<DIV class=left_btn><A onmouseover="MM_swapImage('Image5','','images/exit.gif',1)" onmouseout=MM_swapImgRestore() 
-href="logout.asp"><IMG id=Image5 height=52 src="images/exit2.gif" width=173 border=0 name=Image5></A>
-    </DIV>
+href="logout.asp"><a onmouseover="MM_swapImage('Image5','','images/exit.gif',1)" onmouseout=MM_swapImgRestore() 
+href="logout.asp"><img id=Image5 height=52 src="images/exit2.gif" width=173 border=0 name=Image5 /></a></DIV>
   </DIV>
 	<!--右边-->
   <DIV id=rightbox>
@@ -72,7 +52,7 @@ href="logout.asp"><IMG id=Image5 height=52 src="images/exit2.gif" width=173 bord
           			<TD width="10%" valign=top background=images/bg_tip.gif><IMG height=49 src="images/icon_tip.gif" width=48></TD>
           			<TD width="90%" background=images/bg_tip.gif>
 						<SPAN class=f_14_orange><%= StuClass %><br />
-				    <%= StuName %>老师:您好</SPAN><br />
+				    <%= TeacherName %>老师:您好</SPAN><br />
 						欢迎使用江西科技师范大学<span class="title" style="BACKGROUND-IMAGE: none">教学工作量查询系统</span>！						</p>
 					 </TD>
 					 </TR>
@@ -109,7 +89,7 @@ href="logout.asp"><IMG id=Image5 height=52 src="images/exit2.gif" width=173 bord
 									set objBulAtr=objBulNode.ChildNodes.item(j) 		
 								%>
 									<TR><TD  height=30>&nbsp;</TD>
-												<TD><%=objBulAtr.GetAttributeNode("xF1").Value %>&nbsp;&nbsp;<%=StrtoDate(objBulAtr.GetAttributeNode("ActionTime").Value) %></TD>
+										<TD><%=objBulAtr.GetAttributeNode("xF1").Value %>&nbsp;&nbsp;<%=StrtoDate(objBulAtr.GetAttributeNode("ActionTime").Value) %></TD>
 									</TR> 
 								<%
 								next 
@@ -118,11 +98,11 @@ href="logout.asp"><IMG id=Image5 height=52 src="images/exit2.gif" width=173 bord
 								Set objBulNode=Nothing 
 								Set objBulXml=Nothing
 								%>
-							<%
+			  <%
 							Else
 							%>
 								<TR><TD  height=30>&nbsp;</TD>
-											<TD>暂无公告</TD>
+									<TD>暂无公告</TD>
 								</TR>
 							<%
 							End If

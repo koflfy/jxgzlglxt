@@ -20,9 +20,9 @@ function ShowState(){
 //-->
 </SCRIPT>
 <%
-Dim StudentNo,StuSfzh,sfmc,sfbz,JfId,jfxn
-StuSfzh=Request.Cookies("StuSfzh")
-StudentNo=Request.Cookies("StudentNo")
+Dim TeacherNo,TeacherSfzh,sfmc,sfbz,JfId,jfxn
+TeacherSfzh=Request.Cookies("TeacherSfzh")
+TeacherNo=Request.Cookies("TeacherNo")
 jfxn=Request.Cookies("jfxn")
 sfmc=Request.Cookies("sfmc")
 sfbz=Request.Cookies("sfbz")

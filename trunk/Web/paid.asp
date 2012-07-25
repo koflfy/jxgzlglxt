@@ -4,23 +4,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gbk" />
-<title>深圳电大网上缴费系统-历史缴费查询</title>
+<title>江西科技师范大学教学工作量查询系统</title>
 <link href="images/style.css" type="text/css" rel="stylesheet"/>
 <SCRIPT language=javascript src="images/image.js"></SCRIPT>
 <!-- #include file="inc/security.asp" -->
 <%
-   Dim StuSfzh,StudentNo,XmlPaidInfo,XmlFileName
+   Dim TeacherSfzh,TeacherNo,XmlPaidInfo,XmlFileName,XmlXnxqList
 	
-	'通过身份证号获取历史缴费信息    
-	 If Request.Cookies("StuSfzh")<>"" Then  
-	 	StuSfzh=Request.Cookies("StuSfzh")
-		XmlPaidInfo=objSOAPClient.GetPaidInfoBySfzh(StuSfzh)
-	 End If
-  
-	'通过学号获取历史缴费信息
-	If Request.Cookies("StudentNo")<>"" Then  
-	 	StudentNo=Request.Cookies("StudentNo")
-		XmlPaidInfo=objSOAPClient.GetPaidInfoByXH(StudentNo)
+	'通过职工号获取教学工作量信息
+	If Request.Cookies("TeacherNo")<>"" Then  
+	 	TeacherNo=Request.Cookies("TeacherNo")
+		XmlXnxqList=objSOAPClient.GetXnxqList
 	End If
 %>
 </head>
@@ -31,23 +25,15 @@
 		<UL>
 			<LI class=exit><A class=red title=退出 href="logout.asp">安全退出</A></LI>
 			<LI class=home><A class=red title=回首页 href="index.asp">回首页</A></LI>
-			<LI class=title style="BACKGROUND-IMAGE: none"><%=Request.Cookies("StuName")%>老师:欢迎使用教学工作量查询系统!</A></LI>
+			<LI class=title style="BACKGROUND-IMAGE: none"><%=Request.Cookies("TeacherName")%>老师:欢迎使用教学工作量查询系统!</A></LI>
 		</UL>
 </DIV>
 <!--网页主体 -->
 <div id=main>
   <!--左边按钮 -->
 	<DIV class=leftbox id=leftbg>
-		<DIV class=left_btn><A onmouseover="MM_swapImage('Image1','','images/zzjf.gif',1)" onmouseout=MM_swapImgRestore() href="payonline.asp"><a onmouseover="MM_swapImage('Image1','','images/zzjf.gif',1)" onmouseout=MM_swapImgRestore() href="payonline.asp"><img id=Image1 height=52 src="images/zzjf2.gif" width=173 border=0 name=Image1 /></a></A></DIV>
-	  <DIV class=left_btn><A onmouseover="MM_swapImage('Image2','','images/lscx.gif',1)" onmouseout=MM_swapImgRestore()><IMG id=Image2 height=52 src="images/lscx.gif" width=173 border=0 name=Image2></A>
-    </DIV>
-	  <DIV class=left_btn><A onmouseover="MM_swapImage('Image3','','images/sycx.gif',1)" onmouseout=MM_swapImgRestore()
-href="usedpay.asp"><IMG id=Image3 height=52 src="images/sycx2.gif" width=173 border=0 name=Image3></A>
-    </DIV>
-	  <DIV class=left_btn><A onmouseover="MM_swapImage('Image4','','images/tfcx.gif',1)" onmouseout=MM_swapImgRestore() 
-href="refund.asp"><IMG id=Image4 height=52 src="images/tfcx2.gif" width=173 border=0 name=Image4></A>
-    </DIV>
-		<br>
+		<DIV class=left_btn><A onmouseover="MM_swapImage('Image1','','images/zzjf.gif',1)" onmouseout=MM_swapImgRestore() href="#"><a onmouseover="MM_swapImage('Image1','','images/zzjf.gif',1)" onmouseout=MM_swapImgRestore() href="#"><img id=Image1 height=52 src="images/zzjf.gif" width=173 border=0 name=Image1 /></a></DIV>
+    <br>
 		<DIV class=left_btn><A onmouseover="MM_swapImage('Image5','','images/exit.gif',1)" onmouseout=MM_swapImgRestore() 
 href="logout.asp"><IMG id=Image5 height=52 src="images/exit2.gif" width=173 border=0 name=Image5></A>
     </DIV>
@@ -64,21 +50,54 @@ href="logout.asp"><IMG id=Image5 height=52 src="images/exit2.gif" width=173 bord
         		<TBODY>
 				<TR>
 				  <TD width=7 height=30  background="images/bg_title.gif" class=f_14_orange>&nbsp;</TD>
-				  <TD height=30 colspan="7"  background="images/bg_title.gif" class=f_14_orange>历史缴费信息</TD>
+				  <TD height=30 colspan="7"  background="images/bg_title.gif" class=f_14_orange>
+                  <form id="form1" name="form1" method="post" action="">
+                  <select name="xnxq" id="xnxq">
+				<%
+					Dim objDom,objNodes,objAtrs,nCntAtr,i,nCntChd,element
+					Dim xnxq
+					Set objDom=Server.CreateObject("Microsoft.XMLDOM") 
+					objDom.Async=False
+					If objDom.loadXML(XmlXnXqList) Then    '把XML字符串读入内存
+						set objnodes=objdom.documentElement.SelectSingleNode("//ROWDATA").ChildNodes
+						i=0
+						for each element in objnodes
+							i=i+1	
+							set objAtrs=element.attributes
+							xnxq=objAtrs.item(0).Value
+				%>
+                  <option <%if xnxq=request("xnxq") then response.Write("selected='selected'") end if%>><%=xnxq%></option>
+				<%
+						next
+						Set objAtrs=Nothing 
+						Set objNodes=Nothing 
+						Set objDom=Nothing
+					Else
+				%>
+                  <option selected="selected">选择学期</option>
+				<%	
+	               	End If
+				%>
+                  </select>
+                  <input type="submit" name="submit" id="submit" value="查询" />
+                  查询结果： 
+                  </form>
+                  </TD>
 				</TR>
 				<TR height="30">
 				  <TD width=7 height=30 class=f_14_orange>&nbsp;</TD>
 				  <TD width="34">序号</TD>
-				  <TD width="157">缴费号</TD>
-				  <TD width="92">缴费学年</TD>
-				  <TD width="91">缴费名称</TD>
-				  <TD width="86">缴费金额(元)</TD>
-				  <TD width="164">缴费时间</TD>
-				  <TD width="65">操作</TD>
+				  <TD width="64">学年学期</TD>
+				  <TD width="294">课程名称</TD>
+				  <TD width="70">学时数</TD>
+				  <TD width="84">工作量类型</TD>
+				  <TD width="85">教学工作量</TD>
+				  <TD width="58">操作</TD>
 				</TR>
 				<%
+					XmlPaidInfo=objSOAPClient.GetJxgzlInfoByNo(TeacherNo,request("xnxq"))
 					Dim objDom,objNodes,objAtrs,nCntAtr,i,nCntChd,element
-					Dim jfid,jfxn,jfmc,jfje,jfsj,cz
+					Dim kcmc,xss,lx,gzl,cz
 					Set objDom=Server.CreateObject("Microsoft.XMLDOM") 
 					objDom.Async=False
 					If objDom.loadXML(XmlPaidInfo) Then    '把XML字符串读入内存
@@ -87,17 +106,15 @@ href="logout.asp"><IMG id=Image5 height=52 src="images/exit2.gif" width=173 bord
 						for each element in objnodes
 							i=i+1	
 							set objAtrs=element.attributes
-							jfid=objAtrs.item(0).Value
-							jfxn=objAtrs.item(8).Value
-							jfmc=objAtrs.item(9).Value 
-							jfje=objAtrs.item(10).Value
-							if jfje<0 then jfje="<font color='Red'>"&jfje&"</font>"
-								 
-							jfsj=StrtoDate(objAtrs.item(15).Value)
+							xnxq=objAtrs.item(2).Value
+							kcmc=objAtrs.item(8).Value
+							xss=objAtrs.item(16).Value 
+							lx=objAtrs.item(3).Value
+							gzl=objAtrs.item(19).Value
 				%>
 				<TR height="30">
 	 			   <TD width=7 height=30 class=f_14_orange>&nbsp;</TD>
-					<TD width="34"><%=i%></TD><TD width="157"><%=jfid%></TD><TD width="92"><%=jfxn%></TD><TD width="91"><%=jfmc%></TD><TD width="86"><%=jfje%></TD><TD width="164"><%=jfsj%></TD><TD><a href="#" onclick="window.open('paiddetail.asp?jfid=<%=jfid%>','Dwin','top=100,left=300,width=400,height=300');">查看明细</a></TD>
+					<TD width="34"><%=i%></TD><TD width="64"><%=xnxq%></TD><TD width="294"><%=kcmc%></TD><TD width="70"><%=xss%></TD><TD width="84"><%=lx%></TD><TD width="85"><%=gzl%></TD><TD><a href="#" onclick="window.open('paiddetail.asp?jfid=<%=jfid%>','Dwin','top=100,left=300,width=400,height=300');">查看明细</a></TD>
 				</TR>
 				<%
 						next

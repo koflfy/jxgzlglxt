@@ -4,9 +4,9 @@
 <link href="images/style.css" type="text/css" rel="stylesheet"/>
 <head>
 <%
-Dim StudentNo,StuSfzh,jfxn,sfmc
-StuSfzh=Request.Cookies("StuSfzh")
-StudentNo=Request.Cookies("StudentNo")
+Dim TeacherNo,TeacherSfzh,jfxn,sfmc
+TeacherSfzh=Request.Cookies("TeacherSfzh")
+TeacherNo=Request.Cookies("TeacherNo")
 jfxn=Request.Cookies("jfxn")
 sfmc=Request.Cookies("sfmc")
 '读取网银配置信息
@@ -24,11 +24,11 @@ sfmc=Request.Cookies("sfmc")
 		Dim IsPaid
 		'判断是否已缴费
 		'通过身份证号获取学生是否已缴费信息
-		If StuSfzh<>"" Then  
-			IsPaid=objSOAPClient.StuIsPaidBySfzh(StuSfzh,jfxn,sfmc)
+		If TeacherSfzh<>"" Then  
+			IsPaid=objSOAPClient.StuIsPaidBySfzh(TeacherSfzh,jfxn,sfmc)
 		'通过学号获取学生是否已缴费信息
-		ElseIf StudentNo<>"" Then  
-			IsPaid=objSOAPClient.StuIsPaidByXH(StudentNo,jfxn,sfmc)
+		ElseIf TeacherNo<>"" Then  
+			IsPaid=objSOAPClient.StuIsPaidByXH(TeacherNo,jfxn,sfmc)
 		End If
 
 		If IsPaid Then
