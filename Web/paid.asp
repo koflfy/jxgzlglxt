@@ -9,12 +9,14 @@
 <SCRIPT language=javascript src="images/image.js"></SCRIPT>
 <!-- #include file="inc/security.asp" -->
 <%
-   Dim TeacherSfzh,TeacherNo,XmlPaidInfo,XmlFileName,XmlXnxqList
+   Dim TeacherSfzh,TeacherNo,XmlJxgzlInfo,XmlFileName,XmlXnxqList,xnxq
 	
 	'通过职工号获取教学工作量信息
 	If Request.Cookies("TeacherNo")<>"" Then  
 	 	TeacherNo=Request.Cookies("TeacherNo")
 		XmlXnxqList=objSOAPClient.GetXnxqList
+		xnxq = Request.QueryString("xnxq")
+		XmlJxgzlInfo=objSOAPClient.GetJxgzlInfo(TeacherNo,xnxq)
 	End If
 %>
 </head>
@@ -53,9 +55,9 @@ href="logout.asp"><IMG id=Image5 height=52 src="images/exit2.gif" width=173 bord
 				  <TD height=30 colspan="7"  background="images/bg_title.gif" class=f_14_orange>
                   <form id="form1" name="form1" method="post" action="">
                   <select name="xnxq" id="xnxq">
+                  <option value="">选择学期</option>
 				<%
 					Dim objDom,objNodes,objAtrs,nCntAtr,i,nCntChd,element
-					Dim xnxq
 					Set objDom=Server.CreateObject("Microsoft.XMLDOM") 
 					objDom.Async=False
 					If objDom.loadXML(XmlXnXqList) Then    '把XML字符串读入内存
@@ -66,16 +68,12 @@ href="logout.asp"><IMG id=Image5 height=52 src="images/exit2.gif" width=173 bord
 							set objAtrs=element.attributes
 							xnxq=objAtrs.item(0).Value
 				%>
-                  <option <%if xnxq=request("xnxq") then response.Write("selected='selected'") end if%>><%=xnxq%></option>
+                  <option <%if xnxq=request.QueryString("xnxq") then response.Write("selected='selected'") end if%>><%=xnxq%></option>
 				<%
 						next
 						Set objAtrs=Nothing 
 						Set objNodes=Nothing 
 						Set objDom=Nothing
-					Else
-				%>
-                  <option selected="selected">选择学期</option>
-				<%	
 	               	End If
 				%>
                   </select>
@@ -95,26 +93,25 @@ href="logout.asp"><IMG id=Image5 height=52 src="images/exit2.gif" width=173 bord
 				  <TD width="58">操作</TD>
 				</TR>
 				<%
-					XmlPaidInfo=objSOAPClient.GetJxgzlInfoByNo(TeacherNo,request("xnxq"))
-					Dim objDom,objNodes,objAtrs,nCntAtr,i,nCntChd,element
-					Dim kcmc,xss,lx,gzl,cz
+					Dim kcmc,xss,lx,gzl,cz,id
 					Set objDom=Server.CreateObject("Microsoft.XMLDOM") 
 					objDom.Async=False
-					If objDom.loadXML(XmlPaidInfo) Then    '把XML字符串读入内存
+					If objDom.loadXML(XmlJxgzlInfo) Then    '把XML字符串读入内存
 						set objnodes=objdom.documentElement.SelectSingleNode("//ROWDATA").ChildNodes
 						i=0
 						for each element in objnodes
 							i=i+1	
 							set objAtrs=element.attributes
+							id=objAtrs.item(0).Value
 							xnxq=objAtrs.item(2).Value
 							kcmc=objAtrs.item(8).Value
-							xss=objAtrs.item(16).Value 
+							xss=objAtrs.item(6).Value 
 							lx=objAtrs.item(3).Value
-							gzl=objAtrs.item(19).Value
+							gzl=objAtrs.item(9).Value
 				%>
 				<TR height="30">
 	 			   <TD width=7 height=30 class=f_14_orange>&nbsp;</TD>
-					<TD width="34"><%=i%></TD><TD width="64"><%=xnxq%></TD><TD width="294"><%=kcmc%></TD><TD width="70"><%=xss%></TD><TD width="84"><%=lx%></TD><TD width="85"><%=gzl%></TD><TD><a href="#" onclick="window.open('paiddetail.asp?jfid=<%=jfid%>','Dwin','top=100,left=300,width=400,height=300');">查看明细</a></TD>
+					<TD width="34"><%=i%></TD><TD width="64"><%=xnxq%></TD><TD width="294"><%=kcmc%></TD><TD width="70"><%=xss%></TD><TD width="84"><%=lx%></TD><TD width="85"><%=gzl%></TD><TD><a href="#" onclick="window.open('paiddetail.asp?jfid=<%=id%>','Dwin','top=100,left=300,width=400,height=300');">查看明细</a></TD>
 				</TR>
 				<%
 						next

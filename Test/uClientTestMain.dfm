@@ -142,7 +142,7 @@ object ClinetTestMain: TClinetTestMain
   end
   object SoapConnection1: TSoapConnection
     Agent = 'Borland SOAP 1.2'
-    URL = 'http://localhost:1024/NetPayWadSrv.NetPay/soap/INetPay'
+    URL = 'http://localhost/jxgzl/srv/jxgzlWebsrv.dll/soap/Ijxgzl'
     SOAPServerIID = 'IAppServerSOAP - {C99F4735-D6D2-495C-8CA2-E53E5A439E61}'
     UseSOAPAdapter = True
     Left = 120

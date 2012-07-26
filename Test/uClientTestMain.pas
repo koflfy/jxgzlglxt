@@ -42,7 +42,7 @@ var
   ClinetTestMain: TClinetTestMain;
 
 implementation
-uses uAdminIntf,PwdFunUnit;
+uses uAdminIntf,PwdFunUnit,uJxgzlIntf;
 {$R *.dfm}
 
 procedure TClinetTestMain.btn_CloseClick(Sender: TObject);
@@ -68,20 +68,16 @@ end;
 
 procedure TClinetTestMain.btn_OpenClick(Sender: TObject);
 var
-  vobj:IAdmin;
+  vobj:Ijxgzl;
   sError,sData:string;
   iCompressType:Integer;
 begin
   iCompressType := 0;
-  vobj := httprio1 as IAdmin;
+  vobj := httprio1 as Ijxgzl;
   try
     //sData := vobj.GetKsCj('文管类一');
-    if vobj.Query_Data(edt_Sql.Text,iCompressType,sData)=S_OK then
-    begin
-      ShowMessage('Execute SQL Command complated! OK! ');
-      ClientDataSet1.XMLData := sData;
-    end else
-      ShowMessage('Error!');
+    sData := vobj.GetjxgzlInfo('032002001','');
+    ClientDataSet1.XMLData := sData;
   finally
     vobj := nil;
   end;

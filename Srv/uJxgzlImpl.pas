@@ -142,10 +142,10 @@ begin
   iCompressType := 0; //不压缩
   dm := TJxgzlSoapDM.Create(nil);
   try
-    sqlstr := 'select * from 工作量总表_Web where gzh='+quotedstr(sNo);
+    sqlstr := 'select * from 工作量总表_Web where zgh='+quotedstr(sNo);
     if sXnxq<>'' then
       sqlstr := sqlstr+' and xnxq='+quotedstr(sXnxq);
-    sqlstr := sqlstr+' order by 规则号';
+    sqlstr := sqlstr+' order by gzh';
     
     if dm.Query_Data(sqlstr,iCompressType,sData)=S_OK then
       Result := sData
