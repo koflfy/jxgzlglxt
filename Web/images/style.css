@@ -69,7 +69,7 @@ A.grey:hover   {	COLOR: #c70000; TEXT-DECORATION: underline }
 #r_top2 {
 	BACKGROUND-POSITION: 50% bottom; BACKGROUND-IMAGE: url(top2.jpg); OVERFLOW: hidden; WIDTH: 698px; BACKGROUND-REPEAT: no-repeat; height:73px}
 #r_data {
-	CLEAR: both; BACKGROUND-POSITION: 50% top; BACKGROUND-IMAGE: url(r_cen.gif); OVERFLOW: visible; WIDTH: 793px; BACKGROUND-REPEAT: repeat-y; TEXT-ALIGN: center; height:530px;
+	CLEAR: both; BACKGROUND-POSITION: 50% top; BACKGROUND-IMAGE: url(r_cen.gif); OVERFLOW: visible; WIDTH: 793px; BACKGROUND-REPEAT: repeat-y; TEXT-ALIGN: center; height:540px;
 }
 #r_data2 {
 	CLEAR: both; BACKGROUND-POSITION: 50% top; OVERFLOW: visible; WIDTH: 698px; BACKGROUND-REPEAT: repeat-y; TEXT-ALIGN: center; height:350px;

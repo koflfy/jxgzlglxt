@@ -32,10 +32,10 @@ type
     function GetXnXqList:string;stdcall;
 
     //通过职工号和学年学期获取工作量信息，返回XML格式的DataSet值
-    function GetJxgzlInfo(const sNo,sXnxq:string;const iRecCount,iPage:Integer;out iRecordCount:string):string;stdcall;
+    function GetJxgzlInfo(const sNo,sXnxq:string;const iRecCount,iPage:Integer):string;stdcall;
+    function GetJxgzlRecordCount(const sNo,sXnxq:string):Integer;stdcall;
     //得到教学工作量信息
-    function GetJxgzlInfo2(const sNo,sXnxq:string;out BmNo,Ksh,Sfzh,Xm,Xb,Mz,ZzMm,OldSchool,OldZy,Jlqk,Addr,
-                         Yzbm,Tel,ZyZhcp,English,Computer,Tc:string):Boolean;stdcall;
+    function GetJxgzlDelta(const id:string):string;stdcall;
 
     function TeacherLoginByNo(const sNo,sXM:string):Boolean;stdcall;//通过职工号登录
     function TeacherLoginBySfzh(const sfzh,sXM:string):Boolean;stdcall;//通过身份证号登录
