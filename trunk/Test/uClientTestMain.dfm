@@ -129,7 +129,7 @@ object ClinetTestMain: TClinetTestMain
     Width = 539
     Height = 21
     TabOrder = 1
-    Text = 'http://210.35.24.18/ZsbBm/Srv/zsbbmwebsrv.dll/soap/iAdmin/'
+    Text = 'http://localhost/jxgzl/Srv/jxgzlwebsrv.dll/soap/ijxgzl/'
     OnChange = edt_UrlChange
   end
   object HTTPRIO1: THTTPRIO

@@ -36,10 +36,10 @@ type
     function GetXnXqList:string;stdcall;
 
     //通过职工号和学年学期获取工作量信息，返回XML格式的DataSet值
-    function GetJxgzlInfo(const sNo,sXnxq:string;const iRecCount,iPage:Integer;out iRecordCount:string):string;stdcall;
+    function GetJxgzlInfo(const sNo,sXnxq:string;const iRecCount,iPage:Integer):string;stdcall;
+    function GetJxgzlRecordCount(const sNo,sXnxq:string):Integer;stdcall;
     //得到教学工作量信息
-    function GetJxgzlInfo2(const sNo,sXnxq:string;out BmNo,Ksh,Sfzh,Xm,Xb,Mz,ZzMm,OldSchool,OldZy,Jlqk,Addr,
-                         Yzbm,Tel,ZyZhcp,English,Computer,Tc:string):Boolean;stdcall;
+    function GetJxgzlDelta(const id:string):string;stdcall;
 
     function TeacherLoginByNo(const sNo,sXM:string):Boolean;stdcall;//通过职工号登录
     function TeacherLoginBySfzh(const sfzh,sXM:string):Boolean;stdcall;//通过身份证号登录
@@ -132,7 +132,28 @@ begin
   end;
 end;
 
-function Tjxgzl.GetJxgzlInfo(const sNo, sXnxq: string;const iRecCount,iPage:Integer;out iRecordCount:string): string;
+function Tjxgzl.GetJxgzlDelta(const id: string): string;
+var
+  dm:TJxgzlSoapDM;
+  sData,sqlstr:string;
+  iCompressType:Integer;
+  //ICompressType: -1: Auto, 0: Not Compress, 1: Compress
+begin
+  iCompressType := 0; //不压缩
+  dm := TJxgzlSoapDM.Create(nil);
+  try
+    sqlstr := 'select * from 工作量总表_Web where id='+quotedstr(id);
+
+    if dm.Query_Data(sqlstr,iCompressType,sData)=S_OK then
+      Result := sData
+    else
+      Result := '';
+  finally
+    dm.Free;
+  end;
+end;
+
+function Tjxgzl.GetJxgzlInfo(const sNo, sXnxq: string;const iRecCount,iPage:Integer): string;
 var
   dm:TJxgzlSoapDM;
   sData,sqlstr,sWhere,sWhere2:string;
@@ -145,7 +166,7 @@ begin
     sWhere := ' where zgh='+quotedstr(sNo);
     if sXnxq<>'' then sWhere := sWhere+' and xnxq='+quotedstr(sXnxq);
 
-    iRecordCount := IntToStr(dm.GetRecordCountBySql('select count(*) from 工作量总表_Web '+sWhere));
+//    iRecordCount := IntToStr(dm.GetRecordCountBySql('select count(*) from 工作量总表_Web '+sWhere));
 
     sqlstr := 'select top '+IntToStr(iRecCount)+' * from 工作量总表_Web'+sWhere;
 
@@ -163,42 +184,18 @@ begin
   end;
 end;
 
-function Tjxgzl.GetJxgzlInfo2(const sNo, sXnxq: string; out BmNo, Ksh, Sfzh, Xm,
-  Xb, Mz, ZzMm, OldSchool, OldZy, Jlqk, Addr, Yzbm, Tel, ZyZhcp, English,
-  Computer, Tc: string): Boolean;
+function Tjxgzl.GetJxgzlRecordCount(const sNo, sXnxq: string): Integer;
 var
-  iCount:string;
+  dm:TJxgzlSoapDM;
+  sqlstr,sWhere:string;
 begin
-  if not TeacherIsExistsByNo(sNo,sXnxq) then
-  begin
-    Result := False;
-    Exit;
-  end;
-  with TClientDataSet.Create(nil) do
-  begin
-    try
-      XMLData := GetJxgzlInfo(sNo,sXnxq,10000,1,iCount);
-      BmNo := FieldByName('报名序号').AsString;
-      Ksh := FieldByName('考生号').AsString;
-      Sfzh := FieldByName('身份证号').AsString;
-      Xm := FieldByName('姓名').AsString;
-      Xb := FieldByName('性别').AsString;
-      Mz := FieldByName('民族').AsString;
-      ZzMm := FieldByName('政治面貌').AsString;
-      OldSchool := FieldByName('现就读学校').AsString;
-      OldZy := FieldByName('所学专业').AsString;
-      Jlqk := FieldByName('受奖励情况').AsString;
-      Addr := FieldByName('暑期通讯地址').AsString;
-      Yzbm := FieldByName('邮政编码').AsString;
-      Tel := FieldByName('暑期联系电话').AsString;
-      ZyZhcp := FieldByName('专业综合测评情况').AsString;
-      English := FieldByName('全省高校英语等级考试情况').AsString;
-      Computer := FieldByName('全省高校计算机等级考试情况').AsString;
-      Tc := FieldByName('特长').AsString;
-      Result := True;
-    finally
-      Free;
-    end;
+  dm := TJxgzlSoapDM.Create(nil);
+  try
+    sWhere := ' where zgh='+quotedstr(sNo);
+    if sXnxq<>'' then sWhere := sWhere+' and xnxq='+quotedstr(sXnxq);
+    Result := dm.GetRecordCountBySql('select count(*) from 工作量总表_Web '+sWhere);
+  finally
+    dm.Free;
   end;
 end;
 

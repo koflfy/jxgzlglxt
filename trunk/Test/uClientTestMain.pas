@@ -69,14 +69,15 @@ end;
 procedure TClinetTestMain.btn_OpenClick(Sender: TObject);
 var
   vobj:Ijxgzl;
-  sError,sData:string;
+  sError,sData,kk:string;
   iCompressType:Integer;
 begin
   iCompressType := 0;
   vobj := httprio1 as Ijxgzl;
   try
     //sData := vobj.GetKsCj('文管类一');
-    sData := vobj.GetjxgzlInfo('032002001','');
+    sData := vobj.GetjxgzlInfo('032002001','',25,1,kk);
+    edt_Sql.Text := kk;
     ClientDataSet1.XMLData := sData;
   finally
     vobj := nil;
