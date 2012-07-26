@@ -21,8 +21,8 @@
 			iPage = 1
 		end if
 		iTotalRecord = ""
-		XmlJxgzlInfo=objSOAPClient.GetJxgzlInfo(TeacherNo,xnxq,18,iPage,iTotalRecord)
-		Response.Write  iTotalRecord
+		XmlJxgzlInfo = objSOAPClient.GetJxgzlInfo(TeacherNo,xnxq,18,iPage)
+		iTotalRecord = objSOAPClient.GetJxgzlRecordCount(TeacherNo,xnxq)
 	End If
 %>
 </head>
@@ -109,17 +109,31 @@ href="logout.asp"><IMG id=Image5 height=52 src="images/exit2.gif" width=173 bord
 						i=0
 						for i=0 to nCntChd
 							set objAtrs=objnodes.ChildNodes.item(i)
-							id=objAtrs.GetAttributeNode("gzh").Value
-							xnxq=objAtrs.GetAttributeNode("xnxq").Value
-							kcmc=objAtrs.GetAttributeNode("kcmc").Value
-							xss=objAtrs.GetAttributeNode("xss").Value 
-							skdx=objAtrs.GetAttributeNode("skdx").Value
-							lx=objAtrs.GetAttributeNode("kcxz").Value
-							gzl=objAtrs.GetAttributeNode("rs").Value
+							if not (objAtrs.GetAttributeNode("id") is nothing) then
+								id=objAtrs.GetAttributeNode("id").Value
+							end if
+							if not (objAtrs.GetAttributeNode("xnxq") is nothing) then
+								xnxq=objAtrs.GetAttributeNode("xnxq").Value
+							end if
+							if not (objAtrs.GetAttributeNode("kcmc") is nothing) then
+								kcmc=objAtrs.GetAttributeNode("kcmc").Value
+							end if
+							if not (objAtrs.GetAttributeNode("xss") is nothing) then
+								xss=objAtrs.GetAttributeNode("xss").Value 
+							end if
+							if not (objAtrs.GetAttributeNode("skdx") is nothing) then
+								skdx=objAtrs.GetAttributeNode("skdx").Value
+							end if
+							if not (objAtrs.GetAttributeNode("gzlx") is nothing) then
+								lx=objAtrs.GetAttributeNode("gzlx").Value
+							end if
+							if not (objAtrs.GetAttributeNode("gzl") is nothing) then
+								gzl=objAtrs.GetAttributeNode("gzl").Value
+							end if
 				%>
 				<TR height="25">
 	 			   <TD width=7 class=f_14_orange>&nbsp;</TD>
-					<TD width="34"><%=(iPage-1)*18+i+1%></TD><TD width="64"><%=xnxq%></TD><TD><%=kcmc%></TD><TD width="70"><%=xss%></TD><TD width="120"><%=skdx%></TD><TD width="84"><%=lx%></TD><TD width="85"><%=gzl%></TD><TD><a href="paiddetail.asp?id=<%=id%>" onclick="window.open('paiddetail.asp?id=<%=id%>','Dwin','top=100,left=300,width=400,height=300');">明细</a></TD>
+					<TD width="34"><%=(iPage-1)*18+i+1%></TD><TD width="64"><%=xnxq%></TD><TD><%=kcmc%></TD><TD width="70"><%=xss%></TD><TD width="120"><%=skdx%></TD><TD width="84"><%=lx%></TD><TD width="85"><%=gzl%></TD><TD><a href="#" onclick="window.open('jxgzldetail.asp?id=<%=id%>','Dwin','top=100,left=300,width=620,height=450');">明细</a></TD>
 				</TR>
 				<%
 						next
@@ -139,13 +153,13 @@ href="logout.asp"><IMG id=Image5 height=52 src="images/exit2.gif" width=173 bord
       </TR></TBODY></TABLE><br />
       <div style="text-align:right; margin-right:15px">
       <%if iPage>1 then %>
-      <a href="paid.asp?xnxq=<%=xnxq%>&page=<%=ipage-1%>" title="上一页">上一页</a>
+      <a href="showjxgzl.asp?xnxq=<%=xnxq%>&amp;page=<%=ipage-1%>" title="上一页">上一页</a>
       <%else%>
       上一页
       <%end if%>
       &nbsp;
-      <%if iPage*18<100 then %>
-      <a href="paid.asp?xnxq=<%=xnxq%>&page=<%=ipage+1%>" title="下一页">下一页</a>
+      <%if iPage*18<iTotalRecord then %>
+      <a href="showjxgzl.asp?xnxq=<%=xnxq%>&amp;page=<%=ipage+1%>" title="下一页">下一页</a>
       <%else%>
       下一页
       <%end if%>
