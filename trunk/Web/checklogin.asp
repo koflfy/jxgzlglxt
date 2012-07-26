@@ -16,11 +16,7 @@ If LoginType="ÈÎ¿Î½ÌÊ¦" Then
     response.cookies("LoginIp")=Request.servervariables("REMOTE_ADDR")
 	LoginSuccess  = objSOAPClient.TeacherLoginByNo(TeacherNo,TeacherName)
  	Response.Cookies("TeacherNo")=TeacherNo	
-Else
- 	TeacherSfzh=Trim(Request("TeacherNo"))	
-    response.cookies("LoginIp")=Request.servervariables("REMOTE_ADDR")
-	LoginSuccess =objSOAPClient.TeacherLoginBySfzh(TeacherSfzh,TeacherName) 	   
-	Response.Cookies("TeacherSfzh")=TeacherSfzh
+ 	Response.Cookies("TeacherName")=TeacherName	
 End If
   
 If LoginSuccess  then

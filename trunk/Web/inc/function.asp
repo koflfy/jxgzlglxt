@@ -306,4 +306,76 @@ Function GetNetBankInfo(UserDM,UserAccount,BankSrvUrl,BankWapSrvUrl)
 	GetNetBankInfo=objSOAPClient.GetUserNetBankInfo(UserDM,UserAccount,BankSrvUrl,BankWapSrvUrl)
 End Function
 
+' ============================================
+' 格式化时间(显示)
+' 参数：n_Flag
+' 1:"yyyy-mm-dd hh:mm:ss"
+' 2:"yyyy-mm-dd"
+' 3:"hh:mm:ss"
+' 4:"yyyy年mm月dd日"
+' 5:"yyyymmdd"
+'   6:"yyyymmddhhmmss" 
+' ============================================
+Function Format_Time(s_Time, n_Flag)
+ Dim y, m, d, h, mi, s
+ Format_Time = ""
+ If IsDate(s_Time) = False Then Exit Function
+ y = cstr(year(s_Time))
+ m = cstr(month(s_Time))
+ If len(m) = 1 Then m = "0" & m
+ d = cstr(day(s_Time))
+ If len(d) = 1 Then d = "0" & d
+ h = cstr(hour(s_Time))
+ If len(h) = 1 Then h = "0" & h
+ mi = cstr(minute(s_Time))
+ If len(mi) = 1 Then mi = "0" & mi
+ s = cstr(second(s_Time))
+ If len(s) = 1 Then s = "0" & s
+ Select Case n_Flag
+ Case 1
+  ' yyyy-mm-dd hh:mm:ss
+  Format_Time = y & "-" & m & "-" & d & " " & h & ":" & mi & ":" & s
+ Case 2
+  ' yyyy-mm-dd
+  Format_Time = y & "-" & m & "-" & d
+ Case 3
+  ' hh:mm:ss
+  Format_Time = h & ":" & mi & ":" & s
+ Case 4
+  ' yyyy年mm月dd日
+  Format_Time = y & "年" & m & "月" & d & "日"
+ Case 5
+  ' yyyymmdd
+  Format_Time = y & m & d
+ case 6
+  'yyyymmddhhmmss
+  format_time= y & m & d & h & mi & s
+ End Select
+End Function
+
+Function GetWeekStr(s_Time)
+	dim weeknum,data
+	If IsDate(s_Time) = False Then Exit Function
+	weeknum = weekDay(s_Time,1)
+	select case weeknum
+	 case "1"
+	  data="星期天"
+	 case "2"
+	  data="星期一"
+	 case "3"
+	  data="星期二"
+	 case "4"
+	  data="星期三"
+	 case "5"
+	  data="星期四"
+	 case "6"
+	  data="星期五"
+	 case "7"
+	  data="星期六"
+	 case else
+	  data="错误的时间"
+	end select
+	GetWeekStr = data
+end function
+
 %>

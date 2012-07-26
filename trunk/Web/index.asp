@@ -51,9 +51,9 @@ href="logout.asp"><img id=Image5 height=52 src="images/exit2.gif" width=173 bord
         			<TR>
           			<TD width="10%" valign=top background=images/bg_tip.gif><IMG height=49 src="images/icon_tip.gif" width=48></TD>
           			<TD width="90%" background=images/bg_tip.gif>
-						<SPAN class=f_14_orange><%= StuClass %><br />
-				    <%= TeacherName %>老师:您好</SPAN><br />
-						欢迎使用江西科技师范大学<span class="title" style="BACKGROUND-IMAGE: none">教学工作量查询系统</span>！						</p>
+						<SPAN class=f_14_orange><%= TeacherName %>&nbsp;老师:您好<br />
+				    今天是&nbsp;<%=Format_Time(now,4)%>&nbsp;<%=GetWeekStr(now)%></SPAN><br />
+						欢迎使用江西科技师范大学<span class="title" style="BACKGROUND-IMAGE: none">教学工作量查询系统！</span>						</p>
 					 </TD>
 					 </TR>
 				  </TBODY>
