@@ -36,7 +36,7 @@ type
     function GetXnXqList:string;stdcall;
 
     //通过职工号和学年学期获取工作量信息，返回XML格式的DataSet值
-    function GetJxgzlInfo(const sNo,sXnxq:string):string;stdcall;
+    function GetJxgzlInfo(const sNo,sXnxq:string;const iRecCount,iPage:Integer;out iRecordCount:string):string;stdcall;
     //得到教学工作量信息
     function GetJxgzlInfo2(const sNo,sXnxq:string;out BmNo,Ksh,Sfzh,Xm,Xb,Mz,ZzMm,OldSchool,OldZy,Jlqk,Addr,
                          Yzbm,Tel,ZyZhcp,English,Computer,Tc:string):Boolean;stdcall;
@@ -132,21 +132,28 @@ begin
   end;
 end;
 
-function Tjxgzl.GetJxgzlInfo(const sNo, sXnxq: string): string;
+function Tjxgzl.GetJxgzlInfo(const sNo, sXnxq: string;const iRecCount,iPage:Integer;out iRecordCount:string): string;
 var
   dm:TJxgzlSoapDM;
-  sData,sqlstr:string;
+  sData,sqlstr,sWhere,sWhere2:string;
   iCompressType:Integer;
   //ICompressType: -1: Auto, 0: Not Compress, 1: Compress
 begin
   iCompressType := 0; //不压缩
   dm := TJxgzlSoapDM.Create(nil);
   try
-    sqlstr := 'select * from 工作量总表_Web where zgh='+quotedstr(sNo);
-    if sXnxq<>'' then
-      sqlstr := sqlstr+' and xnxq='+quotedstr(sXnxq);
-    sqlstr := sqlstr+' order by gzh';
-    
+    sWhere := ' where zgh='+quotedstr(sNo);
+    if sXnxq<>'' then sWhere := sWhere+' and xnxq='+quotedstr(sXnxq);
+
+    iRecordCount := IntToStr(dm.GetRecordCountBySql('select count(*) from 工作量总表_Web '+sWhere));
+
+    sqlstr := 'select top '+IntToStr(iRecCount)+' * from 工作量总表_Web'+sWhere;
+
+    if iPage>1 then
+     sWhere2 := ' and gzh not in(select top '+IntToStr(iRecCount*(iPage-1))+' gzh from 工作量总表_Web '+sWhere+' order by gzh)';
+
+    sqlstr := sqlstr+sWhere2+' order by gzh';
+
     if dm.Query_Data(sqlstr,iCompressType,sData)=S_OK then
       Result := sData
     else
@@ -159,6 +166,8 @@ end;
 function Tjxgzl.GetJxgzlInfo2(const sNo, sXnxq: string; out BmNo, Ksh, Sfzh, Xm,
   Xb, Mz, ZzMm, OldSchool, OldZy, Jlqk, Addr, Yzbm, Tel, ZyZhcp, English,
   Computer, Tc: string): Boolean;
+var
+  iCount:string;
 begin
   if not TeacherIsExistsByNo(sNo,sXnxq) then
   begin
@@ -168,7 +177,7 @@ begin
   with TClientDataSet.Create(nil) do
   begin
     try
-      XMLData := GetJxgzlInfo(sNo,sXnxq);
+      XMLData := GetJxgzlInfo(sNo,sXnxq,10000,1,iCount);
       BmNo := FieldByName('报名序号').AsString;
       Ksh := FieldByName('考生号').AsString;
       Sfzh := FieldByName('身份证号').AsString;

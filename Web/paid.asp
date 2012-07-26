@@ -9,14 +9,20 @@
 <SCRIPT language=javascript src="images/image.js"></SCRIPT>
 <!-- #include file="inc/security.asp" -->
 <%
-   Dim TeacherSfzh,TeacherNo,XmlJxgzlInfo,XmlFileName,XmlXnxqList,xnxq
+   Dim TeacherSfzh,TeacherNo,XmlJxgzlInfo,XmlFileName,XmlXnxqList,xnxq,iPage,iTotalRecord
 	
 	'通过职工号获取教学工作量信息
 	If Request.Cookies("TeacherNo")<>"" Then  
 	 	TeacherNo=Request.Cookies("TeacherNo")
 		XmlXnxqList=objSOAPClient.GetXnxqList
 		xnxq = Request.QueryString("xnxq")
-		XmlJxgzlInfo=objSOAPClient.GetJxgzlInfo(TeacherNo,xnxq)
+		iPage = Request.QueryString("page")
+		if iPage = "" then
+			iPage = 1
+		end if
+		iTotalRecord = ""
+		XmlJxgzlInfo=objSOAPClient.GetJxgzlInfo(TeacherNo,xnxq,18,iPage,iTotalRecord)
+		Response.Write  iTotalRecord
 	End If
 %>
 </head>
@@ -44,7 +50,7 @@ href="logout.asp"><IMG id=Image5 height=52 src="images/exit2.gif" width=173 bord
   <DIV id=rightbox>
 		<DIV id=r_top></DIV>
 		<DIV id=r_data>
-		  <TABLE id=table_bullit  cellSpacing=0 cellPadding=0 width=698 align=center border=0>
+		  <TABLE id=table_bullit  cellSpacing=0 cellPadding=0 width=750 align=center border=0>
   			<TBODY>
   			<TR>
     			<TD height=37>
@@ -52,8 +58,8 @@ href="logout.asp"><IMG id=Image5 height=52 src="images/exit2.gif" width=173 bord
         		<TBODY>
 				<TR>
 				  <TD width=7 height=30  background="images/bg_title.gif" class=f_14_orange>&nbsp;</TD>
-				  <TD height=30 colspan="7"  background="images/bg_title.gif" class=f_14_orange>
-                  <form id="form1" name="form1" method="post" action="">
+				  <TD height=30 colspan="8"  background="images/bg_title.gif" class=f_14_orange>
+                  <form id="form1" name="form1" method="get" action="">
                   <select name="xnxq" id="xnxq">
                   <option value="">选择学期</option>
 				<%
@@ -83,35 +89,37 @@ href="logout.asp"><IMG id=Image5 height=52 src="images/exit2.gif" width=173 bord
                   </TD>
 				</TR>
 				<TR height="30">
-				  <TD width=7 height=30 class=f_14_orange>&nbsp;</TD>
+				  <TD width=7 height=25 class=f_14_orange>&nbsp;</TD>
 				  <TD width="34">序号</TD>
 				  <TD width="64">学年学期</TD>
-				  <TD width="294">课程名称</TD>
+				  <TD width="84">课程名称</TD>
 				  <TD width="70">学时数</TD>
-				  <TD width="84">工作量类型</TD>
-				  <TD width="85">教学工作量</TD>
+				  <TD width="84">授课对象</TD>
+				  <TD width="84">核算类型</TD>
+				  <TD width="85">工作量</TD>
 				  <TD width="58">操作</TD>
 				</TR>
 				<%
-					Dim kcmc,xss,lx,gzl,cz,id
+					Dim kcmc,xss,lx,gzl,cz,id,skdx
 					Set objDom=Server.CreateObject("Microsoft.XMLDOM") 
 					objDom.Async=False
 					If objDom.loadXML(XmlJxgzlInfo) Then    '把XML字符串读入内存
-						set objnodes=objdom.documentElement.SelectSingleNode("//ROWDATA").ChildNodes
+						set objnodes=objdom.documentElement.SelectSingleNode("//ROWDATA")
+						nCntChd=objnodes.ChildNodes.length-1
 						i=0
-						for each element in objnodes
-							i=i+1	
-							set objAtrs=element.attributes
-							id=objAtrs.item(0).Value
-							xnxq=objAtrs.item(2).Value
-							kcmc=objAtrs.item(8).Value
-							xss=objAtrs.item(6).Value 
-							lx=objAtrs.item(3).Value
-							gzl=objAtrs.item(9).Value
+						for i=0 to nCntChd
+							set objAtrs=objnodes.ChildNodes.item(i)
+							id=objAtrs.GetAttributeNode("gzh").Value
+							xnxq=objAtrs.GetAttributeNode("xnxq").Value
+							kcmc=objAtrs.GetAttributeNode("kcmc").Value
+							xss=objAtrs.GetAttributeNode("xss").Value 
+							skdx=objAtrs.GetAttributeNode("skdx").Value
+							lx=objAtrs.GetAttributeNode("kcxz").Value
+							gzl=objAtrs.GetAttributeNode("rs").Value
 				%>
-				<TR height="30">
-	 			   <TD width=7 height=30 class=f_14_orange>&nbsp;</TD>
-					<TD width="34"><%=i%></TD><TD width="64"><%=xnxq%></TD><TD width="294"><%=kcmc%></TD><TD width="70"><%=xss%></TD><TD width="84"><%=lx%></TD><TD width="85"><%=gzl%></TD><TD><a href="#" onclick="window.open('paiddetail.asp?jfid=<%=id%>','Dwin','top=100,left=300,width=400,height=300');">查看明细</a></TD>
+				<TR height="25">
+	 			   <TD width=7 class=f_14_orange>&nbsp;</TD>
+					<TD width="34"><%=(iPage-1)*18+i+1%></TD><TD width="64"><%=xnxq%></TD><TD><%=kcmc%></TD><TD width="70"><%=xss%></TD><TD width="120"><%=skdx%></TD><TD width="84"><%=lx%></TD><TD width="85"><%=gzl%></TD><TD><a href="paiddetail.asp?id=<%=id%>" onclick="window.open('paiddetail.asp?id=<%=id%>','Dwin','top=100,left=300,width=400,height=300');">明细</a></TD>
 				</TR>
 				<%
 						next
@@ -120,8 +128,8 @@ href="logout.asp"><IMG id=Image5 height=52 src="images/exit2.gif" width=173 bord
 						Set objDom=Nothing
 					Else
 				%>
-				  		<TR><TD width=7 height=30 class=f_14_orange>&nbsp;</TD>
-						<TD colspan="6" height=30>暂无记录</TD></TR>
+				  		<TR><TD width=7 height=25 class=f_14_orange>&nbsp;</TD>
+						<TD colspan="7">暂无记录</TD></TR>
 				<%	
 	               	End If
 				%>
@@ -129,6 +137,20 @@ href="logout.asp"><IMG id=Image5 height=52 src="images/exit2.gif" width=173 bord
 			</TABLE>
 			</TD>
       </TR></TBODY></TABLE><br />
+      <div style="text-align:right; margin-right:15px">
+      <%if iPage>1 then %>
+      <a href="paid.asp?xnxq=<%=xnxq%>&page=<%=ipage-1%>" title="上一页">上一页</a>
+      <%else%>
+      上一页
+      <%end if%>
+      &nbsp;
+      <%if iPage*18<100 then %>
+      <a href="paid.asp?xnxq=<%=xnxq%>&page=<%=ipage+1%>" title="下一页">下一页</a>
+      <%else%>
+      下一页
+      <%end if%>
+      &nbsp;&nbsp;
+      </div>
 		</DIV>		
 		<DIV id=r_bottom></DIV>
 	</DIV>
@@ -138,7 +160,7 @@ href="logout.asp"><IMG id=Image5 height=52 src="images/exit2.gif" width=173 bord
   	<TBODY>
   		<TR>
     		<TD vAlign=center align=right width="15%" rowSpan=3><A href="http://www.hd315.gov.cn/beian/view.asp?bianhao= " target=_blank><IMG height=36 hspace=5 src="images/biaozhi.gif" width=30 border=0></A><!--备案信息--></TD>
-    		<TD vAlign=center noWrap align=left width="85%">&copy; 版权所有 江西科技师范大学版权所有 &nbsp;&nbsp;&nbsp;<A href="#" target=_blank>联系我们</A> |  <A href="#" target=_blank>服务电话：</A> 
+    		<TD vAlign=center noWrap align=left width="85%">&copy; 版权所有 江西科技师范大学版权所有 &nbsp;&nbsp;&nbsp;<A href="#" target=_blank>联系我们</A> |  <A href="#" target=_blank>服务电话：0791-83831019</A> 
 				</TD>
 	</TR></TBODY></TABLE>
 </DIV>

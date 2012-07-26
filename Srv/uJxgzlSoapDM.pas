@@ -57,6 +57,7 @@ type
     function JwxtInfoIsOK(const sUrl, sUser, sPwd: string;var sError:String): Boolean;overload;
     function JwxtInfoIsOK: Boolean;overload;
 
+    function GetRecordCountBySql(const sSqlStr:string):Integer;
     function RecordIsExists(const sSqlStr:string):Boolean;
     function ExecSqlCmd(const sSqlStr:string):Boolean;overload;
     function ExecSqlCmd(const sSqlStr:string;var sError:string):Boolean;overload;
@@ -258,6 +259,27 @@ begin
   end;
 end;
 
+function TJxgzlSoapDM.GetRecordCountBySql(const sSqlStr: string): Integer;
+var
+  DataSet_Temp:TADODataSet;
+begin
+  DataSet_Temp := TADODataSet.Create(nil);
+  DataSet_Temp.Connection := ADOConnection1;
+  try
+    DataSet_Temp.Close;
+    DataSet_Temp.CommandText := sSqlStr;
+    try
+      DataSet_Temp.Open;
+      Result := DataSet_Temp.Fields[0].AsInteger;
+    except
+      Result := 0;
+    end;
+  finally
+    DataSet_Temp.Close;
+    DataSet_Temp.Free;
+  end;
+end;
+
 function TJxgzlSoapDM.GetKsInfo(const sData: string; var xh, sfzh, xm, xb, nj,
   lb, zy, state: string): Boolean;
 var
@@ -445,24 +467,8 @@ begin
 end;
 
 function TJxgzlSoapDM.RecordIsExists(const sSqlStr: string): Boolean;
-var
-  DataSet_Temp:TADODataSet;
 begin
-  DataSet_Temp := TADODataSet.Create(nil);
-  DataSet_Temp.Connection := ADOConnection1;
-  try
-    DataSet_Temp.Close;
-    DataSet_Temp.CommandText := sSqlStr;
-    try
-      DataSet_Temp.Open;
-      Result := DataSet_Temp.Fields[0].AsInteger>0;
-    except
-      Result := False;
-    end;
-  finally
-    DataSet_Temp.Close;
-    DataSet_Temp.Free;
-  end;
+  Result := GetRecordCountBySql(sSqlStr)>0;
 end;
 
 function TJxgzlSoapDM.RegIsOK: Boolean;

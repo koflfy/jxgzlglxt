@@ -88,7 +88,7 @@ href="logout.asp"><img id=Image5 height=52 src="images/exit2.gif" width=173 bord
 								for j=0 to nCntChd
 									set objBulAtr=objBulNode.ChildNodes.item(j) 		
 								%>
-									<TR><TD  height=30>&nbsp;</TD>
+									<TR height=25><TD>&nbsp;</TD>
 										<TD><%=objBulAtr.GetAttributeNode("xF1").Value %>&nbsp;&nbsp;<%=StrtoDate(objBulAtr.GetAttributeNode("ActionTime").Value) %></TD>
 									</TR> 
 								<%
@@ -101,12 +101,15 @@ href="logout.asp"><img id=Image5 height=52 src="images/exit2.gif" width=173 bord
 			  <%
 							Else
 							%>
-								<TR><TD  height=30>&nbsp;</TD>
+								<TR height=15><TD>&nbsp;</TD>
 									<TD>ÔÝÎÞ¹«¸æ</TD>
 								</TR>
 							<%
 							End If
 							%>
+								<TR height=25><TD>&nbsp;</TD>
+									<TD>&nbsp;</TD>
+								</TR>
              </TBODY>
 						</TABLE>
 					</TD>
