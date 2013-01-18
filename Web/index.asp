@@ -66,8 +66,8 @@ href="logout.asp"><img id=Image5 height=52 src="images/exit2.gif" width=173 bord
     			<TD height=37>
       			<TABLE cellSpacing=0 cellPadding=0 width=100% border=0>
         		<TBODY>
-						  <TR><TD width=20 height=30 class=f_14_orange  background="images/bg_title.gif">&nbsp;</TD>
-						  			<TD class=f_14_orange  background="images/bg_title.gif">最新通知</TD>
+						  <TR><TD width=70 height=30 class=f_14_orange  background="images/bg_title.gif"><img src="images/icon_tip.gif" alt="" width="48" height="49" /></TD>
+						  			<TD width="626"  background="images/bg_title.gif" class=f_14_orange>最新通知</TD>
 						  </TR>
 							<%
 							'获取最新4条公告信息

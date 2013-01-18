@@ -171,9 +171,9 @@ begin
     sqlstr := 'select top '+IntToStr(iRecCount)+' * from 工作量总表_Web'+sWhere;
 
     if iPage>1 then
-     sWhere2 := ' and gzh not in(select top '+IntToStr(iRecCount*(iPage-1))+' gzh from 工作量总表_Web '+sWhere+' order by gzh)';
+     sWhere2 := ' and id not in (select top '+IntToStr(iRecCount*(iPage-1))+' id from 工作量总表_Web '+sWhere+' order by id)';
 
-    sqlstr := sqlstr+sWhere2+' order by gzh';
+    sqlstr := sqlstr+sWhere2+' order by id';
 
     if dm.Query_Data(sqlstr,iCompressType,sData)=S_OK then
       Result := sData

@@ -21,8 +21,9 @@
 			iPage = 1
 		end if
 		iTotalRecord = ""
-		XmlJxgzlInfo = objSOAPClient.GetJxgzlInfo(TeacherNo,xnxq,18,iPage)
+		XmlJxgzlInfo = objSOAPClient.GetJxgzlInfo(TeacherNo,xnxq,17,iPage)
 		iTotalRecord = objSOAPClient.GetJxgzlRecordCount(TeacherNo,xnxq)
+		'response.Write iPage
 	End If
 %>
 </head>
@@ -57,7 +58,7 @@ href="logout.asp"><IMG id=Image5 height=52 src="images/exit2.gif" width=173 bord
       			<TABLE cellSpacing=0 cellPadding=0 width=100% border=0>
         		<TBODY>
 				<TR>
-				  <TD width=7 height=30  background="images/bg_title.gif" class=f_14_orange>&nbsp;</TD>
+				  <TD width=11 height=30  background="images/bg_title.gif" class=f_14_orange>&nbsp;</TD>
 				  <TD height=30 colspan="8"  background="images/bg_title.gif" class=f_14_orange>
                   <form id="form1" name="form1" method="get" action="">
                   <select name="xnxq" id="xnxq">
@@ -89,15 +90,15 @@ href="logout.asp"><IMG id=Image5 height=52 src="images/exit2.gif" width=173 bord
                   </TD>
 				</TR>
 				<TR height="30">
-				  <TD width=7 height=25 class=f_14_orange>&nbsp;</TD>
-				  <TD width="34">序号</TD>
-				  <TD width="64">学年学期</TD>
-				  <TD width="84">课程名称</TD>
-				  <TD width="70">学时数</TD>
-				  <TD width="84">授课对象</TD>
-				  <TD width="84">核算类型</TD>
-				  <TD width="85">工作量</TD>
-				  <TD width="58">操作</TD>
+				  <TD width=11 height=25 class=f_14_orange>&nbsp;</TD>
+				  <TD width="48">序号</TD>
+				  <TD width="88">学年学期</TD>
+				  <TD width="204">课程名称</TD>
+				  <!--<TD width="70">学时数</TD> //-->
+				  <TD>授课对象</TD>
+				  <!--<TD width="84">核算类型</TD> //-->
+				  <TD width="58">工作量</TD>
+				  <TD width="45">操作</TD>
 				</TR>
 				<%
 					Dim kcmc,xss,lx,gzl,cz,id,skdx
@@ -132,8 +133,17 @@ href="logout.asp"><IMG id=Image5 height=52 src="images/exit2.gif" width=173 bord
 							end if
 				%>
 				<TR height="25">
-	 			   <TD width=7 class=f_14_orange>&nbsp;</TD>
-					<TD width="34"><%=(iPage-1)*18+i+1%></TD><TD width="64"><%=xnxq%></TD><TD><%=kcmc%></TD><TD width="70"><%=xss%></TD><TD width="120"><%=skdx%></TD><TD width="84"><%=lx%></TD><TD width="85"><%=gzl%></TD><TD><a href="#" onclick="window.open('jxgzldetail.asp?id=<%=id%>','Dwin','top=100,left=300,width=620,height=450');">明细</a></TD>
+	 			   <TD width=11 class=f_14_orange>&nbsp;</TD>
+					<TD width="48"><%=(iPage-1)*17+i+1%></TD>
+                    <TD width="88"><%=xnxq%></TD>
+                    <TD width="204" nowrap="nowrap">
+					<%if len(kcmc)>20 then response.Write left(kcmc,20)&"..." else response.Write kcmc end if %>
+                    </TD>
+                    <TD  nowrap="nowrap">
+					<%if len(skdx)>26 then response.Write left(skdx,26)&"..." else response.Write skdx end if %>
+                    </TD>
+                    <TD width="58"><%=gzl%></TD>
+                    <TD><a href="#" onclick="window.open('jxgzldetail.asp?id=<%=id%>','Dwin','top=100,left=300,width=620,height=450');">明细</a></TD>
 				</TR>
 				<%
 						next
@@ -142,7 +152,7 @@ href="logout.asp"><IMG id=Image5 height=52 src="images/exit2.gif" width=173 bord
 						Set objDom=Nothing
 					Else
 				%>
-				  		<TR><TD width=7 height=25 class=f_14_orange>&nbsp;</TD>
+				  		<TR><TD width=11 height=25 class=f_14_orange>&nbsp;</TD>
 						<TD colspan="7">暂无记录</TD></TR>
 				<%	
 	               	End If
@@ -158,7 +168,7 @@ href="logout.asp"><IMG id=Image5 height=52 src="images/exit2.gif" width=173 bord
       上一页
       <%end if%>
       &nbsp;
-      <%if iPage*18<iTotalRecord then %>
+      <%if iPage*17<iTotalRecord then %>
       <a href="showjxgzl.asp?xnxq=<%=xnxq%>&amp;page=<%=ipage+1%>" title="下一页">下一页</a>
       <%else%>
       下一页
