@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, GridsEh, DBGridEh, DB, DBClient, StdCtrls, Buttons,
   ExtCtrls, pngimage, frxpngimage, Mask, DBCtrlsEh, DBFieldComboBox,
-  DBGridEhGrouping;
+  DBGridEhGrouping, dxGDIPlusClasses;
 
 type
   TjxGzlBrowse = class(TForm)
@@ -154,7 +154,7 @@ begin
     cbb_Xy.Items.Clear;
     DM.GetXyList(sList);
     cbb_Xy.Items.Assign(sList);
-    //cbb_Xy.Items.Add('==不限==');
+    cbb_Xy.Items.Insert(0,'==不限==');
     
     if cbb_Xy.Items.Count>0 then
       cbb_Xy.ItemIndex := 0;

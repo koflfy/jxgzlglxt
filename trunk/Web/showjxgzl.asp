@@ -91,17 +91,17 @@ href="logout.asp"><IMG id=Image5 height=52 src="images/exit2.gif" width=173 bord
 				</TR>
 				<TR height="30">
 				  <TD width=11 height=25 class=f_14_orange>&nbsp;</TD>
-				  <TD width="48">序号</TD>
-				  <TD width="88">学年学期</TD>
-				  <TD width="204">课程名称</TD>
+				  <TD width="29">序号</TD>
+				  <TD width="83">学年学期</TD>
+				  <TD width="172">&nbsp;课程名称</TD>
 				  <!--<TD width="70">学时数</TD> //-->
-				  <TD>授课对象</TD>
-				  <!--<TD width="84">核算类型</TD> //-->
+				  <TD width="303">授课对象</TD>
+				  <TD width="47">人数</TD> 
 				  <TD width="58">工作量</TD>
 				  <TD width="45">操作</TD>
 				</TR>
 				<%
-					Dim kcmc,xss,lx,gzl,cz,id,skdx
+					Dim kcmc,xss,lx,gzl,cz,id,skdx,rs
 					Set objDom=Server.CreateObject("Microsoft.XMLDOM") 
 					objDom.Async=False
 					If objDom.loadXML(XmlJxgzlInfo) Then    '把XML字符串读入内存
@@ -125,6 +125,9 @@ href="logout.asp"><IMG id=Image5 height=52 src="images/exit2.gif" width=173 bord
 							if not (objAtrs.GetAttributeNode("skdx") is nothing) then
 								skdx=objAtrs.GetAttributeNode("skdx").Value
 							end if
+							if not (objAtrs.GetAttributeNode("rs") is nothing) then
+								rs=objAtrs.GetAttributeNode("rs").Value
+							end if
 							if not (objAtrs.GetAttributeNode("gzlx") is nothing) then
 								lx=objAtrs.GetAttributeNode("gzlx").Value
 							end if
@@ -134,14 +137,15 @@ href="logout.asp"><IMG id=Image5 height=52 src="images/exit2.gif" width=173 bord
 				%>
 				<TR height="25">
 	 			   <TD width=11 class=f_14_orange>&nbsp;</TD>
-					<TD width="48"><%=(iPage-1)*17+i+1%></TD>
-                    <TD width="88"><%=xnxq%></TD>
-                    <TD width="204" nowrap="nowrap">
-					<%if len(kcmc)>20 then response.Write left(kcmc,20)&"..." else response.Write kcmc end if %>
+					<TD width="29"><%=(iPage-1)*17+i+1%></TD>
+                    <TD width="83"><%=xnxq%></TD>
+                    <TD width="172" nowrap="nowrap">&nbsp;
+					<%if len(kcmc)>16 then response.Write left(kcmc,16)&"..." else response.Write kcmc end if %>
                     </TD>
                     <TD  nowrap="nowrap">
-					<%if len(skdx)>26 then response.Write left(skdx,26)&"..." else response.Write skdx end if %>
+					<%if len(skdx)>24 then response.Write left(skdx,24)&"..." else response.Write skdx end if %>
                     </TD>
+                    <TD width="47"><%=rs%></TD>
                     <TD width="58"><%=gzl%></TD>
                     <TD><a href="#" onclick="window.open('jxgzldetail.asp?id=<%=id%>','Dwin','top=100,left=300,width=620,height=450');">明细</a></TD>
 				</TR>
