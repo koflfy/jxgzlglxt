@@ -575,13 +575,13 @@ object ToolsMain: TToolsMain
     Left = 60
     Top = 65
     Width = 314
-    Height = 31
+    Height = 26
     ParentEffect.ParentFont = False
     Caption = #25945#23398#24037#20316#37327#31649#29702#31995#32479#37197#32622#31243#24207
     Font.Charset = GB2312_CHARSET
     Font.Color = clBlue
     Font.Height = -24
-    Font.Name = #26041#27491#23002#20307#31616#20307
+    Font.Name = #26999#20307
     Font.Style = []
     Effect.FontEffect.Shadow.Enabled = True
   end
@@ -589,13 +589,13 @@ object ToolsMain: TToolsMain
     Left = 85
     Top = 136
     Width = 272
-    Height = 26
+    Height = 22
     ParentEffect.ParentFont = False
     Caption = '---'#31995#32479#26410#27880#20876#65281#35831#23613#24555#27880#20876#65281
     Font.Charset = GB2312_CHARSET
     Font.Color = clBlue
     Font.Height = -20
-    Font.Name = #26041#27491#23002#20307#31616#20307
+    Font.Name = #26999#20307
     Font.Style = []
     Effect.FontEffect.Shadow.Enabled = True
   end
@@ -799,7 +799,7 @@ object ToolsMain: TToolsMain
       'http://vir.jxstnu.edu.cn/jcgl/')
     InfoFileURL = 'http://vir.jxstnu.edu.cn/NetPay/download/AutoUpdte.inf'
     VersionControl = byNumber
-    VersionDate = '2012-05-20 00:00:00'
+    VersionDate = '2013-01-22 00:00:00'
     VersionDateAutoSet = True
     OnFileStart = auAutoUpgrader1FileStart
     OnDoOwnCloseAppMethod = auAutoUpgrader1DoOwnCloseAppMethod
@@ -809,7 +809,7 @@ object ToolsMain: TToolsMain
   object ImageList1: TImageList
     Left = 248
     Bitmap = {
-      494C010102000400100010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010102000400140010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
